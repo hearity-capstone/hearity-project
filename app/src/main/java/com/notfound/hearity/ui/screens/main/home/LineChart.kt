@@ -1,5 +1,6 @@
 package com.notfound.hearity.ui.screens.main.home
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,19 +18,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.patrykandpatrick.vico.compose.axis.axisLineComponent
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
 import com.patrykandpatrick.vico.compose.chart.scroll.rememberChartScrollState
 import com.patrykandpatrick.vico.compose.component.lineComponent
+import com.patrykandpatrick.vico.compose.component.shapeComponent
+import com.patrykandpatrick.vico.compose.component.textComponent
+import com.patrykandpatrick.vico.compose.dimensions.dimensionsOf
+import com.patrykandpatrick.vico.compose.legend.horizontalLegend
+import com.patrykandpatrick.vico.compose.legend.legendItem
 import com.patrykandpatrick.vico.compose.style.ProvideChartStyle
+import com.patrykandpatrick.vico.compose.style.currentChartStyle
 import com.patrykandpatrick.vico.core.axis.AxisItemPlacer
 import com.patrykandpatrick.vico.core.chart.line.LineChart
+import com.patrykandpatrick.vico.core.component.shape.Shapes
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
 
@@ -62,11 +72,11 @@ fun LineChart() {
     val datasetLineSpec = remember {
         arrayListOf(
             LineChart.LineSpec(
-                lineColor = Color.Blue.toArgb(),
+                lineColor = color1.toArgb(),
                 lineThicknessDp = 4.0f,
             ),
             LineChart.LineSpec(
-                lineColor = Color.Red.toArgb(),
+                lineColor = color2.toArgb(),
                 lineThicknessDp = 4.0f,
             )
         )
@@ -79,8 +89,7 @@ fun LineChart() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(210.dp)
-        ,
+            .height(220.dp),
         colors = CardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainer,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -88,7 +97,12 @@ fun LineChart() {
             disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
         )
     ) {
-        FreqDropdown()
+        Box(
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.Center
+        ) {
+            FreqDropdown()
+        }
         if (dataset1.isNotEmpty() || dataset2.isEmpty()) {
             ProvideChartStyle {
                 Chart(
@@ -133,7 +147,8 @@ fun LineChart() {
 
                     chartModelProducer = modelProducer,
                     chartScrollState = scrollState,
-                    isZoomEnabled = true
+                    isZoomEnabled = true,
+                    legend = rememberLegend(),
                 )
             }
         }
@@ -151,7 +166,7 @@ fun FreqDropdown() {
     ExposedDropdownMenuBox(
         expanded = isExpanded.value,
         onExpandedChange = { isExpanded.value = it },
-        modifier = Modifier.height(46.dp)
+        modifier = Modifier.height(46.dp).width(105.dp)
     ) {
         TextField(
             value = freq.value,
@@ -167,7 +182,9 @@ fun FreqDropdown() {
                 unfocusedIndicatorColor = Color.Transparent
             ),
             textStyle = MaterialTheme.typography.labelSmall,
-            modifier = Modifier.menuAnchor().width(120.dp)
+            modifier = Modifier
+                .menuAnchor()
+                .width(120.dp)
         )
         ExposedDropdownMenu(
             expanded = isExpanded.value,
@@ -185,3 +202,30 @@ fun FreqDropdown() {
         }
     }
 }
+
+@Composable
+private fun rememberLegend() = horizontalLegend(
+    items = chartColors.mapIndexed { index, chartColor ->
+        legendItem(
+            icon = shapeComponent(Shapes.pillShape, chartColor),
+            label = textComponent(
+                color = currentChartStyle.axis.axisLabelColor,
+                textSize = 10.sp,
+            ),
+            labelText = if (index == 0) "Left" else "Right"
+        )
+    },
+    iconSize = legendItemIconSize,
+    iconPadding = legendItemIconPaddingValue,
+    spacing = legendItemSpacing,
+    padding = legendPadding,
+)
+
+private val color1 = Color.Red
+private val color2 = Color.Blue
+private val chartColors = listOf(color1, color2)
+private val legendItemIconSize = 8.dp
+private val legendItemIconPaddingValue = 8.dp
+private val legendItemSpacing = 16.dp
+private val legendTopPaddingValue = 8.dp
+private val legendPadding = dimensionsOf(top = legendTopPaddingValue)
