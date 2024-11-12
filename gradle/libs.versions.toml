@@ -24,10 +24,10 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-compose = { module = "com.patrykandpatrick.vico:compose", version.ref = "compose" }
-compose-m2 = { module = "com.patrykandpatrick.vico:compose-m2", version.ref = "compose" }
-core = { module = "com.patrykandpatrick.vico:core", version.ref = "compose" }
-compose-m3 = { module = "com.patrykandpatrick.vico:compose-m3", version.ref = "compose" }
+vico-compose = { module = "com.patrykandpatrick.vico:compose", version.ref = "compose" }
+vico-compose-m2 = { module = "com.patrykandpatrick.vico:compose-m2", version.ref = "compose" }
+vico-core = { module = "com.patrykandpatrick.vico:core", version.ref = "compose" }
+vico-compose-m3 = { module = "com.patrykandpatrick.vico:compose-m3", version.ref = "compose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -47,7 +47,7 @@ logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", ver
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
-views = { module = "com.patrykandpatrick.vico:views", version.ref = "compose" }
+vico-views = { module = "com.patrykandpatrick.vico:views", version.ref = "compose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

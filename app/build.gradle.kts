@@ -87,9 +87,9 @@ dependencies {
     ksp(libs.room.compiler)
 
     // vico chart
-    implementation(libs.compose)
-    implementation(libs.compose.m2)
-    implementation(libs.compose.m3)
-    implementation(libs.core)
-    implementation(libs.views)
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m2)
+    implementation(libs.vico.compose.m3)
+    implementation(libs.vico.core)
+    implementation(libs.vico.views)
 }
