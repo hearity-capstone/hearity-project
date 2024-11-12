@@ -2,6 +2,7 @@ package com.notfound.hearity.ui.screens.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -21,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -34,6 +36,7 @@ import com.notfound.hearity.graphs.MainNavGraph
 @Composable
 fun MainScreen(navController: NavHostController = rememberNavController()) {
     Scaffold(
+        contentWindowInsets = WindowInsets(0.dp),
         bottomBar = { BottomBar(navController = navController) }
     ) { padding ->
         Box(

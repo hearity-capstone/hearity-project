@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.notfound.hearity"
-        minSdk = 25
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "0.1"
@@ -85,4 +85,11 @@ dependencies {
     //room for local database
     implementation(libs.androidx.room.runtime)
     ksp(libs.room.compiler)
+
+    // vico chart
+    implementation(libs.compose)
+    implementation(libs.compose.m2)
+    implementation(libs.compose.m3)
+    implementation(libs.core)
+    implementation(libs.views)
 }
