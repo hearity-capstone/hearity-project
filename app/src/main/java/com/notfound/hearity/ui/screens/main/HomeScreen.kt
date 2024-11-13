@@ -24,6 +24,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.notfound.hearity.ui.screens.main.home.LineChart
+import com.notfound.hearity.ui.theme.IconSizeLarge
+import com.notfound.hearity.ui.theme.PaddingMedium
+import com.notfound.hearity.ui.theme.SpacingSection
+import com.notfound.hearity.ui.theme.SpacingSmall
 
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
@@ -34,9 +38,9 @@ fun HomeScreen(onClick: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = it.calculateTopPadding(), horizontal = 16.dp),
+                .padding(vertical = it.calculateTopPadding(), horizontal = PaddingMedium),
         ) {
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(SpacingSection))
             LineChart()
         }
     }
@@ -52,15 +56,22 @@ fun TopBar(onClick: () -> Unit = {}) {
                 Row {
                     Text(
                         "Hello,",
-                        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Medium)
+                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Normal)
+                            .copy(color = MaterialTheme.colorScheme.onSurface),
                     )
-                    Spacer(Modifier.width(4.dp))
+                    Spacer(Modifier.width(SpacingSmall))
                     Text(
                         "User",
-                        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold)
+                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
+                            .copy(color = MaterialTheme.colorScheme.onSurface),
                     )
                 }
-                Text("Have a nice day!", style = MaterialTheme.typography.labelSmall)
+                Text(
+                    "Have a nice day!",
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    ),
+                )
             }
         },
         actions = {
@@ -68,7 +79,7 @@ fun TopBar(onClick: () -> Unit = {}) {
                 Icon(
                     imageVector = Icons.Filled.AccountCircle,
                     contentDescription = "Profile",
-                    modifier = Modifier.size(32.dp)
+                    modifier = Modifier.size(IconSizeLarge)
                 )
             }
         }

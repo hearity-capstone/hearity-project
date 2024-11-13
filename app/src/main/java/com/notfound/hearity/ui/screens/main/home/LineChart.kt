@@ -24,6 +24,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.notfound.hearity.ui.theme.IconSizeExtraSmall
+import com.notfound.hearity.ui.theme.PaddingMedium
+import com.notfound.hearity.ui.theme.PaddingSmall
+import com.notfound.hearity.ui.theme.SlateBlue
+import com.notfound.hearity.ui.theme.SpacingMedium
+import com.notfound.hearity.ui.theme.TomatoRed
 import com.patrykandpatrick.vico.compose.axis.axisLineComponent
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -90,10 +96,11 @@ fun LineChart() {
         modifier = Modifier
             .fillMaxWidth()
             .height(220.dp),
+        shape = MaterialTheme.shapes.extraLarge,
         colors = CardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-            disabledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+            disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
         )
     ) {
@@ -107,9 +114,9 @@ fun LineChart() {
             ProvideChartStyle {
                 Chart(
                     modifier = Modifier.padding(
-                        start = 16.dp,
-                        end = 16.dp,
-                        bottom = 16.dp
+                        start = PaddingMedium,
+                        end = PaddingMedium,
+                        bottom = PaddingMedium
                     ),
                     chart = LineChart(
                         lines = datasetLineSpec,
@@ -122,7 +129,7 @@ fun LineChart() {
                         },
                         axis = axisLineComponent(
                             strokeWidth = 2.dp,
-                            strokeColor = Color.LightGray
+                            strokeColor = MaterialTheme.colorScheme.outlineVariant
                         ),
                         tick = lineComponent(color = Color.Transparent),
                         itemPlacer = AxisItemPlacer.Vertical.default(
@@ -138,9 +145,8 @@ fun LineChart() {
                         },
                         axis = axisLineComponent(
                             strokeWidth = 2.dp,
-                            strokeColor = Color.LightGray
+                            strokeColor = MaterialTheme.colorScheme.outlineVariant
                         ),
-
                         tick = lineComponent(color = Color.Transparent),
                         guideline = null
                     ),
@@ -166,7 +172,9 @@ fun FreqDropdown() {
     ExposedDropdownMenuBox(
         expanded = isExpanded.value,
         onExpandedChange = { isExpanded.value = it },
-        modifier = Modifier.height(46.dp).width(105.dp)
+        modifier = Modifier
+            .height(46.dp)
+            .width(125.dp)
     ) {
         TextField(
             value = freq.value,
@@ -176,15 +184,14 @@ fun FreqDropdown() {
                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded.value)
             },
             colors = ExposedDropdownMenuDefaults.textFieldColors(
-                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainer,
-                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
             textStyle = MaterialTheme.typography.labelSmall,
             modifier = Modifier
                 .menuAnchor()
-                .width(120.dp)
         )
         ExposedDropdownMenu(
             expanded = isExpanded.value,
@@ -196,7 +203,14 @@ fun FreqDropdown() {
                         freq.value = option
                         isExpanded.value = false
                     },
-                    text = { Text(option, style = MaterialTheme.typography.labelSmall) }
+                    text = {
+                        Text(
+                            option,
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        )
+                    }
                 )
             }
         }
@@ -221,11 +235,11 @@ private fun rememberLegend() = horizontalLegend(
     padding = legendPadding,
 )
 
-private val color1 = Color.Red
-private val color2 = Color.Blue
+private val color1 = TomatoRed
+private val color2 = SlateBlue
 private val chartColors = listOf(color1, color2)
-private val legendItemIconSize = 8.dp
-private val legendItemIconPaddingValue = 8.dp
-private val legendItemSpacing = 16.dp
-private val legendTopPaddingValue = 8.dp
+private val legendItemIconSize = IconSizeExtraSmall
+private val legendItemIconPaddingValue = PaddingSmall
+private val legendItemSpacing = SpacingMedium
+private val legendTopPaddingValue = PaddingSmall
 private val legendPadding = dimensionsOf(top = legendTopPaddingValue)
