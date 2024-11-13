@@ -18,3 +18,5 @@ val IconSizeExtraSmall = 8.dp
 val IconSizeSmall = 16.dp
 val IconSizeMedium = 24.dp
 val IconSizeLarge = 32.dp
+
+val IconContainerSizeMedium = 48.dp

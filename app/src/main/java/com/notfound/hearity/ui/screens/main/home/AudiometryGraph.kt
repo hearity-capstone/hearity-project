@@ -50,7 +50,7 @@ import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
 
 @Composable
-fun LineChart() {
+fun AudiometryGraph() {
     val modelProducer = remember { ChartEntryModelProducer() }
 
     val dataset1 = remember {
