@@ -2,6 +2,9 @@ package com.notfound.hearity.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val SlateBlue = Color(0xFF6174D7)
+val TomatoRed = Color(0xFFFE464B)
+
 val primaryLight = Color(0xFF226A4D)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFFA9F2CC)
