@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.notfound.hearity.ui.common.SectionTitle
 import com.notfound.hearity.ui.screens.main.home.AudiometryGraph
 import com.notfound.hearity.ui.screens.main.home.TreatmentPlanSection
 import com.notfound.hearity.ui.theme.IconSizeLarge
@@ -43,6 +45,12 @@ fun HomeScreen(onClick: () -> Unit) {
             AudiometryGraph()
             Spacer(Modifier.height(SpacingSection))
             TreatmentPlanSection()
+            Spacer(Modifier.height(SpacingSection))
+            SectionTitle(
+                title = "Test History",
+                icon = Icons.Filled.History,
+                actionTitle = "See all",
+                action = {})
         }
     }
 }
