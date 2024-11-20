@@ -4,10 +4,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.History
@@ -25,9 +28,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.notfound.hearity.ui.common.SectionTitle
 import com.notfound.hearity.ui.screens.main.home.AudiometryGraph
+import com.notfound.hearity.ui.screens.main.home.TestHistory
 import com.notfound.hearity.ui.screens.main.home.TreatmentPlanSection
 import com.notfound.hearity.ui.theme.IconSizeLarge
 import com.notfound.hearity.ui.theme.PaddingMedium
+import com.notfound.hearity.ui.theme.SpacingItem
 import com.notfound.hearity.ui.theme.SpacingSection
 import com.notfound.hearity.ui.theme.SpacingSmall
 
@@ -39,9 +44,14 @@ fun HomeScreen(onClick: () -> Unit) {
     ) {
         Column(
             modifier = Modifier
-                .padding(vertical = it.calculateTopPadding(), horizontal = PaddingMedium),
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(
+                    top = it.calculateTopPadding(),
+                    end = PaddingMedium,
+                    start = PaddingMedium
+                ),
         ) {
-            Spacer(Modifier.height(SpacingSection))
             AudiometryGraph()
             Spacer(Modifier.height(SpacingSection))
             TreatmentPlanSection()
@@ -51,10 +61,12 @@ fun HomeScreen(onClick: () -> Unit) {
                 icon = Icons.Filled.History,
                 actionTitle = "See all",
                 action = {})
+            Spacer(Modifier.height(SpacingItem))
+            TestHistory()
+            Spacer(Modifier.height(SpacingItem))
         }
     }
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
