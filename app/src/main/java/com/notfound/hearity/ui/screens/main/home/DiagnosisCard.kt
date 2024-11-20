@@ -69,7 +69,7 @@ fun DiagnosisCard(modifier: Modifier = Modifier) {
                     ))
 
                     Spacer(Modifier.height(SpacingMedium))
-                    Text("Meniere’s Disease", style = MaterialTheme.typography.bodyLarge.copy(
+                    Text("No diagnosis yet", style = MaterialTheme.typography.bodyMedium.copy(
                         fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary,
                     ), maxLines = 2, overflow = TextOverflow.Ellipsis)
                 }

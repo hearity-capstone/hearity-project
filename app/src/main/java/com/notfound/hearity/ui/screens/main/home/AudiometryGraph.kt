@@ -1,10 +1,12 @@
 package com.notfound.hearity.ui.screens.main.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.DropdownMenuItem
@@ -42,10 +44,10 @@ import com.patrykandpatrick.vico.compose.dimensions.dimensionsOf
 import com.patrykandpatrick.vico.compose.legend.horizontalLegend
 import com.patrykandpatrick.vico.compose.legend.legendItem
 import com.patrykandpatrick.vico.compose.style.ProvideChartStyle
-import com.patrykandpatrick.vico.compose.style.currentChartStyle
 import com.patrykandpatrick.vico.core.axis.AxisItemPlacer
 import com.patrykandpatrick.vico.core.chart.line.LineChart
 import com.patrykandpatrick.vico.core.component.shape.Shapes
+import com.patrykandpatrick.vico.core.dimensions.MutableDimensions
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
 
@@ -122,7 +124,16 @@ fun AudiometryGraph() {
                         lines = datasetLineSpec,
                     ),
                     startAxis = rememberStartAxis(
-                        title = "Top values",
+                        title = "Hearing loss level (db)",
+                        titleComponent = textComponent(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textSize = 10.sp,
+                        ),
+                        label = textComponent(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            padding = MutableDimensions(8f,4f),
+                            textSize = 10.sp,
+                        ),
                         tickLength = 0.dp,
                         valueFormatter = { value, _ ->
                             value.toInt().toString()
@@ -138,7 +149,16 @@ fun AudiometryGraph() {
                         guideline = null
                     ),
                     bottomAxis = rememberBottomAxis(
-                        title = "Count of values",
+                        title = "Frequency (Hz)",
+                        titleComponent = textComponent(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textSize = 10.sp,
+                        ),
+                        label = textComponent(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            padding = MutableDimensions(8f,4f),
+                            textSize = 10.sp,
+                        ),
                         tickLength = 0.dp,
                         valueFormatter = { value, _ ->
                             ((value.toInt()) + 1).toString()
@@ -154,7 +174,7 @@ fun AudiometryGraph() {
                     chartModelProducer = modelProducer,
                     chartScrollState = scrollState,
                     isZoomEnabled = true,
-                    legend = rememberLegend(),
+                    //  legend = rememberLegend(),
                 )
             }
         }
@@ -165,16 +185,16 @@ fun AudiometryGraph() {
 @Composable
 fun FreqDropdown() {
     val isExpanded = remember { mutableStateOf(false) }
-    val freq = remember { mutableStateOf("1000 Hz") }
+    val freq = remember { mutableStateOf("Left") }
 
-    val freqOptions = listOf("1000 Hz", "500 Hz", "250 Hz")
+    val freqOptions = listOf("Left", "Right", "Both")
 
     ExposedDropdownMenuBox(
         expanded = isExpanded.value,
         onExpandedChange = { isExpanded.value = it },
         modifier = Modifier
-            .height(46.dp)
-            .width(125.dp)
+            .height(44.dp)
+            .width(100.dp)
     ) {
         TextField(
             value = freq.value,
@@ -195,7 +215,11 @@ fun FreqDropdown() {
         )
         ExposedDropdownMenu(
             expanded = isExpanded.value,
-            onDismissRequest = { isExpanded.value = false }
+            onDismissRequest = { isExpanded.value = false },
+            modifier = Modifier.background(
+                color = MaterialTheme.colorScheme.surfaceBright,
+                shape = MaterialTheme.shapes.medium
+            )
         ) {
             freqOptions.forEach { option ->
                 DropdownMenuItem(
@@ -223,7 +247,7 @@ private fun rememberLegend() = horizontalLegend(
         legendItem(
             icon = shapeComponent(Shapes.pillShape, chartColor),
             label = textComponent(
-                color = currentChartStyle.axis.axisLabelColor,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textSize = 10.sp,
             ),
             labelText = if (index == 0) "Left" else "Right"

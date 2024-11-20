@@ -61,7 +61,7 @@ fun CallToActionCard(modifier: Modifier = Modifier) {
                 }
                 Spacer(Modifier.width(SpacingMedium))
                 Text(
-                    "Find Nearby Hospital", style = MaterialTheme.typography.bodyLarge.copy(
+                    "Find Nearby\nHospital", style = MaterialTheme.typography.bodyMedium.copy(
                         fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary,
                     ), maxLines = 2, overflow = TextOverflow.Ellipsis
                 )
