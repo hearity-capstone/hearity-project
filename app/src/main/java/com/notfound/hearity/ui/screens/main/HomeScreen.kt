@@ -34,6 +34,7 @@ import com.notfound.hearity.ui.theme.IconSizeLarge
 import com.notfound.hearity.ui.theme.PaddingMedium
 import com.notfound.hearity.ui.theme.SpacingItem
 import com.notfound.hearity.ui.theme.SpacingSection
+import com.notfound.hearity.ui.theme.SpacingSectionLarge
 import com.notfound.hearity.ui.theme.SpacingSmall
 
 @Composable
@@ -52,16 +53,17 @@ fun HomeScreen(onClick: () -> Unit) {
                     start = PaddingMedium
                 ),
         ) {
+            Spacer(Modifier.height(SpacingItem))
             AudiometryGraph()
             Spacer(Modifier.height(SpacingSection))
             TreatmentPlanSection()
-            Spacer(Modifier.height(SpacingSection))
+            Spacer(Modifier.height(SpacingSectionLarge))
             SectionTitle(
                 title = "Test History",
                 icon = Icons.Filled.History,
                 actionTitle = "See all",
                 action = {})
-            Spacer(Modifier.height(SpacingItem))
+            Spacer(Modifier.height(SpacingSection))
             TestHistory()
             Spacer(Modifier.height(SpacingItem))
         }

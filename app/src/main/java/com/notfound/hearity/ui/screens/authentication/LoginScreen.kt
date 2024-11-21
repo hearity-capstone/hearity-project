@@ -37,10 +37,10 @@ import com.notfound.hearity.ui.common.AppEmailTextField
 import com.notfound.hearity.ui.common.AppPasswordTextField
 import com.notfound.hearity.ui.theme.IconSizeMedium
 import com.notfound.hearity.ui.theme.PaddingMedium
-import com.notfound.hearity.ui.theme.SpacingExtraLarge
 import com.notfound.hearity.ui.theme.SpacingItem
 import com.notfound.hearity.ui.theme.SpacingMedium
 import com.notfound.hearity.ui.theme.SpacingSection
+import com.notfound.hearity.ui.theme.SpacingSectionLarge
 
 @Preview
 @Composable
@@ -83,7 +83,7 @@ fun LoginScreen(
                 onEmailChange = { email = it },
                 onPasswordChange = { password = it },
             )
-            Spacer(Modifier.height(SpacingExtraLarge))
+            Spacer(Modifier.height(SpacingSectionLarge))
 
             AppButton(
                 onClick = onLoginClick,
@@ -91,9 +91,9 @@ fun LoginScreen(
                 label = "Login",
             )
 
-            Spacer(Modifier.height(SpacingSection))
+            Spacer(Modifier.height(SpacingSectionLarge))
             OrDivider()
-            Spacer(Modifier.height(SpacingSection))
+            Spacer(Modifier.height(SpacingSectionLarge))
             AppButton(
                 onClick = {},
                 modifier = Modifier.fillMaxWidth(),
@@ -149,7 +149,7 @@ private fun LoginForm(
             label = "Email",
             modifier = Modifier.fillMaxWidth(),
         )
-        Spacer(Modifier.height(SpacingSection))
+        Spacer(Modifier.height(SpacingItem))
         AppPasswordTextField(
             value = password,
             onValueChange = {newPassword -> onPasswordChange(newPassword) },

@@ -13,6 +13,7 @@ val SpacingExtraLarge = 24.dp
 
 val SpacingItem = SpacingMedium
 val SpacingSection = SpacingLarge
+val SpacingSectionLarge = SpacingExtraLarge
 
 val IconSizeExtraSmall = 8.dp
 val IconSizeSmall = 16.dp
