@@ -3,6 +3,7 @@ package com.notfound.hearity.ui.screens.main.home
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,6 +55,12 @@ fun TestHistoryItem(result: TestResult) {
             .fillMaxWidth()
             .clip(MaterialTheme.shapes.large)
             .clickable { },
+        colors = CardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     ) {
         Column(
             modifier = Modifier.padding(PaddingMedium)
