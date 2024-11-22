@@ -1,6 +1,7 @@
 package com.notfound.hearity.graphs
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -20,9 +21,7 @@ fun MainNavGraph(navController: NavHostController) {
         startDestination = BottomBarScreen.Home.route,
     ) {
         composable(route = BottomBarScreen.Home.route) {
-            HomeScreen(onClick = {
-                navController.navigate(Graph.DETAILS)
-            })
+            HomeScreen(navController)
         }
         composable(route = BottomBarScreen.Profile.route) {
             ChatbotScreen()
@@ -30,10 +29,9 @@ fun MainNavGraph(navController: NavHostController) {
         composable(route = BottomBarScreen.Settings.route) {
             FilesScreen()
         }
-        detailsNavGraph(navController = navController)
+        detailsNavGraph(navController)
     }
 }
-
 
 fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
     navigation(
@@ -62,5 +60,9 @@ sealed class DetailsScreen(
 ) {
     data object Information : DetailsScreen(route = "INFORMATION", title = "Information")
     data object Overview : DetailsScreen(route = "OVERVIEW", title = "Overview")
+}
+
+fun NavController.navigateToDetailsGraph() {
+    this.navigate(Graph.DETAILS)
 }
 

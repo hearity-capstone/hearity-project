@@ -28,9 +28,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.notfound.hearity.R
+import com.notfound.hearity.graphs.navigateToMainGraphAndClearBackStack
+import com.notfound.hearity.graphs.navigateToSignUp
 import com.notfound.hearity.ui.common.AppButton
 import com.notfound.hearity.ui.common.AppButtonVariant
 import com.notfound.hearity.ui.common.AppEmailTextField
@@ -42,11 +45,9 @@ import com.notfound.hearity.ui.theme.SpacingMedium
 import com.notfound.hearity.ui.theme.SpacingSection
 import com.notfound.hearity.ui.theme.SpacingSectionLarge
 
-@Preview
 @Composable
 fun LoginScreen(
-    onLoginClick: () -> Unit = {},
-    onSignUpClick: () -> Unit = {}
+    navController: NavController
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -67,8 +68,16 @@ fun LoginScreen(
                     .height(200.dp)
                     .width(200.dp)
             )
-            Spacer(Modifier.height(SpacingSection))
-
+            Spacer(Modifier.height(SpacingItem))
+            Text(
+                text = "Login",
+                modifier = Modifier.fillMaxWidth(),
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                ),
+            )
+            Spacer(Modifier.height(SpacingItem))
             Text(
                 text = "Login to your account",
                 modifier = Modifier.fillMaxWidth(),
@@ -86,7 +95,7 @@ fun LoginScreen(
             Spacer(Modifier.height(SpacingSectionLarge))
 
             AppButton(
-                onClick = onLoginClick,
+                onClick = { navController.navigateToMainGraphAndClearBackStack() },
                 modifier = Modifier.fillMaxWidth(),
                 label = "Login",
             )
@@ -97,7 +106,7 @@ fun LoginScreen(
             AppButton(
                 onClick = {},
                 modifier = Modifier.fillMaxWidth(),
-                label = "Sign in with Google",
+                label = "Login with Google",
                 variant = AppButtonVariant.Neutral,
                 leadingIcon = {
                     Icon(
@@ -123,7 +132,7 @@ fun LoginScreen(
                 Text(
                     "Sign Up",
                     style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary),
-                    modifier = Modifier.clickable { onSignUpClick() }
+                    modifier = Modifier.clickable { navController.navigateToSignUp() }
                 )
             }
         }
@@ -145,14 +154,14 @@ private fun LoginForm(
     ) {
         AppEmailTextField(
             value = email,
-            onValueChange = { onEmailChange(it) },
+            onValueChange = { value -> onEmailChange(value) },
             label = "Email",
             modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(SpacingItem))
         AppPasswordTextField(
             value = password,
-            onValueChange = {newPassword -> onPasswordChange(newPassword) },
+            onValueChange = { value -> onPasswordChange(value) },
             label = "Password",
             modifier = Modifier.fillMaxWidth(),
             isPasswordVisible = isPasswordVisible,

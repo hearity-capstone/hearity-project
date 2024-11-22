@@ -1,5 +1,6 @@
 package com.notfound.hearity.graphs
 
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -15,30 +16,25 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
         composable(
             route = AuthScreen.Login.route
         ) {
-            LoginScreen(
-                onLoginClick = {
-                    navController.navigate(Graph.MAIN) {
-                        // clear backstack
-                        popUpTo(Graph.AUTHENTICATION) {
-                            inclusive = true
-                        }
-                    }
-                },
-                onSignUpClick = { navController.navigate(AuthScreen.SignUp.route) }
-            )
+            LoginScreen(navController)
         }
         composable(
             route = AuthScreen.SignUp.route
         ) {
-            SignUpScreen(
-                onClick = { navController.navigate(AuthScreen.Login.route) }
-            )
+            SignUpScreen(navController)
         }
     }
 }
 
-
 sealed class AuthScreen(val route: String) {
     data object Login : AuthScreen(route = "LOGIN")
     data object SignUp : AuthScreen(route = "SIGN_UP")
+}
+
+fun NavController.navigateToLogin() {
+    this.navigate(AuthScreen.Login.route)
+}
+
+fun NavController.navigateToSignUp() {
+    this.navigate(AuthScreen.SignUp.route)
 }

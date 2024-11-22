@@ -26,6 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.notfound.hearity.graphs.navigateToDetailsGraph
 import com.notfound.hearity.ui.common.SectionTitle
 import com.notfound.hearity.ui.screens.main.home.AudiometryGraph
 import com.notfound.hearity.ui.screens.main.home.TestHistory
@@ -38,10 +40,12 @@ import com.notfound.hearity.ui.theme.SpacingSectionLarge
 import com.notfound.hearity.ui.theme.SpacingSmall
 
 @Composable
-fun HomeScreen(onClick: () -> Unit) {
+fun HomeScreen(
+    navController: NavController
+) {
     Scaffold(
         contentWindowInsets = WindowInsets(0.dp), // To consume status bar
-        topBar = { TopBar(onClick = onClick) }
+        topBar = { TopBar(onClick = { navController.navigateToDetailsGraph() }) }
     ) {
         Column(
             modifier = Modifier
@@ -69,6 +73,7 @@ fun HomeScreen(onClick: () -> Unit) {
         }
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable

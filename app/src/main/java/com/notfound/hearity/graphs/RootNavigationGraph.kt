@@ -1,6 +1,7 @@
 package com.notfound.hearity.graphs
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -25,4 +26,12 @@ object Graph {
     const val AUTHENTICATION = "auth_graph"
     const val MAIN = "main_graph"
     const val DETAILS = "details_graph"
+}
+
+fun NavController.navigateToMainGraphAndClearBackStack() {
+    this.navigate(Graph.MAIN) {
+        popUpTo(Graph.AUTHENTICATION) {
+            inclusive = true
+        }
+    }
 }
