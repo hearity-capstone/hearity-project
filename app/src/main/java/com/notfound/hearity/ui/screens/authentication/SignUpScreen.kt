@@ -8,12 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,7 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,10 +29,8 @@ import androidx.navigation.NavController
 import com.notfound.hearity.R
 import com.notfound.hearity.graphs.navigateToLogin
 import com.notfound.hearity.ui.common.AppButton
-import com.notfound.hearity.ui.common.AppButtonVariant
 import com.notfound.hearity.ui.common.AppEmailTextField
 import com.notfound.hearity.ui.common.AppPasswordTextField
-import com.notfound.hearity.ui.theme.IconSizeMedium
 import com.notfound.hearity.ui.theme.PaddingMedium
 import com.notfound.hearity.ui.theme.SpacingItem
 import com.notfound.hearity.ui.theme.SpacingSection
@@ -44,7 +39,7 @@ import com.notfound.hearity.ui.theme.SpacingSectionLarge
 
 @Composable
 fun SignUpScreen(
-   navController: NavController
+    navController: NavController
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -69,7 +64,10 @@ fun SignUpScreen(
             Text(
                 text = "Sign Up",
                 modifier = Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface),
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                ),
             )
             Spacer(Modifier.height(SpacingItem))
             Text(
@@ -97,23 +95,11 @@ fun SignUpScreen(
             Spacer(Modifier.height(SpacingSectionLarge))
             OrDivider()
             Spacer(Modifier.height(SpacingSectionLarge))
-            AppButton(
-                onClick = {},
-                modifier = Modifier.fillMaxWidth(),
-                label = "Sign up with Google",
-                variant = AppButtonVariant.Neutral,
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_google),
-                        modifier = Modifier.size(IconSizeMedium),
-                        tint = Color.Unspecified,
-                        contentDescription = "google icon"
-                    )
-                },
-            )
+            AuthWithGoogleButton(authType = AuthType.SIGN_UP, onClick = {})
         }
     }
 }
+
 @Composable
 private fun SignUpForm(
     modifier: Modifier = Modifier,
