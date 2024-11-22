@@ -1,18 +1,13 @@
 package com.notfound.hearity.ui.screens.main
 
+
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.rounded.ChatBubble
-import androidx.compose.material.icons.rounded.ChatBubbleOutline
-import androidx.compose.material.icons.rounded.Folder
-import androidx.compose.material.icons.rounded.FolderOpen
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -20,7 +15,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
@@ -30,7 +26,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.wear.compose.material.Text
+import com.notfound.hearity.R
 import com.notfound.hearity.graphs.MainNavGraph
+import com.notfound.hearity.ui.theme.IconSizeMedium
 
 @Preview
 @Composable
@@ -94,10 +92,11 @@ fun RowScope.AddItems(
             )
         },
         icon = {
-            Icon(
-                imageVector = if (isSelected) screen.iconSelected else screen.icon,
+            Image(
+                painter = painterResource(id = if (isSelected) screen.iconSelected else screen.icon),
                 screen.title,
-                tint = MaterialTheme.colorScheme.primary
+                modifier = Modifier.size(IconSizeMedium),
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
             )
         },
         selected = isSelected,
@@ -112,28 +111,28 @@ fun RowScope.AddItems(
 sealed class BottomBarScreen(
     val route: String,
     val title: String,
-    val icon: ImageVector,
-    val iconSelected: ImageVector,
+    val icon: Int,
+    val iconSelected: Int,
 ) {
     data object Home : BottomBarScreen(
         route = "HOME",
         title = "Home",
-        icon = Icons.Outlined.Home,
-        iconSelected = Icons.Filled.Home
+        icon = R.drawable.ic_home_outline,
+        iconSelected = R.drawable.ic_home_filled
 
     )
 
     data object Profile : BottomBarScreen(
         route = "CHATBOT",
         title = "Chatbot",
-        icon = Icons.Rounded.ChatBubbleOutline,
-        iconSelected = Icons.Rounded.ChatBubble
+        icon = R.drawable.ic_chat_bubble_outline,
+        iconSelected = R.drawable.ic_chat_bubble_filled
     )
 
     data object Settings : BottomBarScreen(
         route = "FILES",
         title = "Files",
-        icon = Icons.Rounded.FolderOpen,
-        iconSelected = Icons.Rounded.Folder
+        icon = R.drawable.ic_folder_outline,
+        iconSelected = R.drawable.ic_folder_filled
     )
 }

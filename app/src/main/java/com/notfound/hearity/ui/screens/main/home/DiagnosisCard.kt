@@ -1,5 +1,6 @@
 package com.notfound.hearity.ui.screens.main.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -13,8 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.MedicalInformation
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.MaterialTheme
@@ -23,10 +22,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.wear.compose.material.Icon
+import com.notfound.hearity.R
 import com.notfound.hearity.ui.theme.IconContainerSizeMedium
+import com.notfound.hearity.ui.theme.IconSizeMedium
 import com.notfound.hearity.ui.theme.PaddingMedium
 import com.notfound.hearity.ui.theme.SpacingMedium
 
@@ -56,11 +58,16 @@ fun DiagnosisCard(modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .size(IconContainerSizeMedium)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.tertiary)
-                        .clickable {  },
+                        .background(MaterialTheme.colorScheme.tertiary),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(imageVector = Icons.Rounded.MedicalInformation, contentDescription = null)
+                    Image(
+                        painter = painterResource(R.drawable.ic_stethoscope),
+                        contentDescription = "stethoscope icon",
+                        modifier = Modifier.size(IconSizeMedium),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onTertiary),
+                        alignment = Alignment.Center
+                    )
                 }
                 Spacer(Modifier.width(SpacingMedium))
                 Column {
