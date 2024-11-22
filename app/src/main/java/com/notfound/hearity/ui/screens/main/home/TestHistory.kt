@@ -100,7 +100,7 @@ fun TestHistoryItem(result: TestResult) {
                     )
                 } else {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_stethoscope),
+                        painter = painterResource(id = R.drawable.ic_check_circle),
                         contentDescription = null,
                         modifier = Modifier.size(IconSizeMedium),
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
