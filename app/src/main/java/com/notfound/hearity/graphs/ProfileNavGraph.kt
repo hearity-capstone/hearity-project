@@ -1,13 +1,11 @@
 package com.notfound.hearity.graphs
 
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.notfound.hearity.ui.animation.slideFromRightEnterTransition
+import com.notfound.hearity.ui.animation.slideToRightExitTransition
 import com.notfound.hearity.ui.screens.ScreenContent
 import com.notfound.hearity.ui.screens.profile.ProfileScreen
 
@@ -17,20 +15,10 @@ fun NavGraphBuilder.profileNavGraph(navController: NavHostController) {
         startDestination = ProfileScreen.Profile.route
     ) {
         composable(
-            enterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = {it},
-                    animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing)
-                )
-            },
-            exitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = {it},
-                    animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing)
-                )
-            },
+            enterTransition = { slideFromRightEnterTransition() },
+            exitTransition = { slideToRightExitTransition() },
             route = ProfileScreen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController = navController)
         }
         composable(route = ProfileScreen.Details.route) {
             ScreenContent(name = ProfileScreen.Details.title) {

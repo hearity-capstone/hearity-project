@@ -27,14 +27,16 @@ fun RootNavigationGraph(navController: NavHostController) {
         }
         composable(
             enterTransition = { scaleFadeEnterTransition() },
-            route = Graph.TEST_HISTORY) {
-            TestHistoryScreen()
+            route = Graph.TEST_HISTORY
+        ) {
+            TestHistoryScreen(navController = navController)
         }
         composable(
             enterTransition = { scaleFadeEnterTransition() },
-            route = "${Graph.TEST_DETAILS}/{id}") { backStackEntry ->
+            route = "${Graph.TEST_DETAILS}/{id}"
+        ) { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id")?.toIntOrNull()
-            TestDetailScreen(id)
+            TestDetailScreen(navController = navController, id)
         }
     }
 }
