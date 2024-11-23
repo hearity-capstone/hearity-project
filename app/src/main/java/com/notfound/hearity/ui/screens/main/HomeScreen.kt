@@ -26,8 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.notfound.hearity.graphs.navigateToDetailsGraph
+import androidx.navigation.NavHostController
+import com.notfound.hearity.graphs.navigateToProfileGraph
+import com.notfound.hearity.graphs.navigateToTestHistoryScreen
 import com.notfound.hearity.ui.common.SectionTitle
 import com.notfound.hearity.ui.screens.main.home.AudiometryGraph
 import com.notfound.hearity.ui.screens.main.home.TestHistory
@@ -41,11 +42,11 @@ import com.notfound.hearity.ui.theme.SpacingSmall
 
 @Composable
 fun HomeScreen(
-    navController: NavController
+    rootNavController: NavHostController,
 ) {
     Scaffold(
-        contentWindowInsets = WindowInsets(0.dp), // To consume status bar
-        topBar = { TopBar(onClick = { navController.navigateToDetailsGraph() }) }
+        contentWindowInsets = WindowInsets(0.dp),
+        topBar = { TopBar(onProfileClick = { rootNavController.navigateToProfileGraph() }) }
     ) {
         Column(
             modifier = Modifier
@@ -66,9 +67,9 @@ fun HomeScreen(
                 title = "Test History",
                 icon = Icons.Filled.History,
                 actionTitle = "See all",
-                action = {})
+                action = { rootNavController.navigateToTestHistoryScreen() })
             Spacer(Modifier.height(SpacingSection))
-            TestHistory()
+            TestHistory(rootNavController = rootNavController)
             Spacer(Modifier.height(SpacingItem))
         }
     }
@@ -77,7 +78,7 @@ fun HomeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun TopBar(onClick: () -> Unit = {}) {
+fun TopBar(onProfileClick: () -> Unit = {}) {
     TopAppBar(
         title = {
             Column {
@@ -103,7 +104,7 @@ fun TopBar(onClick: () -> Unit = {}) {
             }
         },
         actions = {
-            IconButton(onClick = { onClick() }) {
+            IconButton(onClick = { onProfileClick() }) {
                 Icon(
                     imageVector = Icons.Filled.AccountCircle,
                     contentDescription = "Profile",

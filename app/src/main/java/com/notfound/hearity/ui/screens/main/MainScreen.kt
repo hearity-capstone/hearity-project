@@ -17,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -30,9 +29,11 @@ import com.notfound.hearity.R
 import com.notfound.hearity.graphs.MainNavGraph
 import com.notfound.hearity.ui.theme.IconSizeMedium
 
-@Preview
 @Composable
-fun MainScreen(navController: NavHostController = rememberNavController()) {
+fun MainScreen(
+    rootNavController: NavHostController,
+    navController: NavHostController = rememberNavController()
+) {
     Scaffold(
         contentWindowInsets = WindowInsets(0.dp),
         bottomBar = { BottomBar(navController = navController) }
@@ -42,7 +43,7 @@ fun MainScreen(navController: NavHostController = rememberNavController()) {
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            MainNavGraph(navController = navController)
+            MainNavGraph(rootNavController = rootNavController, navController = navController)
         }
     }
 }

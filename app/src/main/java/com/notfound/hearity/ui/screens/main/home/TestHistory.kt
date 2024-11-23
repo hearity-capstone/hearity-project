@@ -23,7 +23,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.navigation.NavHostController
 import com.notfound.hearity.R
+import com.notfound.hearity.graphs.navigateToTestDetailScreen
 import com.notfound.hearity.ui.theme.IconSizeMedium
 import com.notfound.hearity.ui.theme.PaddingMedium
 import com.notfound.hearity.ui.theme.SpacingItem
@@ -39,24 +41,30 @@ enum class HearingSeverity {
 }
 
 @Composable
-fun TestHistory(modifier: Modifier = Modifier) {
+fun TestHistory(
+    modifier: Modifier = Modifier,
+    rootNavController: NavHostController
+) {
     Column(
         modifier = modifier
             .fillMaxWidth()
     ) {
         val testResults = listOf(
             TestResult(
+                1,
                 LocalDate.now(),
                 "Dr. John Doe",
                 "Normal hearing at low to medium frequencies. There is a mild hearing loss at high frequencies in the right ear.",
                 HearingSeverity.NORMAL
             ),
             TestResult(
+                2,
                 LocalDate.now().minusDays(5), "Dr. Jane Smith",
                 "There is a mild hearing loss at high frequencies in the right ear.",
                 HearingSeverity.WARNING
             ),
             TestResult(
+                3,
                 LocalDate.now().minusDays(10), "Dr. Judy S.",
                 "There is a mild hearing loss at high frequencies in the right ear.",
                 HearingSeverity.WARNING
@@ -64,21 +72,21 @@ fun TestHistory(modifier: Modifier = Modifier) {
         )
 
         testResults.forEach { result ->
-            TestHistoryItem(result)
+            TestHistoryItem(result, onClick = {rootNavController.navigateToTestDetailScreen(result.id)})
             Spacer(modifier = Modifier.height(SpacingItem))
         }
     }
 }
 
 @Composable
-fun TestHistoryItem(result: TestResult) {
+fun TestHistoryItem(result: TestResult, onClick: () -> Unit = {}) {
     val formattedDate = result.testDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clip(MaterialTheme.shapes.large)
-            .clickable { },
+            .clickable { onClick() },
         colors = CardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -137,6 +145,7 @@ fun TestHistoryItem(result: TestResult) {
 }
 
 data class TestResult(
+    val id : Int,
     val testDate: LocalDate,
     val doctorName: String,
     val summary: String,
