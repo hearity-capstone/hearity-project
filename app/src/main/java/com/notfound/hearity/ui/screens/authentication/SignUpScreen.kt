@@ -11,7 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -31,6 +34,7 @@ import com.notfound.hearity.graphs.navigateToLogin
 import com.notfound.hearity.ui.common.AppButton
 import com.notfound.hearity.ui.common.AppEmailTextField
 import com.notfound.hearity.ui.common.AppPasswordTextField
+import com.notfound.hearity.ui.common.AppTextField
 import com.notfound.hearity.ui.theme.PaddingMedium
 import com.notfound.hearity.ui.theme.SpacingItem
 import com.notfound.hearity.ui.theme.SpacingSection
@@ -41,8 +45,10 @@ import com.notfound.hearity.ui.theme.SpacingSectionLarge
 fun SignUpScreen(
     navController: NavController
 ) {
+    var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var repeatPassword by remember { mutableStateOf("") }
 
     Scaffold { it ->
         Column(
@@ -80,9 +86,13 @@ fun SignUpScreen(
             SignUpForm(
                 modifier = Modifier.fillMaxWidth(),
                 email = email,
+                name = name,
                 password = password,
+                repeatPassword = repeatPassword,
+                onNameChange = { name = it },
                 onEmailChange = { email = it },
                 onPasswordChange = { password = it },
+                onRepeatPasswordChange = {repeatPassword = it},
             )
             Spacer(Modifier.height(SpacingSectionLarge))
 
@@ -103,30 +113,53 @@ fun SignUpScreen(
 @Composable
 private fun SignUpForm(
     modifier: Modifier = Modifier,
+    name: String,
     email: String,
     password: String,
+    repeatPassword: String,
+    onNameChange: (String) -> Unit = {},
     onPasswordChange: (String) -> Unit = {},
+    onRepeatPasswordChange: (String) -> Unit = {},
     onEmailChange: (String) -> Unit = {},
 ) {
     var isPasswordVisible by remember { mutableStateOf(false) }
+    var isRepeatPasswordVisible by remember { mutableStateOf(false) }
+
     Column(
         modifier = modifier,
     ) {
+        AppTextField(
+            value = name,
+            label = "Name",
+            onValueChange = { value -> onNameChange(value) },
+            modifier = Modifier.fillMaxWidth(),
+            leadingIcon = {
+                Icon(Icons.Filled.Person, contentDescription = "Person Icon")
+            }
+        )
         AppEmailTextField(
             value = email,
             onValueChange = { value -> onEmailChange(value) },
-            label = "Email",
             modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(SpacingItem))
         AppPasswordTextField(
             value = password,
             onValueChange = { value -> onPasswordChange(value) },
-            label = "Password",
             modifier = Modifier.fillMaxWidth(),
             isPasswordVisible = isPasswordVisible,
             onPasswordVisibilityChange = { isPasswordVisible = !isPasswordVisible }
         )
+        Spacer(Modifier.height(SpacingItem))
+        AppPasswordTextField(
+            value = repeatPassword,
+            label = "Repeat Password",
+            onValueChange = { value -> onRepeatPasswordChange(value) },
+            modifier = Modifier.fillMaxWidth(),
+            isPasswordVisible = isRepeatPasswordVisible,
+            onPasswordVisibilityChange = { isRepeatPasswordVisible= !isRepeatPasswordVisible }
+        )
+
     }
 }
 

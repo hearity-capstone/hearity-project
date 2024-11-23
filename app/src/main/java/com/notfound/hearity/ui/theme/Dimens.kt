@@ -21,3 +21,5 @@ val IconSizeMedium = 24.dp
 val IconSizeLarge = 32.dp
 
 val IconContainerSizeMedium = 48.dp
+
+val AvatarSizeLarge = 48.dp

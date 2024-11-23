@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
@@ -19,28 +20,34 @@ fun AppButton(
     modifier: Modifier = Modifier,
     variant: AppButtonVariant = AppButtonVariant.Primary,
     onClick: () -> Unit,
+    size: AppButtonSize = AppButtonSize.Medium,
     leadingIcon: @Composable (() -> Unit)? = null,
     label: String = "Click",
     enabled: Boolean = true
 ) {
     Button(
         modifier = modifier
-            .fillMaxWidth()
-            .height(48.dp),
-        shape = MaterialTheme.shapes.large,
+            .height( when (size) {
+                AppButtonSize.Small -> 40.dp
+                AppButtonSize.Medium -> 48.dp
+                AppButtonSize.Large -> 56.dp
+                else -> 48.dp
+            }),
+        shape = when (size) {
+            AppButtonSize.Small -> CircleShape
+            AppButtonSize.Medium -> MaterialTheme.shapes.large
+            AppButtonSize.Large -> MaterialTheme.shapes.extraLarge
+            else -> MaterialTheme.shapes.medium
+        },
         colors = ButtonColors(
             containerColor = when (variant) {
                 AppButtonVariant.Primary -> MaterialTheme.colorScheme.primary
                 AppButtonVariant.Secondary -> MaterialTheme.colorScheme.secondary
-                AppButtonVariant.Neutral -> MaterialTheme.colorScheme.surfaceContainerHighest
-                else -> {
-                    MaterialTheme.colorScheme.primary
-                }
+                else -> MaterialTheme.colorScheme.primary
             },
             contentColor = when (variant) {
                 AppButtonVariant.Primary -> MaterialTheme.colorScheme.onPrimary
                 AppButtonVariant.Secondary -> MaterialTheme.colorScheme.onSecondary
-                AppButtonVariant.Neutral -> MaterialTheme.colorScheme.onSurface
                 else -> {
                     MaterialTheme.colorScheme.onPrimary
                 }
@@ -76,5 +83,10 @@ fun AppButton(
 open class AppButtonVariant {
     object Primary : AppButtonVariant()
     object Secondary : AppButtonVariant()
-    object Neutral : AppButtonVariant()
+}
+
+open class AppButtonSize {
+    object Small : AppButtonSize()
+    object Medium : AppButtonSize()
+    object Large : AppButtonSize()
 }

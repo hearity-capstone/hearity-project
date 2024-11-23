@@ -137,14 +137,12 @@ private fun LoginForm(
         AppEmailTextField(
             value = email,
             onValueChange = { value -> onEmailChange(value) },
-            label = "Email",
             modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(SpacingItem))
         AppPasswordTextField(
             value = password,
             onValueChange = { value -> onPasswordChange(value) },
-            label = "Password",
             modifier = Modifier.fillMaxWidth(),
             isPasswordVisible = isPasswordVisible,
             onPasswordVisibilityChange = { isPasswordVisible = !isPasswordVisible }

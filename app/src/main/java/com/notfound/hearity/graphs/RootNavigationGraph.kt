@@ -6,7 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.notfound.hearity.ui.animation.scaleFadeEnterTransition
+import com.notfound.hearity.ui.animation.slideFromRightEnterTransition
+import com.notfound.hearity.ui.animation.slideToRightExitTransition
 import com.notfound.hearity.ui.screens.main.MainScreen
+import com.notfound.hearity.ui.screens.profile.ProfileScreen
 import com.notfound.hearity.ui.screens.testDetail.TestDetailScreen
 import com.notfound.hearity.ui.screens.testHistory.TestHistoryScreen
 
@@ -18,7 +21,6 @@ fun RootNavigationGraph(navController: NavHostController) {
         startDestination = Graph.AUTHENTICATION
     ) {
         authNavGraph(navController = navController)
-        profileNavGraph(navController = navController)
         composable(
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.MAIN
@@ -37,6 +39,13 @@ fun RootNavigationGraph(navController: NavHostController) {
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id")?.toIntOrNull()
             TestDetailScreen(navController = navController, id)
+        }
+        composable(
+            route = Graph.PROFILE,
+            enterTransition = { slideFromRightEnterTransition() },
+            exitTransition = { slideToRightExitTransition() },
+        ) {
+            ProfileScreen(navController = navController)
         }
     }
 }
