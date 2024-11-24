@@ -8,7 +8,7 @@ import com.notfound.hearity.ui.animation.defaultFadeEnterTransition
 import com.notfound.hearity.ui.animation.defaultFadeExitTransition
 import com.notfound.hearity.ui.screens.main.BottomBarScreen
 import com.notfound.hearity.ui.screens.main.HomeScreen
-import com.notfound.hearity.ui.screens.main.ChatbotScreen
+import com.notfound.hearity.ui.screens.main.chatbot.ChatbotScreen
 import com.notfound.hearity.ui.screens.main.FilesScreen
 
 

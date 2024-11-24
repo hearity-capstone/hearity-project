@@ -1,10 +1,11 @@
 package com.notfound.hearity.ui.screens.main
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,14 +19,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.notfound.hearity.graphs.navigateToProfileGraph
 import com.notfound.hearity.graphs.navigateToTestHistoryScreen
@@ -35,6 +34,7 @@ import com.notfound.hearity.ui.screens.main.home.TestHistory
 import com.notfound.hearity.ui.screens.main.home.TreatmentPlanSection
 import com.notfound.hearity.ui.theme.IconSizeLarge
 import com.notfound.hearity.ui.theme.PaddingMedium
+import com.notfound.hearity.ui.theme.PaddingSmall
 import com.notfound.hearity.ui.theme.SpacingItem
 import com.notfound.hearity.ui.theme.SpacingSection
 import com.notfound.hearity.ui.theme.SpacingSectionLarge
@@ -44,19 +44,14 @@ import com.notfound.hearity.ui.theme.SpacingSmall
 fun HomeScreen(
     rootNavController: NavHostController,
 ) {
-    Scaffold(
-        contentWindowInsets = WindowInsets(0.dp),
-        topBar = { TopBar(onProfileClick = { rootNavController.navigateToProfileGraph() }) }
+    Column(
+        Modifier.padding(horizontal = PaddingMedium)
     ) {
+        TopBar(onProfileClick = { rootNavController.navigateToProfileGraph() })
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(
-                    top = it.calculateTopPadding(),
-                    end = PaddingMedium,
-                    start = PaddingMedium
-                ),
         ) {
             Spacer(Modifier.height(SpacingItem))
             AudiometryGraph()
@@ -79,38 +74,38 @@ fun HomeScreen(
 @Preview
 @Composable
 fun TopBar(onProfileClick: () -> Unit = {}) {
-    TopAppBar(
-        title = {
-            Column {
-                Row {
-                    Text(
-                        "Hello,",
-                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Normal)
-                            .copy(color = MaterialTheme.colorScheme.onSurface),
-                    )
-                    Spacer(Modifier.width(SpacingSmall))
-                    Text(
-                        "User",
-                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
-                            .copy(color = MaterialTheme.colorScheme.onSurface),
-                    )
-                }
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(vertical = PaddingSmall),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Column {
+            Row {
                 Text(
-                    "Have a nice day!",
-                    style = MaterialTheme.typography.labelSmall.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    ),
+                    "Hello,",
+                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Normal)
+                        .copy(color = MaterialTheme.colorScheme.onSurface),
+                )
+                Spacer(Modifier.width(SpacingSmall))
+                Text(
+                    "User",
+                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
+                        .copy(color = MaterialTheme.colorScheme.onSurface),
                 )
             }
-        },
-        actions = {
-            IconButton(onClick = { onProfileClick() }) {
-                Icon(
-                    imageVector = Icons.Filled.AccountCircle,
-                    contentDescription = "Profile",
-                    modifier = Modifier.size(IconSizeLarge)
-                )
-            }
+            Text(
+                "Have a nice day!",
+                style = MaterialTheme.typography.labelSmall.copy(
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                ),
+            )
         }
-    )
+        IconButton(onClick = { onProfileClick() }) {
+            Icon(
+                imageVector = Icons.Filled.AccountCircle,
+                contentDescription = "Profile",
+                modifier = Modifier.size(IconSizeLarge)
+            )
+        }
+    }
 }

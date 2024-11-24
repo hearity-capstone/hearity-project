@@ -4,9 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -53,7 +53,7 @@ fun SignUpScreen(
     Scaffold { it ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .imePadding()
                 .verticalScroll(rememberScrollState())
                 .padding(it)
                 .padding(PaddingMedium),
@@ -92,7 +92,7 @@ fun SignUpScreen(
                 onNameChange = { name = it },
                 onEmailChange = { email = it },
                 onPasswordChange = { password = it },
-                onRepeatPasswordChange = {repeatPassword = it},
+                onRepeatPasswordChange = { repeatPassword = it },
             )
             Spacer(Modifier.height(SpacingSectionLarge))
 
@@ -155,7 +155,8 @@ private fun SignUpForm(
             value = repeatPassword,
             label = "Repeat Password",
             onValueChange = { value -> onRepeatPasswordChange(value) },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth(),
             isPasswordVisible = isRepeatPasswordVisible,
             onPasswordVisibilityChange = { isRepeatPasswordVisible= !isRepeatPasswordVisible }
         )
