@@ -1,0 +1,401 @@
+patient_id,first_name,last_name,phone_number,gender,address_line1,address_line2,city,state,postal_code,test_id,date,left_freq_500_hz,left_freq_1000_hz,left_freq_2000_hz,left_freq_4000_hz,right_freq_500_hz,right_freq_1000_hz,right_freq_2000_hz,right_freq_4000_hz,AD,AS
+1,Ethan,Hubbard,7661997491142,Male,882 Luis Crossroad,Apt. 831,Lake Shannon,CT,30502,1,2022/01/15,15,10,10,0,5,15,10,5,8.75,8.75
+1,Ethan,Hubbard,7661997491142,Male,882 Luis Crossroad,Apt. 831,Lake Shannon,CT,30502,2,2022/07/17,15,15,10,10,10,15,10,20,13.75,12.5
+1,Ethan,Hubbard,7661997491142,Male,882 Luis Crossroad,Apt. 831,Lake Shannon,CT,30502,3,2023/01/15,25,15,20,20,20,20,20,30,22.5,20.0
+1,Ethan,Hubbard,7661997491142,Male,882 Luis Crossroad,Apt. 831,Lake Shannon,CT,30502,4,2023/07/27,35,25,30,30,30,30,30,40,32.5,30.0
+2,Justin,Crawford,2056851622340,Male,8498 Henderson Pines,Suite 258,Feliciamouth,IN,89435,1,2022/01/15,10,5,10,0,15,0,15,25,13.75,6.25
+2,Justin,Crawford,2056851622340,Male,8498 Henderson Pines,Suite 258,Feliciamouth,IN,89435,2,2022/07/17,15,5,15,15,15,0,15,35,16.25,12.5
+2,Justin,Crawford,2056851622340,Male,8498 Henderson Pines,Suite 258,Feliciamouth,IN,89435,3,2023/01/15,15,15,25,15,20,5,15,45,21.25,17.5
+2,Justin,Crawford,2056851622340,Male,8498 Henderson Pines,Suite 258,Feliciamouth,IN,89435,4,2023/07/27,20,25,35,20,25,15,20,50,27.5,25.0
+3,Joseph,Ford,2173171263121,Male,917 Randall Unions,Apt. 613,Zacharyhaven,MS,56690,1,2022/01/15,10,5,5,0,0,0,15,25,10.0,5.0
+3,Joseph,Ford,2173171263121,Male,917 Randall Unions,Apt. 613,Zacharyhaven,MS,56690,2,2022/07/17,15,5,10,5,5,0,20,35,15.0,8.75
+3,Joseph,Ford,2173171263121,Male,917 Randall Unions,Apt. 613,Zacharyhaven,MS,56690,3,2023/01/15,15,10,10,10,10,0,20,40,17.5,11.25
+3,Joseph,Ford,2173171263121,Male,917 Randall Unions,Apt. 613,Zacharyhaven,MS,56690,4,2023/07/27,25,20,20,20,15,5,30,45,23.75,21.25
+4,Raymond,Miller,2941964616798,Male,4698 Smith Union,Suite 420,Port David,ID,59289,1,2022/01/15,15,15,5,20,10,10,10,5,8.75,13.75
+4,Raymond,Miller,2941964616798,Male,4698 Smith Union,Suite 420,Port David,ID,59289,2,2022/07/17,15,20,5,25,10,15,10,10,11.25,16.25
+4,Raymond,Miller,2941964616798,Male,4698 Smith Union,Suite 420,Port David,ID,59289,3,2023/01/15,25,20,10,35,20,25,15,20,20.0,22.5
+4,Raymond,Miller,2941964616798,Male,4698 Smith Union,Suite 420,Port David,ID,59289,4,2023/07/27,30,30,15,45,25,35,20,25,26.25,30.0
+5,Jason,Chavez,0560662821933,Male,1841 Jessica Corners Suite 803,Apt. 382,Ramosstad,CA,10197,1,2022/01/15,10,15,0,25,10,15,0,15,10.0,12.5
+5,Jason,Chavez,0560662821933,Male,1841 Jessica Corners Suite 803,Apt. 382,Ramosstad,CA,10197,2,2022/07/17,15,20,5,30,15,15,5,25,15.0,17.5
+5,Jason,Chavez,0560662821933,Male,1841 Jessica Corners Suite 803,Apt. 382,Ramosstad,CA,10197,3,2023/01/15,20,20,10,35,25,15,5,35,20.0,21.25
+5,Jason,Chavez,0560662821933,Male,1841 Jessica Corners Suite 803,Apt. 382,Ramosstad,CA,10197,4,2023/07/27,30,30,15,40,35,20,10,40,26.25,28.75
+6,Steven,Mathews,4139484986110,Male,68343 Adam Drive Apt. 457,Suite 266,Lake Gregory,MD,10986,1,2022/01/15,10,0,10,5,0,10,0,15,6.25,6.25
+6,Steven,Mathews,4139484986110,Male,68343 Adam Drive Apt. 457,Suite 266,Lake Gregory,MD,10986,2,2022/07/17,10,5,10,15,0,10,0,25,8.75,10.0
+6,Steven,Mathews,4139484986110,Male,68343 Adam Drive Apt. 457,Suite 266,Lake Gregory,MD,10986,3,2023/01/15,15,15,15,20,0,15,5,25,11.25,16.25
+6,Steven,Mathews,4139484986110,Male,68343 Adam Drive Apt. 457,Suite 266,Lake Gregory,MD,10986,4,2023/07/27,25,25,20,30,5,20,10,35,17.5,25.0
+7,Robert,Lara,7764082749841,Male,826 Jennifer Fields Apt. 969,Suite 314,Dalefurt,NE,21007,1,2022/01/15,15,0,10,10,5,10,15,10,10.0,8.75
+7,Robert,Lara,7764082749841,Male,826 Jennifer Fields Apt. 969,Suite 314,Dalefurt,NE,21007,2,2022/07/17,15,5,15,20,5,15,15,25,15.0,13.75
+7,Robert,Lara,7764082749841,Male,826 Jennifer Fields Apt. 969,Suite 314,Dalefurt,NE,21007,3,2023/01/15,25,15,15,25,15,25,15,25,20.0,20.0
+7,Robert,Lara,7764082749841,Male,826 Jennifer Fields Apt. 969,Suite 314,Dalefurt,NE,21007,4,2023/07/27,35,20,20,30,25,35,20,35,28.75,26.25
+8,Samuel,Ramirez,0619755810042,Male,70394 Melissa Roads,Apt. 811,New Justinberg,NM,41244,1,2022/01/15,10,10,15,15,0,15,0,0,3.75,12.5
+8,Samuel,Ramirez,0619755810042,Male,70394 Melissa Roads,Apt. 811,New Justinberg,NM,41244,2,2022/07/17,15,10,20,30,0,20,5,15,10.0,18.75
+8,Samuel,Ramirez,0619755810042,Male,70394 Melissa Roads,Apt. 811,New Justinberg,NM,41244,3,2023/01/15,15,10,30,30,5,25,5,15,12.5,21.25
+8,Samuel,Ramirez,0619755810042,Male,70394 Melissa Roads,Apt. 811,New Justinberg,NM,41244,4,2023/07/27,20,15,35,35,10,30,10,25,18.75,26.25
+9,Anthony,James,6310592525672,Male,1203 Gill Plaza,Suite 500,Lisabury,IL,97876,1,2022/01/15,15,15,0,10,15,5,15,5,10.0,10.0
+9,Anthony,James,6310592525672,Male,1203 Gill Plaza,Suite 500,Lisabury,IL,97876,2,2022/07/17,20,15,0,25,20,5,20,15,15.0,15.0
+9,Anthony,James,6310592525672,Male,1203 Gill Plaza,Suite 500,Lisabury,IL,97876,3,2023/01/15,25,25,5,35,25,15,30,20,22.5,22.5
+9,Anthony,James,6310592525672,Male,1203 Gill Plaza,Suite 500,Lisabury,IL,97876,4,2023/07/27,30,30,15,40,30,25,40,30,31.25,28.75
+10,James,Bell,3105918551820,Male,137 Thompson Lodge Suite 331,Suite 229,Territon,TN,71797,1,2022/01/15,5,10,0,5,5,5,5,10,6.25,5.0
+10,James,Bell,3105918551820,Male,137 Thompson Lodge Suite 331,Suite 229,Territon,TN,71797,2,2022/07/17,5,10,5,20,5,5,10,15,8.75,10.0
+10,James,Bell,3105918551820,Male,137 Thompson Lodge Suite 331,Suite 229,Territon,TN,71797,3,2023/01/15,15,10,10,30,10,15,10,20,13.75,16.25
+10,James,Bell,3105918551820,Male,137 Thompson Lodge Suite 331,Suite 229,Territon,TN,71797,4,2023/07/27,25,20,15,40,20,20,15,25,20.0,25.0
+11,William,Cooper,4011686051049,Male,393 Alyssa Loaf,Apt. 397,Shawmouth,SD,69320,1,2022/01/15,10,5,5,10,5,5,10,10,7.5,7.5
+11,William,Cooper,4011686051049,Male,393 Alyssa Loaf,Apt. 397,Shawmouth,SD,69320,2,2022/07/17,15,10,10,25,5,5,15,25,12.5,15.0
+11,William,Cooper,4011686051049,Male,393 Alyssa Loaf,Apt. 397,Shawmouth,SD,69320,3,2023/01/15,20,15,15,25,10,15,15,30,17.5,18.75
+11,William,Cooper,4011686051049,Male,393 Alyssa Loaf,Apt. 397,Shawmouth,SD,69320,4,2023/07/27,25,25,25,35,15,25,25,35,25.0,27.5
+12,Tyler,Morrison,3633098046359,Male,310 Luna Springs Apt. 364,Suite 784,Stacyland,NE,22625,1,2022/01/15,0,15,5,15,10,10,15,0,8.75,8.75
+12,Tyler,Morrison,3633098046359,Male,310 Luna Springs Apt. 364,Suite 784,Stacyland,NE,22625,2,2022/07/17,5,15,10,30,10,15,20,10,13.75,15.0
+12,Tyler,Morrison,3633098046359,Male,310 Luna Springs Apt. 364,Suite 784,Stacyland,NE,22625,3,2023/01/15,10,15,20,35,10,25,30,15,20.0,20.0
+12,Tyler,Morrison,3633098046359,Male,310 Luna Springs Apt. 364,Suite 784,Stacyland,NE,22625,4,2023/07/27,15,20,25,45,15,30,35,20,25.0,26.25
+13,Michael,Rice,1473435701718,Male,9615 Wade Viaduct Suite 075,Suite 809,Lewisfort,CA,57273,1,2022/01/15,5,10,0,25,0,10,10,15,8.75,10.0
+13,Michael,Rice,1473435701718,Male,9615 Wade Viaduct Suite 075,Suite 809,Lewisfort,CA,57273,2,2022/07/17,5,15,5,40,0,15,15,25,13.75,16.25
+13,Michael,Rice,1473435701718,Male,9615 Wade Viaduct Suite 075,Suite 809,Lewisfort,CA,57273,3,2023/01/15,15,25,15,50,0,20,20,35,18.75,26.25
+13,Michael,Rice,1473435701718,Male,9615 Wade Viaduct Suite 075,Suite 809,Lewisfort,CA,57273,4,2023/07/27,25,30,20,55,5,25,30,45,26.25,32.5
+14,Joe,White,9529836162573,Male,68143 Cohen Crossing Suite 100,Suite 184,Port Elizabethland,MO,22602,1,2022/01/15,10,0,10,25,0,5,15,0,5.0,11.25
+14,Joe,White,9529836162573,Male,68143 Cohen Crossing Suite 100,Suite 184,Port Elizabethland,MO,22602,2,2022/07/17,15,0,15,30,5,5,20,5,8.75,15.0
+14,Joe,White,9529836162573,Male,68143 Cohen Crossing Suite 100,Suite 184,Port Elizabethland,MO,22602,3,2023/01/15,20,0,15,30,15,10,30,5,15.0,16.25
+14,Joe,White,9529836162573,Male,68143 Cohen Crossing Suite 100,Suite 184,Port Elizabethland,MO,22602,4,2023/07/27,25,10,25,40,25,15,35,10,21.25,25.0
+15,Daniel,Smith,8644716115328,Male,98553 Joseph Courts,Apt. 081,Schmidtmouth,FL,77163,1,2022/01/15,10,0,15,0,15,0,15,0,7.5,6.25
+15,Daniel,Smith,8644716115328,Male,98553 Joseph Courts,Apt. 081,Schmidtmouth,FL,77163,2,2022/07/17,10,5,15,15,20,0,15,10,11.25,11.25
+15,Daniel,Smith,8644716115328,Male,98553 Joseph Courts,Apt. 081,Schmidtmouth,FL,77163,3,2023/01/15,15,10,25,15,25,5,20,10,15.0,16.25
+15,Daniel,Smith,8644716115328,Male,98553 Joseph Courts,Apt. 081,Schmidtmouth,FL,77163,4,2023/07/27,25,15,35,20,30,15,25,20,22.5,23.75
+16,Jacob,Fischer,7271528472719,Male,7126 Michelle Trail Suite 012,Suite 993,Barberfort,WA,99846,1,2022/01/15,15,0,10,25,5,0,0,10,3.75,12.5
+16,Jacob,Fischer,7271528472719,Male,7126 Michelle Trail Suite 012,Suite 993,Barberfort,WA,99846,2,2022/07/17,20,0,15,40,10,0,5,15,7.5,18.75
+16,Jacob,Fischer,7271528472719,Male,7126 Michelle Trail Suite 012,Suite 993,Barberfort,WA,99846,3,2023/01/15,30,0,20,45,15,10,10,20,13.75,23.75
+16,Jacob,Fischer,7271528472719,Male,7126 Michelle Trail Suite 012,Suite 993,Barberfort,WA,99846,4,2023/07/27,35,10,30,55,20,15,15,30,20.0,32.5
+17,Justin,Martinez,3358292421415,Male,9502 Nicole Ridges,Apt. 351,Williamsonhaven,DC,99646,1,2022/01/15,15,5,10,15,10,10,5,20,11.25,11.25
+17,Justin,Martinez,3358292421415,Male,9502 Nicole Ridges,Apt. 351,Williamsonhaven,DC,99646,2,2022/07/17,20,10,10,30,15,10,10,35,17.5,17.5
+17,Justin,Martinez,3358292421415,Male,9502 Nicole Ridges,Apt. 351,Williamsonhaven,DC,99646,3,2023/01/15,25,20,20,40,15,10,10,40,18.75,26.25
+17,Justin,Martinez,3358292421415,Male,9502 Nicole Ridges,Apt. 351,Williamsonhaven,DC,99646,4,2023/07/27,35,25,25,45,20,15,15,45,23.75,32.5
+18,Jay,Collins,4384412639631,Male,81117 Mark Crest Apt. 538,Suite 307,West Alicia,WA,31409,1,2022/01/15,5,10,0,15,10,10,10,0,7.5,7.5
+18,Jay,Collins,4384412639631,Male,81117 Mark Crest Apt. 538,Suite 307,West Alicia,WA,31409,2,2022/07/17,10,15,0,25,15,10,10,15,12.5,12.5
+18,Jay,Collins,4384412639631,Male,81117 Mark Crest Apt. 538,Suite 307,West Alicia,WA,31409,3,2023/01/15,15,25,5,30,15,20,20,25,20.0,18.75
+18,Jay,Collins,4384412639631,Male,81117 Mark Crest Apt. 538,Suite 307,West Alicia,WA,31409,4,2023/07/27,20,35,10,35,20,30,25,35,27.5,25.0
+19,Mario,Perkins,5883600235867,Male,5095 Lee Crest Suite 793,Apt. 043,West Laurafurt,HI,27057,1,2022/01/15,10,0,15,25,15,15,5,20,13.75,12.5
+19,Mario,Perkins,5883600235867,Male,5095 Lee Crest Suite 793,Apt. 043,West Laurafurt,HI,27057,2,2022/07/17,15,0,20,35,15,15,10,25,16.25,17.5
+19,Mario,Perkins,5883600235867,Male,5095 Lee Crest Suite 793,Apt. 043,West Laurafurt,HI,27057,3,2023/01/15,25,0,30,35,15,15,10,30,17.5,22.5
+19,Mario,Perkins,5883600235867,Male,5095 Lee Crest Suite 793,Apt. 043,West Laurafurt,HI,27057,4,2023/07/27,30,10,40,45,25,20,20,40,26.25,31.25
+20,David,Gray,5682220860588,Male,828 Parsons Tunnel Suite 644,Suite 418,Davidmouth,PW,80357,1,2022/01/15,5,15,5,5,0,0,15,10,6.25,7.5
+20,David,Gray,5682220860588,Male,828 Parsons Tunnel Suite 644,Suite 418,Davidmouth,PW,80357,2,2022/07/17,10,15,10,15,5,0,15,20,10.0,12.5
+20,David,Gray,5682220860588,Male,828 Parsons Tunnel Suite 644,Suite 418,Davidmouth,PW,80357,3,2023/01/15,10,15,10,25,5,5,15,25,12.5,15.0
+20,David,Gray,5682220860588,Male,828 Parsons Tunnel Suite 644,Suite 418,Davidmouth,PW,80357,4,2023/07/27,15,20,15,35,15,10,25,35,21.25,21.25
+21,Scott,Gibson,9030367181831,Male,930 Angela Turnpike Apt. 568,Apt. 376,Susanhaven,MT,58589,1,2022/01/15,5,0,5,0,15,15,5,0,8.75,2.5
+21,Scott,Gibson,9030367181831,Male,930 Angela Turnpike Apt. 568,Apt. 376,Susanhaven,MT,58589,2,2022/07/17,10,0,10,5,20,15,5,10,12.5,6.25
+21,Scott,Gibson,9030367181831,Male,930 Angela Turnpike Apt. 568,Apt. 376,Susanhaven,MT,58589,3,2023/01/15,15,10,10,10,20,25,5,15,16.25,11.25
+21,Scott,Gibson,9030367181831,Male,930 Angela Turnpike Apt. 568,Apt. 376,Susanhaven,MT,58589,4,2023/07/27,20,15,15,15,25,30,15,20,22.5,16.25
+22,Johnny,Hughes,1902447276787,Male,366 Rogers Ramp,Suite 125,Powersview,MP,01703,1,2022/01/15,0,15,15,15,15,10,10,5,10.0,11.25
+22,Johnny,Hughes,1902447276787,Male,366 Rogers Ramp,Suite 125,Powersview,MP,01703,2,2022/07/17,0,15,20,20,20,10,10,10,12.5,13.75
+22,Johnny,Hughes,1902447276787,Male,366 Rogers Ramp,Suite 125,Powersview,MP,01703,3,2023/01/15,5,25,20,30,25,20,10,20,18.75,20.0
+22,Johnny,Hughes,1902447276787,Male,366 Rogers Ramp,Suite 125,Powersview,MP,01703,4,2023/07/27,15,35,30,35,35,25,20,25,26.25,28.75
+23,Daniel,Newton,0318604836027,Male,61856 Shelby Spring Suite 496,Apt. 327,New Danielburgh,AR,47852,1,2022/01/15,0,0,10,10,10,10,15,25,15.0,5.0
+23,Daniel,Newton,0318604836027,Male,61856 Shelby Spring Suite 496,Apt. 327,New Danielburgh,AR,47852,2,2022/07/17,0,0,10,20,10,15,20,30,18.75,7.5
+23,Daniel,Newton,0318604836027,Male,61856 Shelby Spring Suite 496,Apt. 327,New Danielburgh,AR,47852,3,2023/01/15,0,5,15,25,20,15,30,30,23.75,11.25
+23,Daniel,Newton,0318604836027,Male,61856 Shelby Spring Suite 496,Apt. 327,New Danielburgh,AR,47852,4,2023/07/27,10,10,25,35,25,20,40,40,31.25,20.0
+24,Kevin,Kelly,0344095128581,Male,855 Susan Rue,Apt. 725,West Katelyn,AS,93774,1,2022/01/15,15,10,10,10,15,5,10,5,8.75,11.25
+24,Kevin,Kelly,0344095128581,Male,855 Susan Rue,Apt. 725,West Katelyn,AS,93774,2,2022/07/17,15,15,10,20,20,10,10,15,13.75,15.0
+24,Kevin,Kelly,0344095128581,Male,855 Susan Rue,Apt. 725,West Katelyn,AS,93774,3,2023/01/15,25,25,15,30,20,10,10,20,15.0,23.75
+24,Kevin,Kelly,0344095128581,Male,855 Susan Rue,Apt. 725,West Katelyn,AS,93774,4,2023/07/27,35,35,20,35,30,20,20,25,23.75,31.25
+25,Eric,Drake,8306816007577,Male,1451 Thompson Corners Suite 819,Apt. 650,Reedside,GA,08889,1,2022/01/15,15,5,15,0,10,5,5,25,11.25,8.75
+25,Eric,Drake,8306816007577,Male,1451 Thompson Corners Suite 819,Apt. 650,Reedside,GA,08889,2,2022/07/17,15,10,20,15,10,5,5,30,12.5,15.0
+25,Eric,Drake,8306816007577,Male,1451 Thompson Corners Suite 819,Apt. 650,Reedside,GA,08889,3,2023/01/15,20,10,20,15,10,10,5,30,13.75,16.25
+25,Eric,Drake,8306816007577,Male,1451 Thompson Corners Suite 819,Apt. 650,Reedside,GA,08889,4,2023/07/27,25,20,30,20,20,20,15,35,22.5,23.75
+26,Joshua,Dominguez,1269922174268,Male,172 Ochoa Plaza,Suite 414,New Williamburgh,MA,77911,1,2022/01/15,15,0,15,15,10,5,5,20,10.0,11.25
+26,Joshua,Dominguez,1269922174268,Male,172 Ochoa Plaza,Suite 414,New Williamburgh,MA,77911,2,2022/07/17,15,0,20,30,10,10,10,35,16.25,16.25
+26,Joshua,Dominguez,1269922174268,Male,172 Ochoa Plaza,Suite 414,New Williamburgh,MA,77911,3,2023/01/15,20,5,25,30,10,15,15,40,20.0,20.0
+26,Joshua,Dominguez,1269922174268,Male,172 Ochoa Plaza,Suite 414,New Williamburgh,MA,77911,4,2023/07/27,25,15,35,40,15,25,20,45,26.25,28.75
+27,Michael,Anderson,7525853257782,Male,496 Thompson Mill,Suite 106,Tamaraview,MD,02527,1,2022/01/15,10,15,15,5,5,15,0,15,8.75,11.25
+27,Michael,Anderson,7525853257782,Male,496 Thompson Mill,Suite 106,Tamaraview,MD,02527,2,2022/07/17,10,15,15,10,10,15,0,20,11.25,12.5
+27,Michael,Anderson,7525853257782,Male,496 Thompson Mill,Suite 106,Tamaraview,MD,02527,3,2023/01/15,20,20,20,15,15,20,5,25,16.25,18.75
+27,Michael,Anderson,7525853257782,Male,496 Thompson Mill,Suite 106,Tamaraview,MD,02527,4,2023/07/27,25,25,25,20,25,30,10,35,25.0,23.75
+28,Christopher,Torres,9154222065917,Male,16779 Lane Manors Apt. 051,Apt. 569,New Cheryl,NM,49835,1,2022/01/15,15,0,0,5,15,5,0,0,5.0,5.0
+28,Christopher,Torres,9154222065917,Male,16779 Lane Manors Apt. 051,Apt. 569,New Cheryl,NM,49835,2,2022/07/17,20,5,0,20,20,5,5,10,10.0,11.25
+28,Christopher,Torres,9154222065917,Male,16779 Lane Manors Apt. 051,Apt. 569,New Cheryl,NM,49835,3,2023/01/15,25,10,0,20,30,5,5,10,12.5,13.75
+28,Christopher,Torres,9154222065917,Male,16779 Lane Manors Apt. 051,Apt. 569,New Cheryl,NM,49835,4,2023/07/27,30,15,5,25,40,10,15,15,20.0,18.75
+29,Timothy,Williams,2941165402267,Male,824 Orr Ranch,Suite 081,East Amy,MN,08511,1,2022/01/15,0,10,10,0,0,15,5,15,8.75,5.0
+29,Timothy,Williams,2941165402267,Male,824 Orr Ranch,Suite 081,East Amy,MN,08511,2,2022/07/17,5,10,10,15,5,15,5,30,13.75,10.0
+29,Timothy,Williams,2941165402267,Male,824 Orr Ranch,Suite 081,East Amy,MN,08511,3,2023/01/15,10,15,20,15,15,15,15,35,20.0,15.0
+29,Timothy,Williams,2941165402267,Male,824 Orr Ranch,Suite 081,East Amy,MN,08511,4,2023/07/27,20,20,25,25,20,25,25,40,27.5,22.5
+30,Ronald,Dunn,7053762307353,Male,883 Padilla Court Apt. 855,Suite 084,South Robert,TX,51183,1,2022/01/15,10,10,5,15,5,0,5,25,8.75,10.0
+30,Ronald,Dunn,7053762307353,Male,883 Padilla Court Apt. 855,Suite 084,South Robert,TX,51183,2,2022/07/17,10,10,5,30,5,5,10,40,15.0,13.75
+30,Ronald,Dunn,7053762307353,Male,883 Padilla Court Apt. 855,Suite 084,South Robert,TX,51183,3,2023/01/15,20,10,10,30,5,10,20,40,18.75,17.5
+30,Ronald,Dunn,7053762307353,Male,883 Padilla Court Apt. 855,Suite 084,South Robert,TX,51183,4,2023/07/27,25,20,20,35,15,20,30,50,28.75,25.0
+31,Chad,Ford,4203271169418,Male,9082 Haley Pike Apt. 701,Apt. 017,Candaceberg,GU,60119,1,2022/01/15,5,0,15,0,15,0,10,15,10.0,5.0
+31,Chad,Ford,4203271169418,Male,9082 Haley Pike Apt. 701,Apt. 017,Candaceberg,GU,60119,2,2022/07/17,10,0,20,5,15,0,10,20,11.25,8.75
+31,Chad,Ford,4203271169418,Male,9082 Haley Pike Apt. 701,Apt. 017,Candaceberg,GU,60119,3,2023/01/15,15,10,20,5,15,5,10,25,13.75,12.5
+31,Chad,Ford,4203271169418,Male,9082 Haley Pike Apt. 701,Apt. 017,Candaceberg,GU,60119,4,2023/07/27,20,15,25,15,20,10,15,30,18.75,18.75
+32,William,Smith,8103262701274,Male,208 Tonya Parkway Suite 074,Suite 789,Camposside,IL,68305,1,2022/01/15,0,0,10,10,5,15,15,20,13.75,5.0
+32,William,Smith,8103262701274,Male,208 Tonya Parkway Suite 074,Suite 789,Camposside,IL,68305,2,2022/07/17,0,5,15,25,10,20,20,35,21.25,11.25
+32,William,Smith,8103262701274,Male,208 Tonya Parkway Suite 074,Suite 789,Camposside,IL,68305,3,2023/01/15,10,15,25,25,10,30,20,45,26.25,18.75
+32,William,Smith,8103262701274,Male,208 Tonya Parkway Suite 074,Suite 789,Camposside,IL,68305,4,2023/07/27,20,20,30,30,20,40,25,50,33.75,25.0
+33,Victor,Rocha,7456925216197,Male,3069 Brett Plaza,Apt. 816,Gonzalezmouth,KS,39415,1,2022/01/15,10,15,0,15,15,0,5,25,11.25,10.0
+33,Victor,Rocha,7456925216197,Male,3069 Brett Plaza,Apt. 816,Gonzalezmouth,KS,39415,2,2022/07/17,15,15,0,30,15,0,10,35,15.0,15.0
+33,Victor,Rocha,7456925216197,Male,3069 Brett Plaza,Apt. 816,Gonzalezmouth,KS,39415,3,2023/01/15,15,15,0,35,20,5,10,35,17.5,16.25
+33,Victor,Rocha,7456925216197,Male,3069 Brett Plaza,Apt. 816,Gonzalezmouth,KS,39415,4,2023/07/27,25,20,10,45,25,10,15,40,22.5,25.0
+34,Miguel,Hernandez,3444055421463,Male,6165 Jody Stream Suite 294,Suite 657,New Kimberly,IN,27684,1,2022/01/15,5,10,15,0,15,5,10,20,12.5,7.5
+34,Miguel,Hernandez,3444055421463,Male,6165 Jody Stream Suite 294,Suite 657,New Kimberly,IN,27684,2,2022/07/17,5,10,20,5,15,10,15,30,17.5,10.0
+34,Miguel,Hernandez,3444055421463,Male,6165 Jody Stream Suite 294,Suite 657,New Kimberly,IN,27684,3,2023/01/15,10,15,30,15,20,20,15,35,22.5,17.5
+34,Miguel,Hernandez,3444055421463,Male,6165 Jody Stream Suite 294,Suite 657,New Kimberly,IN,27684,4,2023/07/27,20,20,35,20,25,30,25,40,30.0,23.75
+35,Paul,Jones,8216795823248,Male,69993 Ray Mills Apt. 684,Apt. 152,Bellstad,CT,81151,1,2022/01/15,5,15,0,15,10,15,0,25,12.5,8.75
+35,Paul,Jones,8216795823248,Male,69993 Ray Mills Apt. 684,Apt. 152,Bellstad,CT,81151,2,2022/07/17,10,20,5,20,10,20,5,40,18.75,13.75
+35,Paul,Jones,8216795823248,Male,69993 Ray Mills Apt. 684,Apt. 152,Bellstad,CT,81151,3,2023/01/15,20,20,15,30,20,30,15,50,28.75,21.25
+35,Paul,Jones,8216795823248,Male,69993 Ray Mills Apt. 684,Apt. 152,Bellstad,CT,81151,4,2023/07/27,30,30,20,40,30,35,25,60,37.5,30.0
+36,John,Gibson,2162122001173,Male,141 Adam Islands,Apt. 523,East Jamieborough,MD,21814,1,2022/01/15,0,5,0,25,5,0,5,15,6.25,7.5
+36,John,Gibson,2162122001173,Male,141 Adam Islands,Apt. 523,East Jamieborough,MD,21814,2,2022/07/17,0,5,0,40,10,0,10,30,12.5,11.25
+36,John,Gibson,2162122001173,Male,141 Adam Islands,Apt. 523,East Jamieborough,MD,21814,3,2023/01/15,0,10,5,50,10,5,20,30,16.25,16.25
+36,John,Gibson,2162122001173,Male,141 Adam Islands,Apt. 523,East Jamieborough,MD,21814,4,2023/07/27,5,20,15,55,20,15,25,40,25.0,23.75
+37,Cory,Wilson,3419979224281,Male,497 Jeremy Creek Suite 744,Suite 087,Rodriguezmouth,NM,02485,1,2022/01/15,10,5,10,15,10,10,10,5,8.75,10.0
+37,Cory,Wilson,3419979224281,Male,497 Jeremy Creek Suite 744,Suite 087,Rodriguezmouth,NM,02485,2,2022/07/17,15,10,15,25,15,10,15,20,15.0,16.25
+37,Cory,Wilson,3419979224281,Male,497 Jeremy Creek Suite 744,Suite 087,Rodriguezmouth,NM,02485,3,2023/01/15,15,10,25,30,20,10,15,30,18.75,20.0
+37,Cory,Wilson,3419979224281,Male,497 Jeremy Creek Suite 744,Suite 087,Rodriguezmouth,NM,02485,4,2023/07/27,25,15,35,35,25,15,20,40,25.0,27.5
+38,Zachary,Jenkins,9542044433210,Male,46478 Moon Center Apt. 553,Suite 169,East Alison,KY,41345,1,2022/01/15,5,15,5,25,15,5,15,5,10.0,12.5
+38,Zachary,Jenkins,9542044433210,Male,46478 Moon Center Apt. 553,Suite 169,East Alison,KY,41345,2,2022/07/17,5,15,10,30,15,5,15,20,13.75,15.0
+38,Zachary,Jenkins,9542044433210,Male,46478 Moon Center Apt. 553,Suite 169,East Alison,KY,41345,3,2023/01/15,5,20,20,35,25,10,20,20,18.75,20.0
+38,Zachary,Jenkins,9542044433210,Male,46478 Moon Center Apt. 553,Suite 169,East Alison,KY,41345,4,2023/07/27,15,25,30,40,30,20,30,30,27.5,27.5
+39,Matthew,Thomas,9318431745129,Male,3876 Sanders Trail,Suite 764,Bellville,MO,38825,1,2022/01/15,15,10,10,10,5,15,0,0,5.0,11.25
+39,Matthew,Thomas,9318431745129,Male,3876 Sanders Trail,Suite 764,Bellville,MO,38825,2,2022/07/17,15,15,15,20,5,20,0,15,10.0,16.25
+39,Matthew,Thomas,9318431745129,Male,3876 Sanders Trail,Suite 764,Bellville,MO,38825,3,2023/01/15,25,20,15,25,10,25,5,25,16.25,21.25
+39,Matthew,Thomas,9318431745129,Male,3876 Sanders Trail,Suite 764,Bellville,MO,38825,4,2023/07/27,35,25,20,30,20,35,10,35,25.0,27.5
+40,Juan,Clark,7069930389984,Male,15944 Justin Way Apt. 702,Apt. 457,South Chad,AZ,96161,1,2022/01/15,15,15,10,15,5,5,15,25,12.5,13.75
+40,Juan,Clark,7069930389984,Male,15944 Justin Way Apt. 702,Apt. 457,South Chad,AZ,96161,2,2022/07/17,15,15,15,25,10,10,20,40,20.0,17.5
+40,Juan,Clark,7069930389984,Male,15944 Justin Way Apt. 702,Apt. 457,South Chad,AZ,96161,3,2023/01/15,25,20,20,25,10,10,20,50,22.5,22.5
+40,Juan,Clark,7069930389984,Male,15944 Justin Way Apt. 702,Apt. 457,South Chad,AZ,96161,4,2023/07/27,35,25,25,30,20,20,25,55,30.0,28.75
+41,Kenneth,Johnson,4314291240001,Male,6837 Lauren Field,Apt. 782,New Jeffreytown,AS,42354,1,2022/01/15,0,10,0,15,15,10,0,15,10.0,6.25
+41,Kenneth,Johnson,4314291240001,Male,6837 Lauren Field,Apt. 782,New Jeffreytown,AS,42354,2,2022/07/17,5,15,0,20,15,15,5,30,16.25,10.0
+41,Kenneth,Johnson,4314291240001,Male,6837 Lauren Field,Apt. 782,New Jeffreytown,AS,42354,3,2023/01/15,15,20,10,25,15,20,5,35,18.75,17.5
+41,Kenneth,Johnson,4314291240001,Male,6837 Lauren Field,Apt. 782,New Jeffreytown,AS,42354,4,2023/07/27,20,30,15,35,20,25,15,40,25.0,25.0
+42,Bradley,Wise,6286761865068,Male,4862 Michael Hollow,Suite 216,Cunninghammouth,OK,92876,1,2022/01/15,5,5,15,10,10,0,15,20,11.25,8.75
+42,Bradley,Wise,6286761865068,Male,4862 Michael Hollow,Suite 216,Cunninghammouth,OK,92876,2,2022/07/17,10,10,15,25,10,5,20,35,17.5,15.0
+42,Bradley,Wise,6286761865068,Male,4862 Michael Hollow,Suite 216,Cunninghammouth,OK,92876,3,2023/01/15,10,15,25,35,20,15,20,40,23.75,21.25
+42,Bradley,Wise,6286761865068,Male,4862 Michael Hollow,Suite 216,Cunninghammouth,OK,92876,4,2023/07/27,20,20,35,45,30,25,30,50,33.75,30.0
+43,Joseph,Pena,4219262859130,Male,5847 Eric Forges Apt. 807,Suite 440,West Kimberlytown,ME,28215,1,2022/01/15,15,15,10,25,5,15,0,10,7.5,16.25
+43,Joseph,Pena,4219262859130,Male,5847 Eric Forges Apt. 807,Suite 440,West Kimberlytown,ME,28215,2,2022/07/17,15,20,15,30,5,15,5,25,12.5,20.0
+43,Joseph,Pena,4219262859130,Male,5847 Eric Forges Apt. 807,Suite 440,West Kimberlytown,ME,28215,3,2023/01/15,25,25,15,35,5,15,10,30,15.0,25.0
+43,Joseph,Pena,4219262859130,Male,5847 Eric Forges Apt. 807,Suite 440,West Kimberlytown,ME,28215,4,2023/07/27,35,35,20,40,10,25,20,40,23.75,32.5
+44,James,Wilcox,2125412516169,Male,064 Jacob Dale Apt. 370,Apt. 646,Stevenbury,MN,45060,1,2022/01/15,5,5,5,25,5,10,10,15,10.0,10.0
+44,James,Wilcox,2125412516169,Male,064 Jacob Dale Apt. 370,Apt. 646,Stevenbury,MN,45060,2,2022/07/17,10,5,10,35,5,10,15,20,12.5,15.0
+44,James,Wilcox,2125412516169,Male,064 Jacob Dale Apt. 370,Apt. 646,Stevenbury,MN,45060,3,2023/01/15,10,10,10,35,10,10,15,30,16.25,16.25
+44,James,Wilcox,2125412516169,Male,064 Jacob Dale Apt. 370,Apt. 646,Stevenbury,MN,45060,4,2023/07/27,15,15,15,40,20,15,25,40,25.0,21.25
+45,Kyle,Brown,4850462567683,Male,454 Long Radial Suite 970,Apt. 555,Lake Kelly,MD,50697,1,2022/01/15,5,0,5,15,5,10,5,15,8.75,6.25
+45,Kyle,Brown,4850462567683,Male,454 Long Radial Suite 970,Apt. 555,Lake Kelly,MD,50697,2,2022/07/17,5,0,5,25,10,15,5,25,13.75,8.75
+45,Kyle,Brown,4850462567683,Male,454 Long Radial Suite 970,Apt. 555,Lake Kelly,MD,50697,3,2023/01/15,5,5,5,25,10,20,5,30,16.25,10.0
+45,Kyle,Brown,4850462567683,Male,454 Long Radial Suite 970,Apt. 555,Lake Kelly,MD,50697,4,2023/07/27,15,10,15,35,20,30,10,40,25.0,18.75
+46,Kevin,Simmons,9893997545552,Male,56831 Christopher Circles Suite 837,Apt. 854,Arroyomouth,GA,84269,1,2022/01/15,10,5,10,15,15,5,10,5,8.75,10.0
+46,Kevin,Simmons,9893997545552,Male,56831 Christopher Circles Suite 837,Apt. 854,Arroyomouth,GA,84269,2,2022/07/17,15,5,10,30,15,5,15,10,11.25,15.0
+46,Kevin,Simmons,9893997545552,Male,56831 Christopher Circles Suite 837,Apt. 854,Arroyomouth,GA,84269,3,2023/01/15,15,10,15,40,15,15,25,10,16.25,20.0
+46,Kevin,Simmons,9893997545552,Male,56831 Christopher Circles Suite 837,Apt. 854,Arroyomouth,GA,84269,4,2023/07/27,20,20,20,45,20,20,35,15,22.5,26.25
+47,Christopher,Ray,0599868868458,Male,071 Cross Underpass Suite 689,Apt. 923,Brownchester,WI,74952,1,2022/01/15,10,0,15,20,10,10,15,5,10.0,11.25
+47,Christopher,Ray,0599868868458,Male,071 Cross Underpass Suite 689,Apt. 923,Brownchester,WI,74952,2,2022/07/17,15,5,15,30,15,10,15,10,12.5,16.25
+47,Christopher,Ray,0599868868458,Male,071 Cross Underpass Suite 689,Apt. 923,Brownchester,WI,74952,3,2023/01/15,15,10,15,30,20,10,20,15,16.25,17.5
+47,Christopher,Ray,0599868868458,Male,071 Cross Underpass Suite 689,Apt. 923,Brownchester,WI,74952,4,2023/07/27,25,15,25,35,25,20,30,20,23.75,25.0
+48,Lee,Hoover,9070574827757,Male,884 Diaz Pines Suite 270,Suite 994,North Heatherfort,MD,60619,1,2022/01/15,5,10,10,15,15,15,15,10,13.75,10.0
+48,Lee,Hoover,9070574827757,Male,884 Diaz Pines Suite 270,Suite 994,North Heatherfort,MD,60619,2,2022/07/17,5,15,15,30,20,20,15,15,17.5,16.25
+48,Lee,Hoover,9070574827757,Male,884 Diaz Pines Suite 270,Suite 994,North Heatherfort,MD,60619,3,2023/01/15,10,20,15,30,25,20,20,15,20.0,18.75
+48,Lee,Hoover,9070574827757,Male,884 Diaz Pines Suite 270,Suite 994,North Heatherfort,MD,60619,4,2023/07/27,15,30,20,35,35,30,30,25,30.0,25.0
+49,Christopher,King,5779799452131,Male,04331 Matthew Branch,Apt. 288,Michaelville,VA,09169,1,2022/01/15,15,5,0,25,10,0,0,25,8.75,11.25
+49,Christopher,King,5779799452131,Male,04331 Matthew Branch,Apt. 288,Michaelville,VA,09169,2,2022/07/17,20,5,5,35,10,0,0,35,11.25,16.25
+49,Christopher,King,5779799452131,Male,04331 Matthew Branch,Apt. 288,Michaelville,VA,09169,3,2023/01/15,20,15,15,40,15,10,10,40,18.75,22.5
+49,Christopher,King,5779799452131,Male,04331 Matthew Branch,Apt. 288,Michaelville,VA,09169,4,2023/07/27,25,20,20,50,20,15,15,50,25.0,28.75
+50,Terry,Nguyen,6732907049849,Male,6365 Maxwell Garden Apt. 309,Suite 938,Smithview,AZ,12037,1,2022/01/15,5,10,5,10,10,0,0,10,5.0,7.5
+50,Terry,Nguyen,6732907049849,Male,6365 Maxwell Garden Apt. 309,Suite 938,Smithview,AZ,12037,2,2022/07/17,5,10,5,25,10,5,0,25,10.0,11.25
+50,Terry,Nguyen,6732907049849,Male,6365 Maxwell Garden Apt. 309,Suite 938,Smithview,AZ,12037,3,2023/01/15,10,10,15,30,10,5,0,30,11.25,16.25
+50,Terry,Nguyen,6732907049849,Male,6365 Maxwell Garden Apt. 309,Suite 938,Smithview,AZ,12037,4,2023/07/27,15,20,20,35,15,15,5,40,18.75,22.5
+51,William,Taylor,7929308347121,Male,60891 Mason Lake Suite 130,Suite 769,Juliaport,CO,59008,1,2022/01/15,5,10,10,0,5,15,5,10,8.75,6.25
+51,William,Taylor,7929308347121,Male,60891 Mason Lake Suite 130,Suite 769,Juliaport,CO,59008,2,2022/07/17,10,15,15,10,5,20,10,25,15.0,12.5
+51,William,Taylor,7929308347121,Male,60891 Mason Lake Suite 130,Suite 769,Juliaport,CO,59008,3,2023/01/15,15,25,20,10,15,30,15,30,22.5,17.5
+51,William,Taylor,7929308347121,Male,60891 Mason Lake Suite 130,Suite 769,Juliaport,CO,59008,4,2023/07/27,20,35,25,20,20,40,25,40,31.25,25.0
+52,Jose,Paul,9403090311515,Male,298 Mullins Courts Suite 774,Suite 775,Chelseaburgh,MH,20630,1,2022/01/15,10,15,0,15,5,10,15,20,12.5,10.0
+52,Jose,Paul,9403090311515,Male,298 Mullins Courts Suite 774,Suite 775,Chelseaburgh,MH,20630,2,2022/07/17,10,15,0,25,10,15,20,30,18.75,12.5
+52,Jose,Paul,9403090311515,Male,298 Mullins Courts Suite 774,Suite 775,Chelseaburgh,MH,20630,3,2023/01/15,10,15,5,30,20,25,20,40,26.25,15.0
+52,Jose,Paul,9403090311515,Male,298 Mullins Courts Suite 774,Suite 775,Chelseaburgh,MH,20630,4,2023/07/27,15,25,10,40,25,35,25,50,33.75,22.5
+53,Ronald,Johnson,2687892536610,Male,4685 Parsons Harbor Apt. 458,Suite 263,Katherinemouth,MA,39599,1,2022/01/15,15,0,10,5,5,10,5,25,11.25,7.5
+53,Ronald,Johnson,2687892536610,Male,4685 Parsons Harbor Apt. 458,Suite 263,Katherinemouth,MA,39599,2,2022/07/17,15,5,15,15,10,10,10,30,15.0,12.5
+53,Ronald,Johnson,2687892536610,Male,4685 Parsons Harbor Apt. 458,Suite 263,Katherinemouth,MA,39599,3,2023/01/15,20,15,15,20,15,20,15,40,22.5,17.5
+53,Ronald,Johnson,2687892536610,Male,4685 Parsons Harbor Apt. 458,Suite 263,Katherinemouth,MA,39599,4,2023/07/27,30,20,25,30,25,25,20,50,30.0,26.25
+54,Michael,Hughes,7042051071550,Male,84340 Alan Crest Apt. 644,Apt. 880,Vegachester,TN,92885,1,2022/01/15,0,0,0,5,0,10,5,20,8.75,1.25
+54,Michael,Hughes,7042051071550,Male,84340 Alan Crest Apt. 644,Apt. 880,Vegachester,TN,92885,2,2022/07/17,0,5,0,15,0,15,10,30,13.75,5.0
+54,Michael,Hughes,7042051071550,Male,84340 Alan Crest Apt. 644,Apt. 880,Vegachester,TN,92885,3,2023/01/15,10,5,0,15,0,25,10,30,16.25,7.5
+54,Michael,Hughes,7042051071550,Male,84340 Alan Crest Apt. 644,Apt. 880,Vegachester,TN,92885,4,2023/07/27,20,15,10,25,5,35,15,35,22.5,17.5
+55,Michael,Marsh,5842784977539,Male,8932 Steven Rest,Suite 855,Heatherville,KY,27174,1,2022/01/15,0,10,10,20,10,15,5,10,10.0,10.0
+55,Michael,Marsh,5842784977539,Male,8932 Steven Rest,Suite 855,Heatherville,KY,27174,2,2022/07/17,5,10,15,35,15,20,5,15,13.75,16.25
+55,Michael,Marsh,5842784977539,Male,8932 Steven Rest,Suite 855,Heatherville,KY,27174,3,2023/01/15,15,10,15,35,15,25,10,25,18.75,18.75
+55,Michael,Marsh,5842784977539,Male,8932 Steven Rest,Suite 855,Heatherville,KY,27174,4,2023/07/27,20,20,25,45,25,35,15,30,26.25,27.5
+56,Nathaniel,Gutierrez,1458190201515,Male,2642 Bradley Greens,Suite 923,Judyberg,CO,70964,1,2022/01/15,5,10,5,20,5,15,15,0,8.75,10.0
+56,Nathaniel,Gutierrez,1458190201515,Male,2642 Bradley Greens,Suite 923,Judyberg,CO,70964,2,2022/07/17,5,15,10,35,5,15,15,15,12.5,16.25
+56,Nathaniel,Gutierrez,1458190201515,Male,2642 Bradley Greens,Suite 923,Judyberg,CO,70964,3,2023/01/15,10,25,10,35,10,25,20,15,17.5,20.0
+56,Nathaniel,Gutierrez,1458190201515,Male,2642 Bradley Greens,Suite 923,Judyberg,CO,70964,4,2023/07/27,20,30,15,45,20,30,25,20,23.75,27.5
+57,Joseph,Miller,1334809814762,Male,770 Ryan Drive Suite 887,Apt. 261,Port Ryanton,NJ,77946,1,2022/01/15,0,5,5,15,15,5,15,20,13.75,6.25
+57,Joseph,Miller,1334809814762,Male,770 Ryan Drive Suite 887,Apt. 261,Port Ryanton,NJ,77946,2,2022/07/17,5,10,5,25,20,10,15,35,20.0,11.25
+57,Joseph,Miller,1334809814762,Male,770 Ryan Drive Suite 887,Apt. 261,Port Ryanton,NJ,77946,3,2023/01/15,5,10,5,35,30,10,25,35,25.0,13.75
+57,Joseph,Miller,1334809814762,Male,770 Ryan Drive Suite 887,Apt. 261,Port Ryanton,NJ,77946,4,2023/07/27,15,20,10,40,40,20,30,40,32.5,21.25
+58,Alejandro,Navarro,7483363316963,Male,88150 Heather Mountain,Suite 534,Douglashaven,PR,06797,1,2022/01/15,5,5,10,20,10,0,5,25,10.0,10.0
+58,Alejandro,Navarro,7483363316963,Male,88150 Heather Mountain,Suite 534,Douglashaven,PR,06797,2,2022/07/17,10,5,15,35,10,5,5,30,12.5,16.25
+58,Alejandro,Navarro,7483363316963,Male,88150 Heather Mountain,Suite 534,Douglashaven,PR,06797,3,2023/01/15,10,15,20,40,20,10,10,40,20.0,21.25
+58,Alejandro,Navarro,7483363316963,Male,88150 Heather Mountain,Suite 534,Douglashaven,PR,06797,4,2023/07/27,20,25,30,50,30,20,20,45,28.75,31.25
+59,William,Watkins,6573621834746,Male,48952 Beard Drive,Apt. 728,West Colinville,WY,36096,1,2022/01/15,10,5,15,0,0,5,10,25,10.0,7.5
+59,William,Watkins,6573621834746,Male,48952 Beard Drive,Apt. 728,West Colinville,WY,36096,2,2022/07/17,10,10,20,10,5,5,10,40,15.0,12.5
+59,William,Watkins,6573621834746,Male,48952 Beard Drive,Apt. 728,West Colinville,WY,36096,3,2023/01/15,15,15,20,15,10,15,15,50,22.5,16.25
+59,William,Watkins,6573621834746,Male,48952 Beard Drive,Apt. 728,West Colinville,WY,36096,4,2023/07/27,25,20,25,25,20,20,20,55,28.75,23.75
+60,Scott,Smith,2746299479060,Male,05302 Brown Underpass Suite 019,Suite 180,North Gregtown,TN,45040,1,2022/01/15,5,10,10,20,0,0,10,15,6.25,11.25
+60,Scott,Smith,2746299479060,Male,05302 Brown Underpass Suite 019,Suite 180,North Gregtown,TN,45040,2,2022/07/17,10,10,15,25,5,5,15,20,11.25,15.0
+60,Scott,Smith,2746299479060,Male,05302 Brown Underpass Suite 019,Suite 180,North Gregtown,TN,45040,3,2023/01/15,15,15,20,25,15,5,25,30,18.75,18.75
+60,Scott,Smith,2746299479060,Male,05302 Brown Underpass Suite 019,Suite 180,North Gregtown,TN,45040,4,2023/07/27,25,25,30,35,25,10,30,40,26.25,28.75
+61,Corey,Parker,9599248503675,Male,219 Velazquez Tunnel Suite 147,Apt. 935,Hamptonberg,VA,86089,1,2022/01/15,0,15,5,0,5,0,5,15,6.25,5.0
+61,Corey,Parker,9599248503675,Male,219 Velazquez Tunnel Suite 147,Apt. 935,Hamptonberg,VA,86089,2,2022/07/17,5,15,5,10,10,0,10,30,12.5,8.75
+61,Corey,Parker,9599248503675,Male,219 Velazquez Tunnel Suite 147,Apt. 935,Hamptonberg,VA,86089,3,2023/01/15,15,25,10,10,15,10,15,30,17.5,15.0
+61,Corey,Parker,9599248503675,Male,219 Velazquez Tunnel Suite 147,Apt. 935,Hamptonberg,VA,86089,4,2023/07/27,20,35,20,15,25,15,20,35,23.75,22.5
+62,James,Nguyen,1015811908986,Male,421 Corey Mill,Suite 297,Davidburgh,WV,92929,1,2022/01/15,5,15,15,25,15,5,15,10,11.25,15.0
+62,James,Nguyen,1015811908986,Male,421 Corey Mill,Suite 297,Davidburgh,WV,92929,2,2022/07/17,10,20,20,40,15,5,20,20,15.0,22.5
+62,James,Nguyen,1015811908986,Male,421 Corey Mill,Suite 297,Davidburgh,WV,92929,3,2023/01/15,10,20,20,50,25,15,25,25,22.5,25.0
+62,James,Nguyen,1015811908986,Male,421 Corey Mill,Suite 297,Davidburgh,WV,92929,4,2023/07/27,15,30,25,60,30,20,30,30,27.5,32.5
+63,Kenneth,Potter,6680284329057,Male,40660 Jessica Bypass,Apt. 346,Wrighttown,MI,37198,1,2022/01/15,0,10,0,5,0,5,15,20,10.0,3.75
+63,Kenneth,Potter,6680284329057,Male,40660 Jessica Bypass,Apt. 346,Wrighttown,MI,37198,2,2022/07/17,5,10,0,15,5,5,15,35,15.0,7.5
+63,Kenneth,Potter,6680284329057,Male,40660 Jessica Bypass,Apt. 346,Wrighttown,MI,37198,3,2023/01/15,5,20,10,25,10,15,15,35,18.75,15.0
+63,Kenneth,Potter,6680284329057,Male,40660 Jessica Bypass,Apt. 346,Wrighttown,MI,37198,4,2023/07/27,10,25,15,30,20,25,25,40,27.5,20.0
+64,Jacob,Mills,5177027807300,Male,1265 Arias Fields,Suite 812,North Christina,KY,53398,1,2022/01/15,15,0,0,5,10,5,10,15,10.0,5.0
+64,Jacob,Mills,5177027807300,Male,1265 Arias Fields,Suite 812,North Christina,KY,53398,2,2022/07/17,15,0,0,20,15,10,15,30,17.5,8.75
+64,Jacob,Mills,5177027807300,Male,1265 Arias Fields,Suite 812,North Christina,KY,53398,3,2023/01/15,25,5,0,25,25,10,20,35,22.5,13.75
+64,Jacob,Mills,5177027807300,Male,1265 Arias Fields,Suite 812,North Christina,KY,53398,4,2023/07/27,35,15,5,35,30,20,30,45,31.25,22.5
+65,Eric,Tucker,4815348094542,Male,04035 Williams Mill Suite 288,Suite 765,West Markview,HI,87546,1,2022/01/15,10,15,10,15,5,15,5,10,8.75,12.5
+65,Eric,Tucker,4815348094542,Male,04035 Williams Mill Suite 288,Suite 765,West Markview,HI,87546,2,2022/07/17,15,20,15,20,10,20,10,25,16.25,17.5
+65,Eric,Tucker,4815348094542,Male,04035 Williams Mill Suite 288,Suite 765,West Markview,HI,87546,3,2023/01/15,20,25,15,20,15,20,15,25,18.75,20.0
+65,Eric,Tucker,4815348094542,Male,04035 Williams Mill Suite 288,Suite 765,West Markview,HI,87546,4,2023/07/27,25,35,20,25,20,25,25,30,25.0,26.25
+66,Frederick,Meza,1203967185090,Male,770 Brown Station,Apt. 766,West Tiffany,OK,63776,1,2022/01/15,5,10,15,5,5,0,15,5,6.25,8.75
+66,Frederick,Meza,1203967185090,Male,770 Brown Station,Apt. 766,West Tiffany,OK,63776,2,2022/07/17,10,10,20,15,5,0,20,20,11.25,13.75
+66,Frederick,Meza,1203967185090,Male,770 Brown Station,Apt. 766,West Tiffany,OK,63776,3,2023/01/15,10,10,30,20,5,0,25,25,13.75,17.5
+66,Frederick,Meza,1203967185090,Male,770 Brown Station,Apt. 766,West Tiffany,OK,63776,4,2023/07/27,20,20,40,30,15,5,30,35,21.25,27.5
+67,James,Haney,9278841290342,Male,341 Byrd Wells Suite 946,Suite 125,Aaronfurt,NV,21581,1,2022/01/15,5,0,15,15,15,10,10,25,15.0,8.75
+67,James,Haney,9278841290342,Male,341 Byrd Wells Suite 946,Suite 125,Aaronfurt,NV,21581,2,2022/07/17,10,0,20,20,20,10,15,40,21.25,12.5
+67,James,Haney,9278841290342,Male,341 Byrd Wells Suite 946,Suite 125,Aaronfurt,NV,21581,3,2023/01/15,10,0,25,20,20,20,25,40,26.25,13.75
+67,James,Haney,9278841290342,Male,341 Byrd Wells Suite 946,Suite 125,Aaronfurt,NV,21581,4,2023/07/27,20,10,35,25,30,30,35,45,35.0,22.5
+68,Mike,Johnson,8511984719646,Male,59071 Garcia Run,Suite 810,Ashleybury,NV,62819,1,2022/01/15,15,5,5,5,5,10,15,15,11.25,7.5
+68,Mike,Johnson,8511984719646,Male,59071 Garcia Run,Suite 810,Ashleybury,NV,62819,2,2022/07/17,20,10,5,20,5,10,15,20,12.5,13.75
+68,Mike,Johnson,8511984719646,Male,59071 Garcia Run,Suite 810,Ashleybury,NV,62819,3,2023/01/15,25,15,10,20,5,10,20,25,15.0,17.5
+68,Mike,Johnson,8511984719646,Male,59071 Garcia Run,Suite 810,Ashleybury,NV,62819,4,2023/07/27,30,25,20,30,10,20,30,30,22.5,26.25
+69,Samuel,Kaiser,4179693776456,Male,5237 Mariah Manor Suite 907,Apt. 166,New Maryshire,MO,77287,1,2022/01/15,10,15,0,0,5,10,5,20,10.0,6.25
+69,Samuel,Kaiser,4179693776456,Male,5237 Mariah Manor Suite 907,Apt. 166,New Maryshire,MO,77287,2,2022/07/17,10,15,0,15,5,10,10,30,13.75,10.0
+69,Samuel,Kaiser,4179693776456,Male,5237 Mariah Manor Suite 907,Apt. 166,New Maryshire,MO,77287,3,2023/01/15,15,25,5,15,10,15,15,30,17.5,15.0
+69,Samuel,Kaiser,4179693776456,Male,5237 Mariah Manor Suite 907,Apt. 166,New Maryshire,MO,77287,4,2023/07/27,25,30,10,25,20,20,25,35,25.0,22.5
+70,Derek,Campbell,3833761037375,Male,15527 Chapman Knolls,Apt. 744,East Katherine,FL,23515,1,2022/01/15,10,15,15,15,5,5,0,10,5.0,13.75
+70,Derek,Campbell,3833761037375,Male,15527 Chapman Knolls,Apt. 744,East Katherine,FL,23515,2,2022/07/17,15,20,20,30,10,5,0,25,10.0,21.25
+70,Derek,Campbell,3833761037375,Male,15527 Chapman Knolls,Apt. 744,East Katherine,FL,23515,3,2023/01/15,15,25,20,35,15,15,10,35,18.75,23.75
+70,Derek,Campbell,3833761037375,Male,15527 Chapman Knolls,Apt. 744,East Katherine,FL,23515,4,2023/07/27,20,30,25,45,25,20,20,40,26.25,30.0
+71,James,Cruz,3997803320702,Male,6405 Henderson Circles Apt. 810,Apt. 846,South Matthew,VI,51227,1,2022/01/15,10,5,5,20,5,10,10,20,11.25,10.0
+71,James,Cruz,3997803320702,Male,6405 Henderson Circles Apt. 810,Apt. 846,South Matthew,VI,51227,2,2022/07/17,10,10,5,35,10,10,10,25,13.75,15.0
+71,James,Cruz,3997803320702,Male,6405 Henderson Circles Apt. 810,Apt. 846,South Matthew,VI,51227,3,2023/01/15,20,20,15,35,20,15,15,30,20.0,22.5
+71,James,Cruz,3997803320702,Male,6405 Henderson Circles Apt. 810,Apt. 846,South Matthew,VI,51227,4,2023/07/27,30,25,20,40,30,25,20,40,28.75,28.75
+72,Joshua,King,0698842461692,Male,1084 Colon Run Apt. 765,Suite 969,Rothbury,HI,20871,1,2022/01/15,5,10,0,20,15,0,10,10,8.75,8.75
+72,Joshua,King,0698842461692,Male,1084 Colon Run Apt. 765,Suite 969,Rothbury,HI,20871,2,2022/07/17,5,15,5,35,15,0,15,25,13.75,15.0
+72,Joshua,King,0698842461692,Male,1084 Colon Run Apt. 765,Suite 969,Rothbury,HI,20871,3,2023/01/15,5,15,5,35,20,5,15,30,17.5,15.0
+72,Joshua,King,0698842461692,Male,1084 Colon Run Apt. 765,Suite 969,Rothbury,HI,20871,4,2023/07/27,10,25,10,40,30,15,25,35,26.25,21.25
+73,Michael,Fisher,1407753084658,Male,73689 Pitts Views Apt. 281,Suite 661,East Joshua,GU,73679,1,2022/01/15,15,0,10,25,15,10,15,25,16.25,12.5
+73,Michael,Fisher,1407753084658,Male,73689 Pitts Views Apt. 281,Suite 661,East Joshua,GU,73679,2,2022/07/17,15,0,10,30,15,10,15,40,20.0,13.75
+73,Michael,Fisher,1407753084658,Male,73689 Pitts Views Apt. 281,Suite 661,East Joshua,GU,73679,3,2023/01/15,25,10,15,40,15,20,15,45,23.75,22.5
+73,Michael,Fisher,1407753084658,Male,73689 Pitts Views Apt. 281,Suite 661,East Joshua,GU,73679,4,2023/07/27,35,15,20,45,20,25,25,50,30.0,28.75
+74,Jeffery,Wade,5930347062187,Male,221 William Points,Suite 169,Vargaschester,NH,46009,1,2022/01/15,5,10,10,0,10,0,10,15,8.75,6.25
+74,Jeffery,Wade,5930347062187,Male,221 William Points,Suite 169,Vargaschester,NH,46009,2,2022/07/17,5,10,10,15,10,5,10,20,11.25,10.0
+74,Jeffery,Wade,5930347062187,Male,221 William Points,Suite 169,Vargaschester,NH,46009,3,2023/01/15,5,15,20,15,10,10,20,25,16.25,13.75
+74,Jeffery,Wade,5930347062187,Male,221 William Points,Suite 169,Vargaschester,NH,46009,4,2023/07/27,10,25,25,25,20,15,25,35,23.75,21.25
+75,Michael,Parker,3955276219841,Male,1209 Alvarez Junctions,Suite 475,Port Stephaniehaven,OR,27277,1,2022/01/15,10,15,0,15,10,15,15,0,10.0,10.0
+75,Michael,Parker,3955276219841,Male,1209 Alvarez Junctions,Suite 475,Port Stephaniehaven,OR,27277,2,2022/07/17,15,20,5,25,10,20,20,5,13.75,16.25
+75,Michael,Parker,3955276219841,Male,1209 Alvarez Junctions,Suite 475,Port Stephaniehaven,OR,27277,3,2023/01/15,15,20,5,30,10,25,30,10,18.75,17.5
+75,Michael,Parker,3955276219841,Male,1209 Alvarez Junctions,Suite 475,Port Stephaniehaven,OR,27277,4,2023/07/27,25,30,10,40,20,35,40,15,27.5,26.25
+76,Eric,Perez,6435163572243,Male,28454 Robinson Locks,Suite 612,Port Julieburgh,NH,43174,1,2022/01/15,5,10,15,10,0,0,5,25,7.5,10.0
+76,Eric,Perez,6435163572243,Male,28454 Robinson Locks,Suite 612,Port Julieburgh,NH,43174,2,2022/07/17,10,15,20,20,5,0,5,40,12.5,16.25
+76,Eric,Perez,6435163572243,Male,28454 Robinson Locks,Suite 612,Port Julieburgh,NH,43174,3,2023/01/15,20,25,30,20,5,10,5,50,17.5,23.75
+76,Eric,Perez,6435163572243,Male,28454 Robinson Locks,Suite 612,Port Julieburgh,NH,43174,4,2023/07/27,30,35,35,30,10,15,10,60,23.75,32.5
+77,Charles,Steele,1982305397738,Male,434 Spencer Crescent Suite 217,Apt. 501,Clinestad,GU,67712,1,2022/01/15,5,15,10,25,5,10,10,20,11.25,13.75
+77,Charles,Steele,1982305397738,Male,434 Spencer Crescent Suite 217,Apt. 501,Clinestad,GU,67712,2,2022/07/17,10,15,10,30,10,15,10,35,17.5,16.25
+77,Charles,Steele,1982305397738,Male,434 Spencer Crescent Suite 217,Apt. 501,Clinestad,GU,67712,3,2023/01/15,10,15,20,35,20,15,10,35,20.0,20.0
+77,Charles,Steele,1982305397738,Male,434 Spencer Crescent Suite 217,Apt. 501,Clinestad,GU,67712,4,2023/07/27,15,20,30,45,30,20,15,40,26.25,27.5
+78,Paul,Smith,1611809268940,Male,3480 Christopher Courts Apt. 047,Suite 388,Espinozaland,GA,09515,1,2022/01/15,10,0,5,15,5,15,10,20,12.5,7.5
+78,Paul,Smith,1611809268940,Male,3480 Christopher Courts Apt. 047,Suite 388,Espinozaland,GA,09515,2,2022/07/17,10,5,10,20,5,20,15,35,18.75,11.25
+78,Paul,Smith,1611809268940,Male,3480 Christopher Courts Apt. 047,Suite 388,Espinozaland,GA,09515,3,2023/01/15,10,5,15,20,10,25,20,40,23.75,12.5
+78,Paul,Smith,1611809268940,Male,3480 Christopher Courts Apt. 047,Suite 388,Espinozaland,GA,09515,4,2023/07/27,15,10,20,30,15,35,25,45,30.0,18.75
+79,Eric,White,2104458792351,Male,52834 Nicholas Mountains Apt. 861,Apt. 185,West Linda,CA,44731,1,2022/01/15,0,5,15,0,5,0,10,10,6.25,5.0
+79,Eric,White,2104458792351,Male,52834 Nicholas Mountains Apt. 861,Apt. 185,West Linda,CA,44731,2,2022/07/17,5,10,20,10,5,0,15,25,11.25,11.25
+79,Eric,White,2104458792351,Male,52834 Nicholas Mountains Apt. 861,Apt. 185,West Linda,CA,44731,3,2023/01/15,5,20,30,20,15,5,25,25,17.5,18.75
+79,Eric,White,2104458792351,Male,52834 Nicholas Mountains Apt. 861,Apt. 185,West Linda,CA,44731,4,2023/07/27,10,25,35,30,25,15,30,35,26.25,25.0
+80,Tyler,Bass,5429162726794,Male,429 Sloan Plains Suite 408,Apt. 866,New Jimmy,VT,92286,1,2022/01/15,0,0,0,0,10,5,10,20,11.25,0.0
+80,Tyler,Bass,5429162726794,Male,429 Sloan Plains Suite 408,Apt. 866,New Jimmy,VT,92286,2,2022/07/17,0,5,5,15,10,5,15,35,16.25,6.25
+80,Tyler,Bass,5429162726794,Male,429 Sloan Plains Suite 408,Apt. 866,New Jimmy,VT,92286,3,2023/01/15,10,15,15,25,20,5,20,40,21.25,16.25
+80,Tyler,Bass,5429162726794,Male,429 Sloan Plains Suite 408,Apt. 866,New Jimmy,VT,92286,4,2023/07/27,20,20,20,35,25,15,25,50,28.75,23.75
+81,Jacob,Miller,8317052276104,Male,4316 George Brooks Apt. 344,Apt. 921,South Brookeshire,WA,89151,1,2022/01/15,0,5,0,20,5,0,0,10,3.75,6.25
+81,Jacob,Miller,8317052276104,Male,4316 George Brooks Apt. 344,Apt. 921,South Brookeshire,WA,89151,2,2022/07/17,5,10,5,25,10,0,5,20,8.75,11.25
+81,Jacob,Miller,8317052276104,Male,4316 George Brooks Apt. 344,Apt. 921,South Brookeshire,WA,89151,3,2023/01/15,10,20,5,35,10,5,15,25,13.75,17.5
+81,Jacob,Miller,8317052276104,Male,4316 George Brooks Apt. 344,Apt. 921,South Brookeshire,WA,89151,4,2023/07/27,15,30,15,45,15,15,20,30,20.0,26.25
+82,Bryan,Peterson,4839245036272,Male,46595 Rose Ranch,Suite 803,Haleyville,NJ,79635,1,2022/01/15,10,5,10,10,5,15,5,25,12.5,8.75
+82,Bryan,Peterson,4839245036272,Male,46595 Rose Ranch,Suite 803,Haleyville,NJ,79635,2,2022/07/17,10,5,15,20,10,20,5,30,16.25,12.5
+82,Bryan,Peterson,4839245036272,Male,46595 Rose Ranch,Suite 803,Haleyville,NJ,79635,3,2023/01/15,10,15,20,25,20,20,10,30,20.0,17.5
+82,Bryan,Peterson,4839245036272,Male,46595 Rose Ranch,Suite 803,Haleyville,NJ,79635,4,2023/07/27,15,25,25,35,30,30,15,40,28.75,25.0
+83,Marcus,Mcdonald,4129008521749,Male,39490 Hunter Groves,Suite 565,North Suzanneberg,NC,91501,1,2022/01/15,5,5,15,10,0,15,15,15,11.25,8.75
+83,Marcus,Mcdonald,4129008521749,Male,39490 Hunter Groves,Suite 565,North Suzanneberg,NC,91501,2,2022/07/17,10,5,20,25,0,20,15,25,15.0,15.0
+83,Marcus,Mcdonald,4129008521749,Male,39490 Hunter Groves,Suite 565,North Suzanneberg,NC,91501,3,2023/01/15,15,5,25,25,0,30,20,25,18.75,17.5
+83,Marcus,Mcdonald,4129008521749,Male,39490 Hunter Groves,Suite 565,North Suzanneberg,NC,91501,4,2023/07/27,20,15,35,35,10,35,25,35,26.25,26.25
+84,Thomas,Valenzuela,5001317536961,Male,60203 Michelle Point,Apt. 756,New Marcus,TX,82998,1,2022/01/15,10,5,10,20,10,10,15,5,10.0,11.25
+84,Thomas,Valenzuela,5001317536961,Male,60203 Michelle Point,Apt. 756,New Marcus,TX,82998,2,2022/07/17,10,5,15,25,10,15,15,10,12.5,13.75
+84,Thomas,Valenzuela,5001317536961,Male,60203 Michelle Point,Apt. 756,New Marcus,TX,82998,3,2023/01/15,15,5,20,30,20,15,20,10,16.25,17.5
+84,Thomas,Valenzuela,5001317536961,Male,60203 Michelle Point,Apt. 756,New Marcus,TX,82998,4,2023/07/27,20,10,25,35,25,20,30,15,22.5,22.5
+85,Lance,Clark,7694733050223,Male,418 Tanya Square,Apt. 466,South Jennifer,IL,75706,1,2022/01/15,15,10,15,25,0,0,5,25,7.5,16.25
+85,Lance,Clark,7694733050223,Male,418 Tanya Square,Apt. 466,South Jennifer,IL,75706,2,2022/07/17,15,15,20,30,5,5,10,40,15.0,20.0
+85,Lance,Clark,7694733050223,Male,418 Tanya Square,Apt. 466,South Jennifer,IL,75706,3,2023/01/15,20,25,30,30,10,5,15,45,18.75,26.25
+85,Lance,Clark,7694733050223,Male,418 Tanya Square,Apt. 466,South Jennifer,IL,75706,4,2023/07/27,25,30,35,35,20,10,20,50,25.0,31.25
+86,Bryan,Holmes,7870761870929,Male,3966 Wilkinson Gardens Apt. 547,Suite 222,East Kristinaberg,VA,22970,1,2022/01/15,5,0,15,20,5,15,10,10,10.0,10.0
+86,Bryan,Holmes,7870761870929,Male,3966 Wilkinson Gardens Apt. 547,Suite 222,East Kristinaberg,VA,22970,2,2022/07/17,10,5,20,25,10,20,10,20,15.0,15.0
+86,Bryan,Holmes,7870761870929,Male,3966 Wilkinson Gardens Apt. 547,Suite 222,East Kristinaberg,VA,22970,3,2023/01/15,20,10,30,30,20,20,15,20,18.75,22.5
+86,Bryan,Holmes,7870761870929,Male,3966 Wilkinson Gardens Apt. 547,Suite 222,East Kristinaberg,VA,22970,4,2023/07/27,30,20,35,40,25,25,20,30,25.0,31.25
+87,Christopher,Kelly,2998071329133,Male,16035 Moore Well Suite 586,Suite 559,Dakotafurt,IA,29602,1,2022/01/15,0,0,15,20,15,0,15,20,12.5,8.75
+87,Christopher,Kelly,2998071329133,Male,16035 Moore Well Suite 586,Suite 559,Dakotafurt,IA,29602,2,2022/07/17,0,0,20,30,20,0,20,25,16.25,12.5
+87,Christopher,Kelly,2998071329133,Male,16035 Moore Well Suite 586,Suite 559,Dakotafurt,IA,29602,3,2023/01/15,10,0,30,40,30,5,20,25,20.0,20.0
+87,Christopher,Kelly,2998071329133,Male,16035 Moore Well Suite 586,Suite 559,Dakotafurt,IA,29602,4,2023/07/27,20,10,40,45,40,10,30,35,28.75,28.75
+88,Kevin,Crawford,7439207062372,Male,2454 James Underpass Apt. 902,Apt. 762,Lake Nicoleview,MA,19976,1,2022/01/15,5,5,0,25,15,15,5,0,8.75,8.75
+88,Kevin,Crawford,7439207062372,Male,2454 James Underpass Apt. 902,Apt. 762,Lake Nicoleview,MA,19976,2,2022/07/17,10,10,5,30,15,15,10,5,11.25,13.75
+88,Kevin,Crawford,7439207062372,Male,2454 James Underpass Apt. 902,Apt. 762,Lake Nicoleview,MA,19976,3,2023/01/15,20,20,10,40,20,20,15,5,15.0,22.5
+88,Kevin,Crawford,7439207062372,Male,2454 James Underpass Apt. 902,Apt. 762,Lake Nicoleview,MA,19976,4,2023/07/27,30,25,15,45,30,30,20,15,23.75,28.75
+89,Kevin,Lewis,3222016199163,Male,1062 Jacob Court Apt. 830,Suite 766,East Davidview,PA,50763,1,2022/01/15,15,10,10,25,15,0,10,10,8.75,15.0
+89,Kevin,Lewis,3222016199163,Male,1062 Jacob Court Apt. 830,Suite 766,East Davidview,PA,50763,2,2022/07/17,15,15,15,30,20,0,15,20,13.75,18.75
+89,Kevin,Lewis,3222016199163,Male,1062 Jacob Court Apt. 830,Suite 766,East Davidview,PA,50763,3,2023/01/15,15,25,20,35,25,5,20,30,20.0,23.75
+89,Kevin,Lewis,3222016199163,Male,1062 Jacob Court Apt. 830,Suite 766,East Davidview,PA,50763,4,2023/07/27,20,35,30,45,30,15,25,40,27.5,32.5
+90,Joshua,Franklin,8614923226453,Male,91106 Moore Unions Suite 367,Apt. 696,Wilsonton,AL,74018,1,2022/01/15,5,0,10,25,5,10,10,0,6.25,10.0
+90,Joshua,Franklin,8614923226453,Male,91106 Moore Unions Suite 367,Apt. 696,Wilsonton,AL,74018,2,2022/07/17,5,5,15,35,5,15,15,10,11.25,15.0
+90,Joshua,Franklin,8614923226453,Male,91106 Moore Unions Suite 367,Apt. 696,Wilsonton,AL,74018,3,2023/01/15,5,15,15,35,5,25,20,15,16.25,17.5
+90,Joshua,Franklin,8614923226453,Male,91106 Moore Unions Suite 367,Apt. 696,Wilsonton,AL,74018,4,2023/07/27,15,25,20,45,10,35,30,20,23.75,26.25
+91,Juan,Henry,2343497978937,Male,95859 Ricky Motorway,Apt. 711,Simmonston,ID,94847,1,2022/01/15,0,0,15,15,10,15,0,0,6.25,7.5
+91,Juan,Henry,2343497978937,Male,95859 Ricky Motorway,Apt. 711,Simmonston,ID,94847,2,2022/07/17,0,5,20,30,10,20,0,10,10.0,13.75
+91,Juan,Henry,2343497978937,Male,95859 Ricky Motorway,Apt. 711,Simmonston,ID,94847,3,2023/01/15,0,5,20,35,10,20,5,10,11.25,15.0
+91,Juan,Henry,2343497978937,Male,95859 Ricky Motorway,Apt. 711,Simmonston,ID,94847,4,2023/07/27,5,15,25,40,20,25,10,20,18.75,21.25
+92,Zachary,Lucero,5510731022964,Male,795 Christina Harbors Apt. 095,Suite 631,Port William,MA,55361,1,2022/01/15,15,0,5,25,10,0,5,25,10.0,11.25
+92,Zachary,Lucero,5510731022964,Male,795 Christina Harbors Apt. 095,Suite 631,Port William,MA,55361,2,2022/07/17,15,5,5,35,10,5,5,40,15.0,15.0
+92,Zachary,Lucero,5510731022964,Male,795 Christina Harbors Apt. 095,Suite 631,Port William,MA,55361,3,2023/01/15,20,5,10,45,10,5,15,40,17.5,20.0
+92,Zachary,Lucero,5510731022964,Male,795 Christina Harbors Apt. 095,Suite 631,Port William,MA,55361,4,2023/07/27,25,10,15,50,15,15,20,50,25.0,25.0
+93,Joel,Jenkins,4499849613068,Male,545 Diana Parkways,Apt. 006,Lake Zacharyton,MN,85554,1,2022/01/15,10,5,5,10,5,10,15,5,8.75,7.5
+93,Joel,Jenkins,4499849613068,Male,545 Diana Parkways,Apt. 006,Lake Zacharyton,MN,85554,2,2022/07/17,10,5,5,15,5,10,20,10,11.25,8.75
+93,Joel,Jenkins,4499849613068,Male,545 Diana Parkways,Apt. 006,Lake Zacharyton,MN,85554,3,2023/01/15,15,10,15,25,5,10,30,20,16.25,16.25
+93,Joel,Jenkins,4499849613068,Male,545 Diana Parkways,Apt. 006,Lake Zacharyton,MN,85554,4,2023/07/27,25,20,20,30,10,15,35,25,21.25,23.75
+94,Alan,Tucker,4176206118830,Male,550 Deborah Centers Apt. 652,Apt. 672,Stevenborough,CA,42594,1,2022/01/15,0,10,10,20,15,0,15,25,13.75,10.0
+94,Alan,Tucker,4176206118830,Male,550 Deborah Centers Apt. 652,Apt. 672,Stevenborough,CA,42594,2,2022/07/17,0,15,15,35,15,5,15,35,17.5,16.25
+94,Alan,Tucker,4176206118830,Male,550 Deborah Centers Apt. 652,Apt. 672,Stevenborough,CA,42594,3,2023/01/15,10,15,15,40,20,10,25,40,23.75,20.0
+94,Alan,Tucker,4176206118830,Male,550 Deborah Centers Apt. 652,Apt. 672,Stevenborough,CA,42594,4,2023/07/27,15,20,25,45,25,20,30,45,30.0,26.25
+95,Thomas,Campos,5278857732439,Male,18094 Joshua Garden Apt. 063,Apt. 932,Anthonyshire,ID,15988,1,2022/01/15,0,10,5,25,5,15,15,10,11.25,10.0
+95,Thomas,Campos,5278857732439,Male,18094 Joshua Garden Apt. 063,Apt. 932,Anthonyshire,ID,15988,2,2022/07/17,0,15,5,35,10,20,20,20,17.5,13.75
+95,Thomas,Campos,5278857732439,Male,18094 Joshua Garden Apt. 063,Apt. 932,Anthonyshire,ID,15988,3,2023/01/15,0,15,10,35,10,20,25,20,18.75,15.0
+95,Thomas,Campos,5278857732439,Male,18094 Joshua Garden Apt. 063,Apt. 932,Anthonyshire,ID,15988,4,2023/07/27,10,20,15,40,20,30,30,25,26.25,21.25
+96,Jose,Campbell,9181640299525,Male,66833 Hawkins Freeway,Suite 232,Noblefurt,MI,55426,1,2022/01/15,0,0,10,25,10,5,0,5,5.0,8.75
+96,Jose,Campbell,9181640299525,Male,66833 Hawkins Freeway,Suite 232,Noblefurt,MI,55426,2,2022/07/17,0,0,15,30,10,10,0,10,7.5,11.25
+96,Jose,Campbell,9181640299525,Male,66833 Hawkins Freeway,Suite 232,Noblefurt,MI,55426,3,2023/01/15,10,0,15,30,20,20,5,10,13.75,13.75
+96,Jose,Campbell,9181640299525,Male,66833 Hawkins Freeway,Suite 232,Noblefurt,MI,55426,4,2023/07/27,15,5,20,40,25,30,15,15,21.25,20.0
+97,Kevin,Bennett,3684852490714,Male,4063 Evans Bypass Apt. 726,Apt. 999,West Cody,LA,92257,1,2022/01/15,10,5,5,5,5,0,5,10,5.0,6.25
+97,Kevin,Bennett,3684852490714,Male,4063 Evans Bypass Apt. 726,Apt. 999,West Cody,LA,92257,2,2022/07/17,15,5,5,15,10,0,10,20,10.0,10.0
+97,Kevin,Bennett,3684852490714,Male,4063 Evans Bypass Apt. 726,Apt. 999,West Cody,LA,92257,3,2023/01/15,15,15,15,25,10,10,15,20,13.75,17.5
+97,Kevin,Bennett,3684852490714,Male,4063 Evans Bypass Apt. 726,Apt. 999,West Cody,LA,92257,4,2023/07/27,20,20,25,35,15,20,20,30,21.25,25.0
+98,Derek,Caldwell,6329479273468,Male,7636 Freeman Valleys,Suite 281,Weberville,PR,40557,1,2022/01/15,5,10,10,0,5,10,15,15,11.25,6.25
+98,Derek,Caldwell,6329479273468,Male,7636 Freeman Valleys,Suite 281,Weberville,PR,40557,2,2022/07/17,10,15,10,10,10,15,15,20,15.0,11.25
+98,Derek,Caldwell,6329479273468,Male,7636 Freeman Valleys,Suite 281,Weberville,PR,40557,3,2023/01/15,20,20,10,20,15,20,20,30,21.25,17.5
+98,Derek,Caldwell,6329479273468,Male,7636 Freeman Valleys,Suite 281,Weberville,PR,40557,4,2023/07/27,25,25,15,30,25,25,30,40,30.0,23.75
+99,John,Woods,4483881727314,Male,7369 Nicholas Hill,Apt. 362,Christopherberg,GA,24747,1,2022/01/15,5,10,5,25,15,0,5,25,11.25,11.25
+99,John,Woods,4483881727314,Male,7369 Nicholas Hill,Apt. 362,Christopherberg,GA,24747,2,2022/07/17,5,15,5,35,20,5,10,40,18.75,15.0
+99,John,Woods,4483881727314,Male,7369 Nicholas Hill,Apt. 362,Christopherberg,GA,24747,3,2023/01/15,15,25,5,40,25,5,15,40,21.25,21.25
+99,John,Woods,4483881727314,Male,7369 Nicholas Hill,Apt. 362,Christopherberg,GA,24747,4,2023/07/27,20,30,10,45,35,10,20,50,28.75,26.25
+100,Scott,Torres,5708894495518,Male,2409 Katherine Forge Apt. 418,Apt. 284,Lake Patrickton,MS,46632,1,2022/01/15,0,15,5,10,0,5,15,0,5.0,7.5
+100,Scott,Torres,5708894495518,Male,2409 Katherine Forge Apt. 418,Apt. 284,Lake Patrickton,MS,46632,2,2022/07/17,5,15,5,20,0,5,20,10,8.75,11.25
+100,Scott,Torres,5708894495518,Male,2409 Katherine Forge Apt. 418,Apt. 284,Lake Patrickton,MS,46632,3,2023/01/15,15,20,10,20,0,10,20,20,12.5,16.25
+100,Scott,Torres,5708894495518,Male,2409 Katherine Forge Apt. 418,Apt. 284,Lake Patrickton,MS,46632,4,2023/07/27,20,25,20,30,5,20,25,30,20.0,23.75
