@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main
+package com.hearity_capstone.hearity.ui.screens.main.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,7 +15,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.History
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,9 +28,9 @@ import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.graphs.navigateToProfileGraph
 import com.hearity_capstone.hearity.graphs.navigateToTestHistoryScreen
 import com.hearity_capstone.hearity.ui.common.SectionTitle
-import com.hearity_capstone.hearity.ui.screens.main.home.AudiometryGraph
-import com.hearity_capstone.hearity.ui.screens.main.home.TestHistory
-import com.hearity_capstone.hearity.ui.screens.main.home.TreatmentPlanSection
+import com.hearity_capstone.hearity.ui.screens.main.home.components.AudiometryGraph
+import com.hearity_capstone.hearity.ui.screens.main.home.components.TestHistory
+import com.hearity_capstone.hearity.ui.screens.main.home.components.TreatmentPlanSection
 import com.hearity_capstone.hearity.ui.theme.IconSizeLarge
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
@@ -61,7 +60,7 @@ fun HomeScreen(
             SectionTitle(
                 title = "Test History",
                 icon = Icons.Filled.History,
-                actionTitle = "See all",
+                actionTitle = "See All",
                 action = { rootNavController.navigateToTestHistoryScreen() })
             Spacer(Modifier.height(SpacingSection))
             TestHistory(rootNavController = rootNavController)
@@ -70,12 +69,13 @@ fun HomeScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun TopBar(onProfileClick: () -> Unit = {}) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = PaddingSmall),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = PaddingSmall),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

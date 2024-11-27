@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main.home
+package com.hearity_capstone.hearity.ui.screens.main.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

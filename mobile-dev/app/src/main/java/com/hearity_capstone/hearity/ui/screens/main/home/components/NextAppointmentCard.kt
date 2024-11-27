@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main.home
+package com.hearity_capstone.hearity.ui.screens.main.home.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,7 +37,9 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 @Composable
 fun NextAppointmentCard(modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier.clip(MaterialTheme.shapes.extraLarge).clickable {  },
+        modifier = modifier
+            .clip(MaterialTheme.shapes.extraLarge)
+            .clickable { },
         colors = CardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,

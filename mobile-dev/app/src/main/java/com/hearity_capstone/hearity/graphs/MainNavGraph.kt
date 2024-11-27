@@ -7,9 +7,9 @@ import androidx.navigation.compose.composable
 import com.hearity_capstone.hearity.ui.animation.defaultFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.defaultFadeExitTransition
 import com.hearity_capstone.hearity.ui.screens.main.BottomBarScreen
-import com.hearity_capstone.hearity.ui.screens.main.HomeScreen
 import com.hearity_capstone.hearity.ui.screens.main.chatbot.ChatbotScreen
-import com.hearity_capstone.hearity.ui.screens.main.FilesScreen
+import com.hearity_capstone.hearity.ui.screens.main.files.FilesScreen
+import com.hearity_capstone.hearity.ui.screens.main.home.HomeScreen
 
 
 @Composable
