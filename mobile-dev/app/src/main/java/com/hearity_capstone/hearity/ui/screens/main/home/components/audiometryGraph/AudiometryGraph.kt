@@ -1,20 +1,12 @@
-package com.hearity_capstone.hearity.ui.screens.main.home.components
+package com.hearity_capstone.hearity.ui.screens.main.home.components.audiometryGraph
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -53,45 +45,74 @@ import com.patrykandpatrick.vico.core.entry.FloatEntry
 @Composable
 fun AudiometryGraph() {
     val modelProducer = remember { ChartEntryModelProducer() }
+    val selectedEarSide = remember { mutableStateOf(EarSide.LEFT) }
 
-    val dataset1 = remember {
+    val leftEarData = remember {
         mutableStateListOf(
             listOf(
                 FloatEntry(x = 0f, y = 40f),
                 FloatEntry(x = 1f, y = 50f),
-                FloatEntry(x = 2f, y = 25f),
-                FloatEntry(x = 3f, y = 45f)
+                FloatEntry(x = 2f, y = 40f),
+                FloatEntry(x = 3f, y = 30f),
+                FloatEntry(x = 4f, y = 25f),
+                FloatEntry(x = 5f, y = 25f)
             )
         )
     }
 
-    val dataset2 = remember {
+    val rightEarData = remember {
         mutableStateListOf(
             listOf(
                 FloatEntry(x = 0f, y = 60f),
                 FloatEntry(x = 1f, y = 40f),
                 FloatEntry(x = 2f, y = 55f),
-                FloatEntry(x = 3f, y = 35f)
+                FloatEntry(x = 3f, y = 42f),
+                FloatEntry(x = 4f, y = 35f),
+                FloatEntry(x = 5f, y = 32f)
             )
         )
     }
 
-    val datasetLineSpec = remember {
-        arrayListOf(
-            LineChart.LineSpec(
-                lineColor = color1.toArgb(),
-                lineThicknessDp = 4.0f,
-            ),
-            LineChart.LineSpec(
-                lineColor = color2.toArgb(),
-                lineThicknessDp = 4.0f,
+    val datasetLineSpec = remember(selectedEarSide.value) {
+        when (selectedEarSide.value) {
+            EarSide.LEFT -> listOf(
+                LineChart.LineSpec(
+                    lineColor = LeftEarColor.toArgb(),
+                    lineThicknessDp = 3f,
+                )
             )
-        )
+
+            EarSide.RIGHT -> listOf(
+                LineChart.LineSpec(
+                    lineColor = RightEarColor.toArgb(),
+                    lineThicknessDp = 3f,
+                )
+            )
+
+            else -> listOf(
+                LineChart.LineSpec(
+                    lineColor = LeftEarColor.toArgb(),
+                    lineThicknessDp = 3f,
+                ),
+                LineChart.LineSpec(
+                    lineColor = RightEarColor.toArgb(),
+                    lineThicknessDp = 3f,
+                )
+            )
+        }
     }
 
     val scrollState = rememberChartScrollState()
 
-    modelProducer.setEntries(dataset1 + dataset2)
+
+    modelProducer.setEntries(
+        when (selectedEarSide.value) {
+            EarSide.LEFT -> leftEarData
+            EarSide.RIGHT -> rightEarData
+            EarSide.BOTH -> leftEarData + rightEarData
+        }
+    )
+
 
     Card(
         modifier = Modifier
@@ -109,9 +130,12 @@ fun AudiometryGraph() {
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
-            FreqDropdown()
+            EarDropdown(
+                onSelected = { v -> selectedEarSide.value = v },
+                selected = selectedEarSide.value
+            )
         }
-        if (dataset1.isNotEmpty() || dataset2.isEmpty()) {
+        if (leftEarData.isNotEmpty() || rightEarData.isEmpty()) {
             ProvideChartStyle {
                 Chart(
                     modifier = Modifier.padding(
@@ -123,14 +147,14 @@ fun AudiometryGraph() {
                         lines = datasetLineSpec,
                     ),
                     startAxis = rememberStartAxis(
-                        title = "Hearing loss level (db)",
+                        title = "Hearing level (db)",
                         titleComponent = textComponent(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textSize = 10.sp,
                         ),
                         label = textComponent(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            padding = MutableDimensions(8f,4f),
+                            padding = MutableDimensions(8f, 4f),
                             textSize = 10.sp,
                         ),
                         tickLength = 0.dp,
@@ -155,12 +179,20 @@ fun AudiometryGraph() {
                         ),
                         label = textComponent(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            padding = MutableDimensions(8f,4f),
+                            padding = MutableDimensions(8f, 4f),
                             textSize = 10.sp,
                         ),
                         tickLength = 0.dp,
                         valueFormatter = { value, _ ->
-                            ((value.toInt()) + 1).toString()
+                            when (value.toInt()) {
+                                0 -> "125"
+                                1 -> "500"
+                                2 -> "1k"
+                                3 -> "2k"
+                                4 -> "4k"
+                                5 -> "8k"
+                                else -> ""
+                            }
                         },
                         axis = axisLineComponent(
                             strokeWidth = 2.dp,
@@ -169,77 +201,18 @@ fun AudiometryGraph() {
                         tick = lineComponent(color = Color.Transparent),
                         guideline = null
                     ),
-
                     chartModelProducer = modelProducer,
                     chartScrollState = scrollState,
                     isZoomEnabled = true,
-                    //  legend = rememberLegend(),
+                    marker = rememberMarker()
+                    // legend = rememberLegend(),
                 )
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun FreqDropdown() {
-    val isExpanded = remember { mutableStateOf(false) }
-    val freq = remember { mutableStateOf("Left") }
-
-    val freqOptions = listOf("Left", "Right", "Both")
-
-    ExposedDropdownMenuBox(
-        expanded = isExpanded.value,
-        onExpandedChange = { isExpanded.value = it },
-        modifier = Modifier
-            .height(44.dp)
-            .width(100.dp)
-    ) {
-        TextField(
-            value = freq.value,
-            onValueChange = {},
-            readOnly = true,
-            trailingIcon = {
-                ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded.value)
-            },
-            colors = ExposedDropdownMenuDefaults.textFieldColors(
-                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            textStyle = MaterialTheme.typography.labelSmall,
-            modifier = Modifier
-                .menuAnchor()
-        )
-        ExposedDropdownMenu(
-            expanded = isExpanded.value,
-            onDismissRequest = { isExpanded.value = false },
-            modifier = Modifier.background(
-                color = MaterialTheme.colorScheme.surfaceBright,
-                shape = MaterialTheme.shapes.medium
-            )
-        ) {
-            freqOptions.forEach { option ->
-                DropdownMenuItem(
-                    onClick = {
-                        freq.value = option
-                        isExpanded.value = false
-                    },
-                    text = {
-                        Text(
-                            option,
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        )
-                    }
-                )
-            }
-        }
-    }
-}
-
+// Legend
 @Composable
 private fun rememberLegend() = horizontalLegend(
     items = chartColors.mapIndexed { index, chartColor ->
@@ -258,9 +231,14 @@ private fun rememberLegend() = horizontalLegend(
     padding = legendPadding,
 )
 
-private val color1 = TomatoRed
-private val color2 = SlateBlue
-private val chartColors = listOf(color1, color2)
+enum class EarSide {
+    LEFT, RIGHT, BOTH
+}
+
+private val LeftEarColor = TomatoRed
+private val RightEarColor = SlateBlue
+private val chartColors = listOf(LeftEarColor, RightEarColor)
+
 private val legendItemIconSize = IconSizeExtraSmall
 private val legendItemIconPaddingValue = PaddingSmall
 private val legendItemSpacing = SpacingMedium
