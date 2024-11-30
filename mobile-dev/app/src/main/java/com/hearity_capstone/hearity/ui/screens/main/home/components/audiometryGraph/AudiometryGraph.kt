@@ -13,7 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,6 +29,7 @@ import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
 import com.patrykandpatrick.vico.compose.chart.scroll.rememberChartScrollState
 import com.patrykandpatrick.vico.compose.component.lineComponent
+import com.patrykandpatrick.vico.compose.component.shape.shader.fromBrush
 import com.patrykandpatrick.vico.compose.component.shapeComponent
 import com.patrykandpatrick.vico.compose.component.textComponent
 import com.patrykandpatrick.vico.compose.dimensions.dimensionsOf
@@ -38,6 +39,7 @@ import com.patrykandpatrick.vico.compose.style.ProvideChartStyle
 import com.patrykandpatrick.vico.core.axis.AxisItemPlacer
 import com.patrykandpatrick.vico.core.chart.line.LineChart
 import com.patrykandpatrick.vico.core.component.shape.Shapes
+import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
 import com.patrykandpatrick.vico.core.dimensions.MutableDimensions
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
@@ -50,12 +52,10 @@ fun AudiometryGraph() {
     val leftEarData = remember {
         mutableStateListOf(
             listOf(
-                FloatEntry(x = 0f, y = 40f),
-                FloatEntry(x = 1f, y = 50f),
-                FloatEntry(x = 2f, y = 40f),
-                FloatEntry(x = 3f, y = 30f),
-                FloatEntry(x = 4f, y = 25f),
-                FloatEntry(x = 5f, y = 25f)
+                FloatEntry(x = 0f, y = 30f),
+                FloatEntry(x = 1f, y = 20f),
+                FloatEntry(x = 2f, y = 35f),
+                FloatEntry(x = 3f, y = 37f),
             )
         )
     }
@@ -66,9 +66,7 @@ fun AudiometryGraph() {
                 FloatEntry(x = 0f, y = 60f),
                 FloatEntry(x = 1f, y = 40f),
                 FloatEntry(x = 2f, y = 55f),
-                FloatEntry(x = 3f, y = 42f),
-                FloatEntry(x = 4f, y = 35f),
-                FloatEntry(x = 5f, y = 32f)
+                FloatEntry(x = 3f, y = 45f),
             )
         )
     }
@@ -79,6 +77,12 @@ fun AudiometryGraph() {
                 LineChart.LineSpec(
                     lineColor = LeftEarColor.toArgb(),
                     lineThicknessDp = 3f,
+                    lineBackgroundShader = DynamicShaders.fromBrush(
+                        brush = Brush.verticalGradient(
+                            listOf(LeftEarColor.copy(alpha = 0.3f), LeftEarColor.copy(alpha = 0f))
+                        )
+                    ),
+
                 )
             )
 
@@ -86,6 +90,11 @@ fun AudiometryGraph() {
                 LineChart.LineSpec(
                     lineColor = RightEarColor.toArgb(),
                     lineThicknessDp = 3f,
+                    lineBackgroundShader = DynamicShaders.fromBrush(
+                        brush = Brush.verticalGradient(
+                            listOf(RightEarColor.copy(alpha = 0.3f), RightEarColor.copy(alpha = 0f))
+                        )
+                    )
                 )
             )
 
@@ -117,7 +126,7 @@ fun AudiometryGraph() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(220.dp),
+            .height(245.dp),
         shape = MaterialTheme.shapes.extraLarge,
         colors = CardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
@@ -155,7 +164,7 @@ fun AudiometryGraph() {
                         label = textComponent(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             padding = MutableDimensions(8f, 4f),
-                            textSize = 10.sp,
+                            textSize = 12.sp,
                         ),
                         tickLength = 0.dp,
                         valueFormatter = { value, _ ->
@@ -165,32 +174,35 @@ fun AudiometryGraph() {
                             strokeWidth = 2.dp,
                             strokeColor = MaterialTheme.colorScheme.outlineVariant
                         ),
-                        tick = lineComponent(color = Color.Transparent),
+                        tick = lineComponent(color = androidx.compose.ui.graphics.Color.Transparent),
                         itemPlacer = AxisItemPlacer.Vertical.default(
                             maxItemCount = 6
                         ),
-                        guideline = null
                     ),
                     bottomAxis = rememberBottomAxis(
                         title = "Frequency (Hz)",
                         titleComponent = textComponent(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textSize = 10.sp,
+                            padding = MutableDimensions(
+                                topDp = 8f,
+                                bottomDp = 0f,
+                                startDp = 0f,
+                                endDp = 0f
+                            )
                         ),
                         label = textComponent(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             padding = MutableDimensions(8f, 4f),
-                            textSize = 10.sp,
+                            textSize = 12.sp,
                         ),
                         tickLength = 0.dp,
                         valueFormatter = { value, _ ->
                             when (value.toInt()) {
-                                0 -> "125"
-                                1 -> "500"
-                                2 -> "1k"
-                                3 -> "2k"
-                                4 -> "4k"
-                                5 -> "8k"
+                                0 -> "500"
+                                1 -> "1k"
+                                2 -> "2k"
+                                3 -> "4k"
                                 else -> ""
                             }
                         },
@@ -198,7 +210,7 @@ fun AudiometryGraph() {
                             strokeWidth = 2.dp,
                             strokeColor = MaterialTheme.colorScheme.outlineVariant
                         ),
-                        tick = lineComponent(color = Color.Transparent),
+                        tick = lineComponent(color = androidx.compose.ui.graphics.Color.Transparent),
                         guideline = null
                     ),
                     chartModelProducer = modelProducer,
@@ -235,8 +247,8 @@ enum class EarSide {
     LEFT, RIGHT, BOTH
 }
 
-private val LeftEarColor = TomatoRed
-private val RightEarColor = SlateBlue
+private val LeftEarColor = SlateBlue
+private val RightEarColor = TomatoRed
 private val chartColors = listOf(LeftEarColor, RightEarColor)
 
 private val legendItemIconSize = IconSizeExtraSmall

@@ -9,8 +9,8 @@ val SeverityHigh = Color(0xFFFFAD60)
 val SeveritySevere = Color(0xFFFF6B6B)
 
 // Line Graph Colors
-val SlateBlue = Color(0xFF6174D7) // right ear color
-val TomatoRed = Color(0xFFFE464B) // left ear color
+val SlateBlue = Color(0xFF6174D7) // left ear color
+val TomatoRed = Color(0xFFFE464B) // right ear color
 
 val primaryLight = Color(0xFF226A4D)
 val onPrimaryLight = Color(0xFFFFFFFF)
