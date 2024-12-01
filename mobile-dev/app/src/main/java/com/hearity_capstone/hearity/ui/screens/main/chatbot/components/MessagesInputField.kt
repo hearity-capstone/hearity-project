@@ -31,12 +31,13 @@ import com.hearity_capstone.hearity.ui.theme.SpacingItem
 
 @Composable
 fun MessageInputField(
+    modifier: Modifier = Modifier,
     message: String,
     onMessageChange: (String) -> Unit = {},
     context: Context
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
             .background(MaterialTheme.colorScheme.surfaceContainer)
@@ -47,7 +48,7 @@ fun MessageInputField(
             shape = MaterialTheme.shapes.large,
             value = message,
             onValueChange = onMessageChange,
-            placeholder = { Text("Message ...", style = MaterialTheme.typography.bodyMedium) },
+            placeholder = { Text("Ask HeaRity ...", style = MaterialTheme.typography.bodyMedium) },
             modifier = Modifier.weight(1f),
         )
         Spacer(Modifier.width(SpacingItem))

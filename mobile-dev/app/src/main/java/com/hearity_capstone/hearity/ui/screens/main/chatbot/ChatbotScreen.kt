@@ -2,13 +2,17 @@ package com.hearity_capstone.hearity.ui.screens.main.chatbot
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -19,6 +23,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -39,9 +44,9 @@ import com.hearity_capstone.hearity.ui.screens.main.chatbot.components.BotRespon
 import com.hearity_capstone.hearity.ui.screens.main.chatbot.components.MessageInputField
 import com.hearity_capstone.hearity.ui.screens.main.chatbot.components.UserMessages
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
-import com.hearity_capstone.hearity.ui.theme.PaddingSmall
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
+import kotlinx.coroutines.delay
 
 fun Modifier.positionAwareImePadding() = composed {
     var consumePadding by remember { mutableIntStateOf(0) }
@@ -54,44 +59,58 @@ fun Modifier.positionAwareImePadding() = composed {
         .imePadding()
 }
 
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ChatbotScreen() {
     var message by remember { mutableStateOf("") }
 
-    Column {
+    val scrollState = rememberScrollState()
+    val isKeyboardVisible = WindowInsets.isImeVisible
+
+    val lastImeState = remember { mutableStateOf(isKeyboardVisible) }
+
+    LaunchedEffect(isKeyboardVisible) {
+        if (isKeyboardVisible != lastImeState.value) {
+            lastImeState.value = isKeyboardVisible
+            if (isKeyboardVisible) {
+                delay(200)
+                scrollState.animateScrollTo(scrollState.maxValue)
+            }
+        }
+    }
+
+    Column(Modifier.fillMaxHeight()) {
+        Header(Modifier.padding(horizontal = PaddingMedium))
         Column(
             modifier = Modifier
                 .positionAwareImePadding()
+                .verticalScroll(scrollState)
+                .padding(horizontal = PaddingMedium)
                 .weight(1f)
-                .fillMaxWidth()
-                .padding(top = SpacingItem),
-            verticalArrangement = Arrangement.spacedBy(PaddingSmall)
         ) {
-            Header(Modifier.padding(horizontal = PaddingMedium))
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = PaddingMedium)
-            ) {
-                Spacer(Modifier.height(SpacingSection))
-                UserMessages("This is an example of user's short message")
-                Spacer(Modifier.height(SpacingItem))
-                BotResponse("Hello! How can I help you today?")
-                Spacer(Modifier.height(SpacingItem))
-                UserMessages("This is an example of user's long message, which should wrap to multiple lines, demonstrating how the layout handles longer text inputs from the user.")
-                Spacer(Modifier.height(SpacingItem))
-                BotResponse("Okay, here's a longer response to demonstrate how the bot's messages can also wrap to multiple lines if they exceed the available width of the screen. This can be useful for providing detailed information or explanations to the user.")
-                Spacer(Modifier.height(SpacingItem))
-            }
+            Spacer(Modifier.height(SpacingSection))
+            UserMessages("Hello, I'm concerned about my ear health.")
+            Spacer(Modifier.height(SpacingSection))
+            BotResponse("I understand. Could you tell me more about your concerns?")
+            Spacer(Modifier.height(SpacingSection))
+            UserMessages("I've been experiencing some ringing in my ears and occasional dizziness. It's been happening for a few weeks now.")
+            Spacer(Modifier.height(SpacingSection))
+            BotResponse("Thank you for sharing that information. Ringing in the ears and dizziness can be symptoms of various conditions, including tinnitus and Meniere's disease. It's important to consult with a healthcare professional to get a proper diagnosis and discuss treatment options.")
+            Spacer(Modifier.height(SpacingSection))
+            UserMessages("Okay, I'll schedule an appointment with my doctor. Thanks for the advice.")
+            Spacer(Modifier.height(SpacingSection))
+            Spacer(Modifier.height(SpacingSection))
+            BotResponse("You are welcome!.")
+            Spacer(Modifier.height(SpacingSection))
 
-            Spacer(Modifier.weight(1f))
-            MessageInputField(
-                message = message,
-                onMessageChange = { v -> message = v },
-                context = LocalContext.current
-            )
         }
+        MessageInputField(
+            modifier = Modifier.positionAwareImePadding(),
+            message = message,
+            onMessageChange = { v -> message = v },
+            context = LocalContext.current
+        )
     }
 }
 
@@ -103,7 +122,7 @@ fun Header(modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            "HeaRity Bot",
+            "HeaRity Bot", color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )
@@ -111,7 +130,7 @@ fun Header(modifier: Modifier = Modifier) {
         TextButton(
             onClick = {}
         ) {
-            Text("Clear Chats")
+            Text("Clear Chats", color = MaterialTheme.colorScheme.onSurface)
             Spacer(Modifier.width(SpacingItem))
             Icon(imageVector = Icons.Outlined.DeleteOutline, contentDescription = "Add")
         }

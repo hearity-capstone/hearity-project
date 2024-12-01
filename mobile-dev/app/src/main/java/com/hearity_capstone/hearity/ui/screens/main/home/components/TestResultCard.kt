@@ -137,9 +137,11 @@ fun TestResultCard(result: TestResult, onSeeDetailsClick: () -> Unit = {}) {
                             width = 1.dp
                         ),
                         colors = CardColors(
-                            containerColor = Color.Transparent,
+                            containerColor = MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.5f),
                             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            disabledContainerColor = Color.Transparent,
+                            disabledContainerColor = MaterialTheme.colorScheme.surfaceContainer.copy(
+                                alpha = 0.5f
+                            ),
                             disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         ),
                     ) {
