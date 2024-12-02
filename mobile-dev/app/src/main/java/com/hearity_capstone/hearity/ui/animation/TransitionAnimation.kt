@@ -14,17 +14,17 @@ import androidx.compose.animation.slideOutHorizontally
 fun scaleFadeEnterTransition(): EnterTransition {
     return scaleIn(
         initialScale = 0.75f,
-        animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing)
+        animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
     ) + fadeIn(
-        animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing)
+        animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
     )
 }
 
 fun scaleFadeExitTransition(): ExitTransition {
     return scaleOut(
         targetScale = 0.75f,
-        animationSpec = tween(500, easing = FastOutSlowInEasing)
-    ) + fadeOut(animationSpec = tween(durationMillis = 500))
+        animationSpec = tween(300, easing = FastOutSlowInEasing)
+    ) + fadeOut(animationSpec = tween(durationMillis = 300))
 }
 
 fun slideFromRightEnterTransition(): EnterTransition {

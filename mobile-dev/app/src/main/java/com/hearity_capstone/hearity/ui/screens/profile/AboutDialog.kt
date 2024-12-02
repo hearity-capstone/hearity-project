@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -46,6 +47,8 @@ fun AboutDialog(
         },
         text = {
             Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                HorizontalDivider()
+                Spacer(Modifier.height(SpacingSection))
                 Text(
                     "HeaRity v0.1",
                     style = MaterialTheme.typography.bodyLarge,
@@ -67,6 +70,7 @@ fun AboutDialog(
                             "Eko Kurniawan\n" +
                             "Rangga Felicia Fulfian\n",
                     textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 

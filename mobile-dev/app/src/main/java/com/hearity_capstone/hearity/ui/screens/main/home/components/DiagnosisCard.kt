@@ -78,7 +78,8 @@ fun DiagnosisCard(modifier: Modifier = Modifier) {
                     ))
 
                     Spacer(Modifier.height(SpacingMedium))
-                    Text("No diagnosis yet", style = MaterialTheme.typography.bodyMedium.copy(
+                    Text(
+                        "Normal", style = MaterialTheme.typography.bodyMedium.copy(
                         fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary,
                     ), maxLines = 2, overflow = TextOverflow.Ellipsis)
                 }

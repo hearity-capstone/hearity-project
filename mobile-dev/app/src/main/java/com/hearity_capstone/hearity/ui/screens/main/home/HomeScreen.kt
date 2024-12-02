@@ -1,5 +1,6 @@
 package com.hearity_capstone.hearity.ui.screens.main.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,9 +12,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -22,9 +23,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.graphs.navigateToProfileGraph
 import com.hearity_capstone.hearity.graphs.navigateToTestHistoryScreen
 import com.hearity_capstone.hearity.ui.common.SectionTitle
@@ -88,7 +94,7 @@ fun TopBar(onProfileClick: () -> Unit = {}) {
                 )
                 Spacer(Modifier.width(SpacingSmall))
                 Text(
-                    "User",
+                    "John",
                     style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
                         .copy(color = MaterialTheme.colorScheme.onSurface),
                 )
@@ -102,9 +108,14 @@ fun TopBar(onProfileClick: () -> Unit = {}) {
         }
         IconButton(onClick = { onProfileClick() }) {
             Icon(
-                imageVector = Icons.Filled.AccountCircle,
-                contentDescription = "Profile",
-                modifier = Modifier.size(IconSizeLarge)
+                painter = painterResource(R.drawable.avatar_dylan),
+                contentDescription = "Profile Avatar",
+                tint = Color.Unspecified,
+                modifier = Modifier
+                    .size(IconSizeLarge)
+                    .clip(CircleShape)
+                    .background(color = MaterialTheme.colorScheme.inverseSurface)
+                    .padding(1.dp)
             )
         }
     }
