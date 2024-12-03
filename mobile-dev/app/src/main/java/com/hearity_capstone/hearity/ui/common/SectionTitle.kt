@@ -22,11 +22,11 @@ import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 
 @Composable
 fun SectionTitle(
+    modifier: Modifier = Modifier,
     icon: ImageVector,
     title: String,
-    actionTitle: String,
-    action: () -> Unit,
-    modifier: Modifier = Modifier
+    actionTitle: String? = null,
+    action: (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -46,20 +46,31 @@ fun SectionTitle(
             )
         }
         Row(
-            modifier = Modifier.clickable { action() },
+            modifier = Modifier.clickable {
+                if (action != null) {
+                    action()
+                }
+            },
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                actionTitle, style = MaterialTheme.typography.labelMedium.copy(
-                    color = MaterialTheme.colorScheme.outline
+            if (actionTitle != null) {
+                Text(
+                    actionTitle, style = MaterialTheme.typography.labelMedium.copy(
+                        color = MaterialTheme.colorScheme.outline
+                    )
                 )
-            )
-            Spacer(Modifier.width(SpacingMedium))
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos, modifier = Modifier.size(
-                    IconSizeSmall
-                ), contentDescription = null, tint = MaterialTheme.colorScheme.outline
-            )
+                Spacer(Modifier.width(SpacingMedium))
+            }
+            if (action != null) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                    modifier = Modifier.size(
+                        IconSizeSmall
+                    ),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.outline
+                )
+            }
         }
 
     }
