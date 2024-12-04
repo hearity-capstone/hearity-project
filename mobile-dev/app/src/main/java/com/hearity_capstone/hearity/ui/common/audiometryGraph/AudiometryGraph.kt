@@ -1,15 +1,13 @@
-package com.hearity_capstone.hearity.ui.screens.main.home.components.audiometryGraph
+package com.hearity_capstone.hearity.ui.common.audiometryGraph
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,31 +43,14 @@ import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
 
 @Composable
-fun AudiometryGraph() {
-    val modelProducer = remember { ChartEntryModelProducer() }
-    val selectedEarSide = remember { mutableStateOf(EarSide.LEFT) }
+fun AudiometryGraph(
+    modelProducer: ChartEntryModelProducer,
+    selectedEarSide: MutableState<EarSide>,
+    leftEarData: List<List<FloatEntry>>,
+    rightEarData: List<List<FloatEntry>>,
+) {
+    val scrollState = rememberChartScrollState()
 
-    val leftEarData = remember {
-        mutableStateListOf(
-            listOf(
-                FloatEntry(x = 0f, y = 30f),
-                FloatEntry(x = 1f, y = 20f),
-                FloatEntry(x = 2f, y = 35f),
-                FloatEntry(x = 3f, y = 37f),
-            )
-        )
-    }
-
-    val rightEarData = remember {
-        mutableStateListOf(
-            listOf(
-                FloatEntry(x = 0f, y = 60f),
-                FloatEntry(x = 1f, y = 40f),
-                FloatEntry(x = 2f, y = 55f),
-                FloatEntry(x = 3f, y = 45f),
-            )
-        )
-    }
 
     val datasetLineSpec = remember(selectedEarSide.value) {
         when (selectedEarSide.value) {
@@ -82,7 +63,6 @@ fun AudiometryGraph() {
                             listOf(LeftEarColor.copy(alpha = 0.3f), LeftEarColor.copy(alpha = 0f))
                         )
                     ),
-
                 )
             )
 
@@ -111,30 +91,7 @@ fun AudiometryGraph() {
         }
     }
 
-    val scrollState = rememberChartScrollState()
-
-
-    modelProducer.setEntries(
-        when (selectedEarSide.value) {
-            EarSide.LEFT -> leftEarData
-            EarSide.RIGHT -> rightEarData
-            EarSide.BOTH -> leftEarData + rightEarData
-        }
-    )
-
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(245.dp),
-        shape = MaterialTheme.shapes.extraLarge,
-        colors = CardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-            disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-    ) {
+    Column(Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
@@ -223,6 +180,7 @@ fun AudiometryGraph() {
         }
     }
 }
+
 
 // Legend
 @Composable

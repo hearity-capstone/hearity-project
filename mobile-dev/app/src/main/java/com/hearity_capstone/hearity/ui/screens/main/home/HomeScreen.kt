@@ -36,7 +36,7 @@ import com.hearity_capstone.hearity.graphs.navigateToTestHistoryScreen
 import com.hearity_capstone.hearity.ui.common.SectionTitle
 import com.hearity_capstone.hearity.ui.screens.main.home.components.TestHistory
 import com.hearity_capstone.hearity.ui.screens.main.home.components.TreatmentPlanSection
-import com.hearity_capstone.hearity.ui.screens.main.home.components.audiometryGraph.AudiometryGraph
+import com.hearity_capstone.hearity.ui.screens.main.home.components.audiometryCard.AudiometryCard
 import com.hearity_capstone.hearity.ui.theme.IconSizeLarge
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
@@ -59,7 +59,7 @@ fun HomeScreen(
                 .verticalScroll(rememberScrollState())
         ) {
             Spacer(Modifier.height(SpacingItem))
-            AudiometryGraph()
+            AudiometryCard()
             Spacer(Modifier.height(SpacingSection))
             TreatmentPlanSection()
             Spacer(Modifier.height(SpacingSectionLarge))

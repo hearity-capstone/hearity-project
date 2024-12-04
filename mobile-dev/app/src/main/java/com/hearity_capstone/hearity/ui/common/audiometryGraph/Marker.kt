@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main.home.components.audiometryGraph
+package com.hearity_capstone.hearity.ui.common.audiometryGraph
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main.home.components.audiometryGraph
+package com.hearity_capstone.hearity.ui.common.audiometryGraph
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
