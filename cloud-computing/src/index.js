@@ -11,6 +11,10 @@ app.use(express.json());
 
 app.use('/api/auth', authRouter);
 
+app.get('/', (req, res) => {
+	res.send('Welcome to Hearity API');
+});
+
 app.listen(port, () => {
 	connect();
 	console.log(`Server running at http://localhost:${port}`);
