@@ -40,6 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.hearity_capstone.hearity.data.model.TestResultModel
 import com.hearity_capstone.hearity.ui.common.AppButton
 import com.hearity_capstone.hearity.ui.common.AppButtonSize
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
@@ -51,13 +52,18 @@ import com.hearity_capstone.hearity.ui.theme.SeverityModerate
 import com.hearity_capstone.hearity.ui.theme.SeveritySevere
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import com.hearity_capstone.hearity.util.DateUtils
+import com.hearity_capstone.hearity.util.TestResultUtils
+
 
 @Composable
-fun TestResultCard(result: TestResult, onSeeDetailsClick: () -> Unit = {}) {
+fun TestResultCard(result: TestResultModel, onSeeDetailsClick: () -> Unit = {}) {
     var isExpanded by remember { mutableStateOf(false) }
-    val formattedDate = result.testDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+
+    val testResultAverageLeftEarFrequency =
+        TestResultUtils.calculateAverageLeftEarFrequency(result.earFrequency)
+    val testResultAverageRightEarFrequency =
+        TestResultUtils.calculateAverageRightEarFrequency(result.earFrequency)
 
     Card(
         modifier = Modifier
@@ -79,7 +85,7 @@ fun TestResultCard(result: TestResult, onSeeDetailsClick: () -> Unit = {}) {
             Row {
                 Column {
                     Text(
-                        text = formattedDate,
+                        text = DateUtils.formatLocalDate(result.date),
                         style = MaterialTheme.typography.labelSmall,
                     )
                     Spacer(Modifier.height(SpacingSection))
@@ -157,12 +163,15 @@ fun TestResultCard(result: TestResult, onSeeDetailsClick: () -> Unit = {}) {
                                     modifier = Modifier.weight(1f),
                                 )
                                 Text(
-                                    "${result.leftEarLevel}dB",
+                                    "${testResultAverageLeftEarFrequency.toInt()}dB",
                                     style = MaterialTheme.typography.labelSmall,
                                     modifier = Modifier.weight(1f),
                                     textAlign = TextAlign.Center
                                 )
-                                HearingSeverityChip(Modifier.weight(1f), result.leftEarLevel)
+                                HearingSeverityChip(
+                                    Modifier.weight(1f),
+                                    testResultAverageLeftEarFrequency
+                                )
                             }
                             Spacer(Modifier.height(SpacingItem))
                             HorizontalDivider(
@@ -181,12 +190,15 @@ fun TestResultCard(result: TestResult, onSeeDetailsClick: () -> Unit = {}) {
                                     modifier = Modifier.weight(1f),
                                 )
                                 Text(
-                                    "${result.rightEarLevel}dB",
+                                    "${testResultAverageRightEarFrequency.toInt()}dB",
                                     style = MaterialTheme.typography.labelSmall,
                                     modifier = Modifier.weight(1f),
                                     textAlign = TextAlign.Center
                                 )
-                                HearingSeverityChip(Modifier.weight(1f), result.rightEarLevel)
+                                HearingSeverityChip(
+                                    Modifier.weight(1f),
+                                    testResultAverageRightEarFrequency
+                                )
                             }
                         }
                     }
@@ -218,15 +230,15 @@ fun TestResultCard(result: TestResult, onSeeDetailsClick: () -> Unit = {}) {
 }
 
 @Composable
-private fun HearingSeverityChip(modifier: Modifier, hearingLevel: Int) {
+private fun HearingSeverityChip(modifier: Modifier, hearingLevel: Float) {
     Box(modifier, contentAlignment = Alignment.CenterEnd) {
         Box(
             modifier = Modifier
                 .background(
                     color = when (hearingLevel) {
-                        in 0..40 -> SeverityLow
-                        in 41..60 -> SeverityModerate
-                        in 61..90 -> SeverityHigh
+                        in 0f..41f -> SeverityLow
+                        in 41f..60f -> SeverityModerate
+                        in 60f..90f -> SeverityHigh
                         else -> SeveritySevere
                     },
                     shape = CircleShape
@@ -240,9 +252,9 @@ private fun HearingSeverityChip(modifier: Modifier, hearingLevel: Int) {
         ) {
             Text(
                 text = when (hearingLevel) {
-                    in 0..40 -> "Low"
-                    in 41..60 -> "Moderate"
-                    in 61..90 -> "High"
+                    in 0f..41f -> "Low"
+                    in 41f..60f -> "Moderate"
+                    in 60f..90f -> "High"
                     else -> "Severe"
                 },
                 style = MaterialTheme.typography.bodySmall,
@@ -251,12 +263,3 @@ private fun HearingSeverityChip(modifier: Modifier, hearingLevel: Int) {
         }
     }
 }
-
-data class TestResult(
-    val id: Int,
-    val testDate: LocalDate,
-    val doctorName: String,
-    val summary: String,
-    val leftEarLevel: Int,
-    val rightEarLevel: Int,
-)

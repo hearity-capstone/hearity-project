@@ -35,6 +35,7 @@ internal fun rememberMarker(): Marker {
         background = labelBackground,
         lineCount = LABEL_LINE_COUNT,
         padding = labelPadding,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
     )
     val indicatorInnerComponent =
         shapeComponent(Shapes.pillShape, MaterialTheme.colorScheme.surface)

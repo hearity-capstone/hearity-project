@@ -1,26 +1,42 @@
 package com.hearity_capstone.hearity.ui.common.audiometryGraph
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.wear.compose.material.Text
+import com.hearity_capstone.hearity.R
+import com.hearity_capstone.hearity.data.model.EarSide
+import com.hearity_capstone.hearity.data.model.TestResultModel
 import com.hearity_capstone.hearity.ui.theme.IconSizeExtraSmall
+import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
 import com.hearity_capstone.hearity.ui.theme.SlateBlue
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
+import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 import com.hearity_capstone.hearity.ui.theme.TomatoRed
+import com.hearity_capstone.hearity.util.DateUtils
+import com.hearity_capstone.hearity.util.TestResultUtils
 import com.patrykandpatrick.vico.compose.axis.axisLineComponent
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -40,17 +56,28 @@ import com.patrykandpatrick.vico.core.component.shape.Shapes
 import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
 import com.patrykandpatrick.vico.core.dimensions.MutableDimensions
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
-import com.patrykandpatrick.vico.core.entry.FloatEntry
 
 @Composable
 fun AudiometryGraph(
-    modelProducer: ChartEntryModelProducer,
-    selectedEarSide: MutableState<EarSide>,
-    leftEarData: List<List<FloatEntry>>,
-    rightEarData: List<List<FloatEntry>>,
+    testResult: TestResultModel
 ) {
+    val modelProducer = remember { ChartEntryModelProducer() }
+    val selectedEarSide = remember { mutableStateOf(EarSide.LEFT) }
+
     val scrollState = rememberChartScrollState()
 
+    val leftEarDataEntry =
+        remember { mutableStateListOf(TestResultUtils.createLeftEarFloatEntries(testResult.earFrequency)) }
+    val rightEarDataEntry =
+        remember { mutableStateListOf(TestResultUtils.createRightEarFloatEntries(testResult.earFrequency)) }
+
+    modelProducer.setEntries(
+        when (selectedEarSide.value) {
+            EarSide.LEFT -> leftEarDataEntry
+            EarSide.RIGHT -> rightEarDataEntry
+            EarSide.BOTH -> leftEarDataEntry + rightEarDataEntry
+        }
+    )
 
     val datasetLineSpec = remember(selectedEarSide.value) {
         when (selectedEarSide.value) {
@@ -93,15 +120,35 @@ fun AudiometryGraph(
 
     Column(Modifier.fillMaxSize()) {
         Box(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = PaddingMedium),
             contentAlignment = Alignment.Center
         ) {
+            Row(
+                modifier = Modifier.align(Alignment.CenterStart),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_event_filled),
+                    modifier = Modifier.size(IconSizeSmall),
+                    contentDescription = "Date icon",
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
+                )
+                Spacer(Modifier.width(SpacingSmall))
+                Text(
+                    DateUtils.formatToDDMMYYYY(testResult.date),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
             EarDropdown(
+                modifier = Modifier.align(Alignment.Center),
                 onSelected = { v -> selectedEarSide.value = v },
                 selected = selectedEarSide.value
             )
         }
-        if (leftEarData.isNotEmpty() || rightEarData.isEmpty()) {
+        if (leftEarDataEntry.isNotEmpty() || rightEarDataEntry.isEmpty()) {
             ProvideChartStyle {
                 Chart(
                     modifier = Modifier.padding(
@@ -200,10 +247,6 @@ private fun rememberLegend() = horizontalLegend(
     spacing = legendItemSpacing,
     padding = legendPadding,
 )
-
-enum class EarSide {
-    LEFT, RIGHT, BOTH
-}
 
 private val LeftEarColor = SlateBlue
 private val RightEarColor = TomatoRed
