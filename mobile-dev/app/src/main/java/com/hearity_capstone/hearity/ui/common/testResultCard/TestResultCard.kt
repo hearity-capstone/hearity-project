@@ -1,6 +1,7 @@
 package com.hearity_capstone.hearity.ui.common.testResultCard
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ExpandLess
 import androidx.compose.material.icons.outlined.ExpandMore
@@ -27,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,6 +53,7 @@ fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = 
 
     AppCard(
         size = AppCardSize.MEDIUM,
+        onClick = { isExpanded = !isExpanded },
         colors = CardColors(
             containerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.5f),
             contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
@@ -90,10 +94,13 @@ fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = 
                 Spacer(Modifier.weight(1f))
                 IconButton(
                     onClick = { isExpanded = !isExpanded },
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(color = MaterialTheme.colorScheme.primaryContainer)
                 ) {
                     Icon(
                         imageVector = if (isExpanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
-                        contentDescription = "Expand More"
+                        contentDescription = "Expand More",
                     )
                 }
             }

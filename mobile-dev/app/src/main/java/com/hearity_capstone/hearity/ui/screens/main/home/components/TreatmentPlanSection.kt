@@ -19,7 +19,7 @@ fun TreatmentPlanSection() {
             .fillMaxWidth()
             .height(180.dp)
     ) {
-        NextAppointmentCard(
+        NextAudiometryTest(
             modifier = Modifier
                 .fillMaxHeight()
                 .weight(1.5f)
@@ -30,7 +30,7 @@ fun TreatmentPlanSection() {
                 .fillMaxHeight()
                 .weight(2f)
         ) {
-            DiagnosisCard(modifier = Modifier.weight(1f))
+            HearingEducationCard(modifier = Modifier.weight(1f))
             Spacer(Modifier.height(SpacingItem))
             FindNearbyHospitalCard(modifier = Modifier.weight(1f))
         }
