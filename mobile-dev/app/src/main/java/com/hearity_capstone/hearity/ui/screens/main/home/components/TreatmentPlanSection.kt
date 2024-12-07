@@ -32,7 +32,7 @@ fun TreatmentPlanSection() {
         ) {
             DiagnosisCard(modifier = Modifier.weight(1f))
             Spacer(Modifier.height(SpacingItem))
-            CallToActionCard(modifier = Modifier.weight(1f))
+            FindNearbyHospitalCard(modifier = Modifier.weight(1f))
         }
     }
 }

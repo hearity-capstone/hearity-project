@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.data.dummy.testResultDummyData
 import com.hearity_capstone.hearity.graphs.navigateToTestDetailScreen
+import com.hearity_capstone.hearity.ui.common.testResultCard.TestResultCard
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 
 

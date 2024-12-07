@@ -77,7 +77,7 @@ fun ProfileScreen(navController: NavHostController) {
     }
 
     Scaffold(
-        topBar = { AppTopBar(navController, "Profile") }
+        topBar = { AppTopBar(navController, title = "Profile") }
     ) {
         Column(
             modifier = Modifier.padding(

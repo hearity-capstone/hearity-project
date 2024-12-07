@@ -14,7 +14,7 @@ import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.data.dummy.testResultDummyData
 import com.hearity_capstone.hearity.ui.common.AppTopBar
 import com.hearity_capstone.hearity.ui.common.SectionTitle
-import com.hearity_capstone.hearity.ui.screens.main.home.components.TestResultCard
+import com.hearity_capstone.hearity.ui.common.testResultCard.TestResultCard
 import com.hearity_capstone.hearity.ui.screens.testHistory.components.AppCalendarView
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
@@ -22,7 +22,7 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSection
 @Composable
 fun TestHistoryScreen(navController: NavHostController) {
     Scaffold(
-        topBar = { AppTopBar(navController, "Test History") }
+        topBar = { AppTopBar(navController, title = "Test History") }
     ) {
 
         Column(

@@ -33,7 +33,7 @@ fun SectionTitle(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 imageVector = icon, contentDescription = null, tint =
                     MaterialTheme.colorScheme.primary, modifier = Modifier.size(IconSizeMedium)
@@ -41,7 +41,7 @@ fun SectionTitle(
             Spacer(Modifier.width(SpacingMedium))
             Text(
                 title, style = MaterialTheme.typography.titleMedium.copy(
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
