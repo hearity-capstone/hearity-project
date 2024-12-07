@@ -2,6 +2,7 @@ package com.hearity_capstone.hearity.ui.screens.main.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,7 +16,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.History
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.R
+import com.hearity_capstone.hearity.graphs.navigateToAddTestResultScreen
 import com.hearity_capstone.hearity.graphs.navigateToProfileGraph
 import com.hearity_capstone.hearity.graphs.navigateToTestHistoryScreen
 import com.hearity_capstone.hearity.ui.common.SectionTitle
@@ -49,29 +54,38 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 fun HomeScreen(
     rootNavController: NavHostController,
 ) {
-    Column(
-        Modifier.padding(horizontal = PaddingMedium)
-    ) {
-        TopBar(onProfileClick = { rootNavController.navigateToProfileGraph() })
+    Box(Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier
+            Modifier
+                .padding(horizontal = PaddingMedium)
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
         ) {
-            Spacer(Modifier.height(SpacingItem))
-            AudiometryCard()
-            Spacer(Modifier.height(SpacingSection))
-            TreatmentPlanSection()
-            Spacer(Modifier.height(SpacingSectionLarge))
-            SectionTitle(
-                title = "Test History",
-                icon = Icons.Filled.History,
-                actionTitle = "See All",
-                action = { rootNavController.navigateToTestHistoryScreen() })
-            Spacer(Modifier.height(SpacingSection))
-            TestHistory(rootNavController = rootNavController)
-            Spacer(Modifier.height(SpacingItem))
+            TopBar(onProfileClick = { rootNavController.navigateToProfileGraph() })
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Spacer(Modifier.height(SpacingItem))
+                AudiometryCard()
+                Spacer(Modifier.height(SpacingSection))
+                TreatmentPlanSection()
+                Spacer(Modifier.height(SpacingSectionLarge))
+                SectionTitle(
+                    title = "Test History",
+                    icon = Icons.Filled.History,
+                    actionTitle = "See All",
+                    action = { rootNavController.navigateToTestHistoryScreen() })
+                Spacer(Modifier.height(SpacingSection))
+                TestHistory(rootNavController = rootNavController)
+                Spacer(Modifier.height(SpacingItem))
+            }
         }
+        FAB(
+            Modifier
+                .align(Alignment.BottomEnd)
+                .padding(PaddingMedium),
+            onClick = { rootNavController.navigateToAddTestResultScreen() })
     }
 }
 
@@ -118,5 +132,24 @@ fun TopBar(onProfileClick: () -> Unit = {}) {
                     .padding(1.dp)
             )
         }
+    }
+}
+
+@Composable
+private fun FAB(modifier: Modifier = Modifier, onClick: () -> Unit) {
+    FloatingActionButton(
+        modifier = modifier,
+        onClick = { onClick() },
+        elevation = FloatingActionButtonDefaults.elevation(
+            defaultElevation = 0.dp,
+            pressedElevation = 0.dp
+        ),
+        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            tint = MaterialTheme.colorScheme.onPrimary,
+            contentDescription = "Add Audiometry Test Result",
+        )
     }
 }
