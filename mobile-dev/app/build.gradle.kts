@@ -86,4 +86,7 @@ dependencies {
 
     // calendar
     implementation(libs.kizitonwose.calendar.compose)
+
+    // Gen ai
+    implementation(libs.generativeai)
 }
