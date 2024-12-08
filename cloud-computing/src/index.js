@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import express from 'express';
-import { connect } from './config/database.config.js';
 import { authRouter } from './routes/auth.route.js';
 import { testRouter } from './routes/test.route.js';
 import { forecastRouter } from './routes/forecast.route.js';
@@ -20,6 +19,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-	connect();
+	// connect();
 	console.log(`Server running at http://localhost:${port}`);
 });

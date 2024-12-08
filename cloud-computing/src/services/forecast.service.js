@@ -1,10 +1,15 @@
+import bigQuery from '../config/database.config.js';
 import { createResponse } from '../helpers/createResponse.js';
-import Forecast from '../models/forecast.model.js';
+
 
 const getForecastResult = async (id) => {
-	const forecastResult = await Forecast.find({ user_id: id });
-	console.log(forecastResult.lenght < 1);
-	if (forecastResult.lenght < 1) return createResponse(404, 'Forecast result not found');
+	const options = {
+		query: `SELECT * FROM \`hearity.forecasting\` WHERE user_id = @value`,
+		params: { value: id },
+	};
+	const [forecastResult] = await bigQuery.query(options);
+	
+	if (forecastResult === undefined) return createResponse(404, 'Forecast result not found');
 
 	return createResponse(200, 'Success get forecast result', { data: forecastResult });
 };
