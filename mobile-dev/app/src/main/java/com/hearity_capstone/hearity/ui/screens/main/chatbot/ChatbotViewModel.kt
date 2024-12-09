@@ -6,33 +6,43 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
+import com.hearity_capstone.hearity.BuildConfig
 import com.hearity_capstone.hearity.data.model.ChatMessageModel
 import kotlinx.coroutines.launch
 
 class ChatbotViewModel : ViewModel() {
 
+    val apiKey = BuildConfig.GEMINI_API_KEY
     private val keywords = listOf("hearing", "ear", "sound", "deafness", "hearing loss")
-    private val greet =
-        listOf("hello", "hi", "hey", "good morning", "good afternoon", "good evening")
 
     val messageList by lazy {
-        mutableStateListOf<ChatMessageModel>()
+        val suggestions = listOf(
+            "What is Hearing Loss?",
+            "What is Hearing Aid?",
+            "How can I maintain good ear health?",
+            "What are common causes of ear infections?",
+            "When should I consult an audiologist?"
+        )
+
+        val randomSuggestion = suggestions.random()
+
+        mutableStateListOf(
+            ChatMessageModel(
+                "Hello Welcome to Hearity App, How can I help you today?\n" +
+                        "Here is a suggestion for you: \n- $randomSuggestion",
+                "model"
+            )
+        )
     }
 
     @SuppressLint("SecretInSource")
     val generativeModel: GenerativeModel = GenerativeModel(
         modelName = "gemini-pro",
-        apiKey = "AIzaSyD4zxEarlkbdWlkOV-3Nx4ZqLdZ7ZVgvMY"
+        apiKey = apiKey
     )
 
     private fun isRelevantToHearingHealth(response: String): Boolean {
         return keywords.any {
-            response.contains(it, ignoreCase = true)
-        }
-    }
-
-    private fun isRelevantToGreetings(response: String): Boolean {
-        return greet.any {
             response.contains(it, ignoreCase = true)
         }
     }
@@ -44,9 +54,6 @@ class ChatbotViewModel : ViewModel() {
                 val questionWithContext =
                     "answer only and about hearing health: $question"
 
-                val greetings =
-                    "answer the greetings like u are an chatbot for Hearity App that a service for hearing health and welcoming user to your app: $question"
-
                 val chat = generativeModel.startChat(
                     history = messageList.map {
                         content(it.role) { text(it.message) }
@@ -57,10 +64,8 @@ class ChatbotViewModel : ViewModel() {
                 messageList.add(ChatMessageModel("Typing....", "model"))
 
                 val response = chat.sendMessage(questionWithContext)
-                val greeting = chat.sendMessage(greetings)
 
                 val cleanResponse = response.text.toString().replace("**", "")
-                val cleanGreetings = greeting.text.toString().replace("**", "")
 
                 if (!isRelevantToHearingHealth(cleanResponse)) {
                     messageList.removeLast()
@@ -75,18 +80,6 @@ class ChatbotViewModel : ViewModel() {
                     messageList.add(ChatMessageModel(cleanResponse, "model"))
                 }
 
-                if (!isRelevantToGreetings(cleanGreetings)) {
-                    messageList.removeLast()
-                    messageList.add(
-                        ChatMessageModel(
-                            "Sorry, I cannot answer your greetings.",
-                            "model"
-                        )
-                    )
-                } else {
-                    messageList.removeLast()
-                    messageList.add(ChatMessageModel(cleanGreetings, "model"))
-                }
             } catch (e: Exception) {
                 messageList.removeLast()
                 messageList.add(ChatMessageModel("Error : " + e.message.toString(), "model"))
@@ -96,5 +89,23 @@ class ChatbotViewModel : ViewModel() {
 
     fun clearChat() {
         messageList.clear()
+
+        val suggestions = listOf(
+            "What is Hearing Loss?",
+            "What is Hearing Aid?",
+            "How can I maintain good ear health?",
+            "What are common causes of ear infections?",
+            "When should I consult an audiologist?"
+        )
+
+        val randomSuggestion = suggestions.random()
+
+        messageList.add(
+            ChatMessageModel(
+                "Hello Welcome to Hearity App, How can I help you today?\n" +
+                        "Here is a suggestion for you: \n- $randomSuggestion",
+                "model"
+            )
+        )
     }
 }

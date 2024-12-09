@@ -26,7 +26,7 @@ fun Header(modifier: Modifier = Modifier, onClearClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            "HeaRity Bot", color = MaterialTheme.colorScheme.onSurface,
+            "HeaRity Chatbot", color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )

@@ -18,6 +18,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "BASE_URL", "\"Write your API here\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"AIzaSyD4zxEarlkbdWlkOV-3Nx4ZqLdZ7ZVgvMY\"")
 
         vectorDrawables {
             useSupportLibrary = true
