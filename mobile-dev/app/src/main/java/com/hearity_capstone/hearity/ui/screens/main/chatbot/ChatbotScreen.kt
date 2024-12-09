@@ -84,9 +84,11 @@ fun ChatbotScreen(viewModel: ChatbotViewModel) {
                 .weight(1f)
         ) {
             if (viewModel.messageList.isEmpty()) {
-                Box(Modifier
-                    .fillMaxWidth()
-                    .weight(1f), contentAlignment = Alignment.Center) {
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .weight(1f), contentAlignment = Alignment.Center
+                ) {
                     EmptyChat()
                 }
             } else {
@@ -97,7 +99,10 @@ fun ChatbotScreen(viewModel: ChatbotViewModel) {
             modifier = Modifier.positionAwareImePadding(),
             message = message,
             onMessageChange = { v -> message = v },
-            onSendClick = { viewModel.sendMessage(message) },
+            onSendClick = {
+                viewModel.sendMessage(message)
+                message = ""
+            },
             context = LocalContext.current
         )
     }
@@ -133,7 +138,7 @@ private fun EmptyChat(modifier: Modifier = Modifier) {
         )
         Spacer(Modifier.height(SpacingSection))
         Text(
-            "Ask Hearity ..",
+            "Ask HeaRity ..",
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface
         )
