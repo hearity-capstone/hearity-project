@@ -54,13 +54,10 @@ fun TestDetailScreen(navController: NavHostController, id: Int? = null) {
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(
-                    top = it.calculateTopPadding(),
-                    start = PaddingMedium,
-                    end = PaddingMedium
-                ),
+                .padding(it)
+                .padding(horizontal = PaddingMedium)
+                .fillMaxSize()
         ) {
 
             Spacer(Modifier.height(SpacingMedium))
@@ -130,10 +127,8 @@ fun TestDetailScreen(navController: NavHostController, id: Int? = null) {
                             style = MaterialTheme.typography.bodyMedium,
                             overflow = TextOverflow.Ellipsis
                         )
-                        Spacer(Modifier.height(SpacingItem))
                     }
                 }
-                Spacer(Modifier.height(SpacingSection))
             }
         }
     }

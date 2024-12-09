@@ -61,7 +61,7 @@ fun OverviewCard(testResult: TestResultModel) {
                             style = MaterialTheme.typography.titleMedium,
                         )
                         Text(
-                            "RS. Prima Medika",
+                            testResult.hospitalName,
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSecondaryContainer
                         )

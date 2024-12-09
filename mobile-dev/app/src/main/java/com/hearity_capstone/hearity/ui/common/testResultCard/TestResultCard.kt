@@ -81,6 +81,7 @@ fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = 
                         Spacer(Modifier.width(SpacingItem))
                         Text(
                             text = testResult.doctorName,
+                            Modifier.width(200.dp),
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Bold,
                             maxLines = 1,
