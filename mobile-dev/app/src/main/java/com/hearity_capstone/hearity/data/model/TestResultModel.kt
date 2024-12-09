@@ -5,6 +5,7 @@ import java.time.LocalDate
 data class TestResultModel(
     val id: Int,
     val doctorName: String,
+    val hospitalName: String,
     val date: LocalDate,
     val summary: String,
     val earFrequency: EarFrequency,

@@ -93,7 +93,7 @@ fun HearingLevelSummaryTable(modifier: Modifier = Modifier, testResult: TestResu
                     modifier = Modifier.weight(1f),
                 )
                 Text(
-                    "${testResultAverageLeftEarFrequency.toInt()}dB",
+                    "$testResultAverageLeftEarFrequency dB",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center
@@ -115,7 +115,7 @@ fun HearingLevelSummaryTable(modifier: Modifier = Modifier, testResult: TestResu
                     modifier = Modifier.weight(1f),
                 )
                 Text(
-                    "${testResultAverageRightEarFrequency.toInt()}dB",
+                    "$testResultAverageRightEarFrequency dB",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center

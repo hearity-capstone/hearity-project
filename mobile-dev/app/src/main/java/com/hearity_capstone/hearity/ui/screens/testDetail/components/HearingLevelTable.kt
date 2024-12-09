@@ -34,23 +34,23 @@ fun HearingLevelTable(testResult: TestResultModel, modifier: Modifier = Modifier
     val data = listOf(
         listOf(
             "500 Hz",
-            "${leftTestResult.freq500Hz.toInt()} dB",
-            "${rightTestResult.freq500Hz.toInt()} dB"
+            "${leftTestResult.freq500Hz} dB",
+            "${rightTestResult.freq500Hz} dB"
         ),
         listOf(
             "1000 Hz",
-            "${leftTestResult.freq1000Hz.toInt()} dB",
-            "${rightTestResult.freq1000Hz.toInt()} dB"
+            "${leftTestResult.freq1000Hz} dB",
+            "${rightTestResult.freq1000Hz} dB"
         ),
         listOf(
             "2000 Hz",
-            "${leftTestResult.freq2000Hz.toInt()} dB",
-            "${rightTestResult.freq2000Hz.toInt()} dB"
+            "${leftTestResult.freq2000Hz} dB",
+            "${rightTestResult.freq2000Hz} dB"
         ),
         listOf(
             "4000 Hz",
-            "${leftTestResult.freq4000Hz.toInt()} dB",
-            "${rightTestResult.freq4000Hz.toInt()} dB"
+            "${leftTestResult.freq4000Hz} dB",
+            "${rightTestResult.freq4000Hz} dB"
         ),
     )
 
@@ -72,7 +72,7 @@ fun HearingLevelTable(testResult: TestResultModel, modifier: Modifier = Modifier
         ) {
             LazyVerticalGrid(
                 modifier = Modifier
-                    .height(132.dp)
+                    .height(160.dp)
                     .clip(MaterialTheme.shapes.large)
                     .background(
                         color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(
