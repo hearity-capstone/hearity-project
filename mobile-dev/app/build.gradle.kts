@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"Write your API here\"")
+        buildConfigField("String", "BASE_URL", "\"https://hearity-capstone.et.r.appspot.com\"")
         buildConfigField("String", "GEMINI_API_KEY", "\"AIzaSyD4zxEarlkbdWlkOV-3Nx4ZqLdZ7ZVgvMY\"")
 
         vectorDrawables {
@@ -77,6 +77,11 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.material.icons.extended)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
     // vico chart
     implementation(libs.vico.compose)

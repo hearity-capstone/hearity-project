@@ -17,10 +17,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,24 +24,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hearity_capstone.hearity.R
-import com.hearity_capstone.hearity.graphs.navigateToMainGraphAndClearBackStack
 import com.hearity_capstone.hearity.graphs.navigateToSignUp
-import com.hearity_capstone.hearity.ui.common.AppButton
-import com.hearity_capstone.hearity.ui.common.AppEmailTextField
-import com.hearity_capstone.hearity.ui.common.AppPasswordTextField
 import com.hearity_capstone.hearity.ui.screens.authentication.components.AuthType
 import com.hearity_capstone.hearity.ui.screens.authentication.components.AuthWithGoogleButton
+import com.hearity_capstone.hearity.ui.screens.authentication.components.LoginForm
 import com.hearity_capstone.hearity.ui.screens.authentication.components.OrDivider
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
-import com.hearity_capstone.hearity.util.ValidatorUtils
 
 @Composable
 fun LoginScreen(
-    navController: NavController
+    navController: NavController,
+    authViewModel: AuthViewModel
 ) {
 
     Scaffold { it ->
@@ -84,8 +77,8 @@ fun LoginScreen(
             LoginForm(
                 navController = navController,
                 modifier = Modifier.fillMaxWidth(),
+                authViewModel = authViewModel
             )
-
 
             Spacer(Modifier.height(SpacingSectionLarge))
             OrDivider()
@@ -110,63 +103,5 @@ fun LoginScreen(
                 )
             }
         }
-    }
-}
-
-
-@Composable
-private fun LoginForm(
-    navController: NavController,
-    modifier: Modifier = Modifier,
-) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
-    var isPasswordVisible by remember { mutableStateOf(false) }
-
-    var isEmailValid by remember { mutableStateOf(true) }
-    var isPasswordValid by remember { mutableStateOf(true) }
-
-    fun validateForm() {
-        isEmailValid = ValidatorUtils.validateEmail(email)
-        isPasswordValid = ValidatorUtils.validatePassword(password)
-    }
-
-    Column(
-        modifier = modifier,
-    ) {
-        AppEmailTextField(
-            value = email,
-            onValueChange = { value ->
-                email = value
-                isEmailValid = ValidatorUtils.validateEmail(value)
-            },
-            isError = !isEmailValid,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Spacer(Modifier.height(SpacingItem))
-        AppPasswordTextField(
-            value = password,
-            onValueChange = { value ->
-                password = value
-                isPasswordValid = ValidatorUtils.validatePassword(value)
-            },
-            modifier = Modifier.fillMaxWidth(),
-            isPasswordVisible = isPasswordVisible,
-            isError = !isPasswordValid,
-            onPasswordVisibilityChange = { isPasswordVisible = !isPasswordVisible }
-        )
-
-        Spacer(Modifier.height(SpacingSectionLarge))
-
-        AppButton(
-            onClick = {
-                validateForm()
-                if (isEmailValid && isPasswordValid) navController.navigateToMainGraphAndClearBackStack()
-            },
-            enabled = isPasswordValid && isEmailValid,
-            modifier = Modifier.fillMaxWidth(),
-            label = "Login",
-        )
     }
 }

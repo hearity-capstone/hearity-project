@@ -1,6 +1,7 @@
 package com.hearity_capstone.hearity.graphs
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -9,6 +10,7 @@ import com.hearity_capstone.hearity.ui.animation.scaleFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideFromRightEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideToRightExitTransition
 import com.hearity_capstone.hearity.ui.screens.addTestResult.AddTestResultScreen
+import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.screens.main.MainScreen
 import com.hearity_capstone.hearity.ui.screens.profile.ProfileScreen
 import com.hearity_capstone.hearity.ui.screens.testDetail.TestDetailScreen
@@ -16,12 +18,14 @@ import com.hearity_capstone.hearity.ui.screens.testHistory.TestHistoryScreen
 
 @Composable
 fun RootNavigationGraph(navController: NavHostController) {
+    val authViewModel: AuthViewModel = viewModel()
+
     NavHost(
         navController = navController,
         route = Graph.ROOT,
         startDestination = Graph.AUTHENTICATION
     ) {
-        authNavGraph(navController = navController)
+        authNavGraph(navController = navController, authViewModel = authViewModel)
         composable(
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.MAIN
