@@ -1,7 +1,6 @@
 package com.hearity_capstone.hearity.ui.screens.main.chatbot.components
 
 import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -34,6 +33,7 @@ fun MessageInputField(
     modifier: Modifier = Modifier,
     message: String,
     onMessageChange: (String) -> Unit = {},
+    onSendClick: () -> Unit = {},
     context: Context
 ) {
     Row(
@@ -63,7 +63,7 @@ fun MessageInputField(
                 .size(IconContainerSizeMedium)
                 .clickable { },
             onClick = {
-                Toast.makeText(context, "This feature isn't ready yet!", Toast.LENGTH_SHORT).show()
+                onSendClick()
             },
         ) {
             Icon(

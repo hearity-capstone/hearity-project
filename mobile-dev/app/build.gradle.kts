@@ -18,6 +18,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "BASE_URL", "\"Write your API here\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"AIzaSyD4zxEarlkbdWlkOV-3Nx4ZqLdZ7ZVgvMY\"")
 
         vectorDrawables {
             useSupportLibrary = true
@@ -86,4 +87,7 @@ dependencies {
 
     // calendar
     implementation(libs.kizitonwose.calendar.compose)
+
+    // Gen ai
+    implementation(libs.generativeai)
 }
