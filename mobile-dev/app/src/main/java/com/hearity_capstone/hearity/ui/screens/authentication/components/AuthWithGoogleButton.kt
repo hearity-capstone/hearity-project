@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.authentication
+package com.hearity_capstone.hearity.ui.screens.authentication.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,7 +32,9 @@ fun AuthWithGoogleButton(
         AuthType.SIGN_UP -> "Sign Up with Google"
     }
     OutlinedButton(
-        modifier = modifier.fillMaxWidth().height(48.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .height(48.dp),
         shape = MaterialTheme.shapes.large,
         onClick = { onClick() }
     ){

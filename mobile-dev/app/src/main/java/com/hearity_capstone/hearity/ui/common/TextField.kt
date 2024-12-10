@@ -32,6 +32,7 @@ fun AppTextField(
     maxLine: Int = 1,
     enable: Boolean = true,
     singleLine: Boolean = true,
+    isError: Boolean = false,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     leadingIcon: @Composable (() -> Unit)? = null,
@@ -39,6 +40,8 @@ fun AppTextField(
     colors: TextFieldColors = TextFieldDefaults.colors(
         unfocusedContainerColor = Color.Transparent,
         focusedContainerColor = Color.Transparent,
+        errorLabelColor = MaterialTheme.colorScheme.error,
+        errorContainerColor = MaterialTheme.colorScheme.errorContainer,
     )
 ) {
     OutlinedTextField(
@@ -46,6 +49,7 @@ fun AppTextField(
         onValueChange = { onValueChange(it) },
         label = { Text(text = label, style = MaterialTheme.typography.bodyMedium) },
         value = value,
+        isError = isError,
         readOnly = readOnly,
         shape = MaterialTheme.shapes.large,
         enabled = enable,
@@ -54,6 +58,7 @@ fun AppTextField(
         keyboardOptions = keyboardOptions,
         visualTransformation = visualTransformation,
         leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
         colors = colors
     )
 }
@@ -63,6 +68,7 @@ fun AppPasswordTextField(
     modifier: Modifier = Modifier,
     value: String,
     label: String = "Password",
+    isError: Boolean,
     onValueChange: (String) -> Unit,
     isPasswordVisible: Boolean = false,
     onPasswordVisibilityChange: (Boolean) -> Unit = {}
@@ -72,6 +78,7 @@ fun AppPasswordTextField(
         onValueChange = { onValueChange(it) },
         label = label,
         value = value,
+        isError = isError,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         leadingIcon =  { Icon(Icons.Default.Lock, contentDescription = "password icon") },
@@ -86,12 +93,14 @@ fun AppEmailTextField(
     modifier: Modifier = Modifier,
     value: String,
     label: String = "Email",
+    isError: Boolean,
     onValueChange: (String) -> Unit,
 ) {
     AppTextField(
         modifier = modifier.fillMaxWidth(),
         onValueChange = { onValueChange(it) },
         value = value,
+        isError = isError,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         label = label,
         leadingIcon =  { Icon(Icons.Default.Email, contentDescription = "password icon") }
