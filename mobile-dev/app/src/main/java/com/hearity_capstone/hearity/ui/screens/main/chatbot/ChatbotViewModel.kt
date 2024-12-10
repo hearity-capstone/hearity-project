@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class ChatbotViewModel : ViewModel() {
 
-    val apiKey = BuildConfig.GEMINI_API_KEY
+    private val apiKey = BuildConfig.GEMINI_API_KEY
     private val keywords = listOf("hearing", "ear", "sound", "deafness", "hearing loss")
 
     val messageList by lazy {
@@ -28,7 +28,7 @@ class ChatbotViewModel : ViewModel() {
 
         mutableStateListOf(
             ChatMessageModel(
-                "Hello Welcome to Hearity App, How can I help you today?\n" +
+                "Hello Welcome to HeaRity App, How can I help you today?\n" +
                         "Here is a suggestion for you: \n- $randomSuggestion",
                 "model"
             )
@@ -102,7 +102,7 @@ class ChatbotViewModel : ViewModel() {
 
         messageList.add(
             ChatMessageModel(
-                "Hello Welcome to Hearity App, How can I help you today?\n" +
+                "Hello Welcome to HeaRity App, How can I help you today?\n" +
                         "Here is a suggestion for you: \n- $randomSuggestion",
                 "model"
             )
