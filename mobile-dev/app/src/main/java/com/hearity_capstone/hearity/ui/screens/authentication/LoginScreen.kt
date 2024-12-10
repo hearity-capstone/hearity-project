@@ -38,9 +38,7 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
 @Composable
 fun LoginScreen(
     navController: NavController,
-    authViewModel: AuthViewModel
 ) {
-
     Scaffold { it ->
         Column(
             modifier = Modifier
@@ -77,7 +75,6 @@ fun LoginScreen(
             LoginForm(
                 navController = navController,
                 modifier = Modifier.fillMaxWidth(),
-                authViewModel = authViewModel
             )
 
             Spacer(Modifier.height(SpacingSectionLarge))

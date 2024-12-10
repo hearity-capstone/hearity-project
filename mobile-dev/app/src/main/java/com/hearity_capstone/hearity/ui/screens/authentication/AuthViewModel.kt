@@ -8,8 +8,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class AuthViewModel : ViewModel() {
-    private val repository = AuthRepository()
+class AuthViewModel(
+    private val repository: AuthRepository
+) : ViewModel() {
     private val _isLoading = MutableStateFlow<Boolean>(false)
     private val _isLoggedIn = MutableStateFlow<Boolean>(false)
     private val _loginState = MutableStateFlow<LoginResponse?>(null)
@@ -20,11 +21,11 @@ class AuthViewModel : ViewModel() {
     val loginState: StateFlow<LoginResponse?> = _loginState
     val errorState: StateFlow<String?> = _errorState
 
-    fun login(username: String, password: String) {
+    fun login(email: String, password: String) {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = repository.login(username, password)
+                val response = repository.login(email, password)
                 if (response.statusCode == 200) {
                     _isLoggedIn.value = true
                     _loginState.value = response

@@ -23,13 +23,14 @@ import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
 import com.hearity_capstone.hearity.util.ValidatorUtils
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun LoginForm(
     navController: NavController,
     modifier: Modifier = Modifier,
-    authViewModel: AuthViewModel
+    authViewModel: AuthViewModel = koinViewModel()
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
