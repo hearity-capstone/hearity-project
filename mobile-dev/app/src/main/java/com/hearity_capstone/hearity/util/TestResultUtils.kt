@@ -19,19 +19,19 @@ object TestResultUtils {
 
     fun createLeftEarFloatEntries(earFrequency: EarFrequency): List<FloatEntry> {
         return listOf(
-            FloatEntry(x = 0f, y = earFrequency.left.freq500Hz),
-            FloatEntry(x = 1f, y = earFrequency.left.freq1000Hz),
-            FloatEntry(x = 2f, y = earFrequency.left.freq2000Hz),
-            FloatEntry(x = 3f, y = earFrequency.left.freq4000Hz),
+            FloatEntry(x = 0f, y = -earFrequency.left.freq500Hz),
+            FloatEntry(x = 1f, y = -earFrequency.left.freq1000Hz),
+            FloatEntry(x = 2f, y = -earFrequency.left.freq2000Hz),
+            FloatEntry(x = 3f, y = -earFrequency.left.freq4000Hz),
         )
     }
 
     fun createRightEarFloatEntries(earFrequency: EarFrequency): List<FloatEntry> {
         return listOf(
-            FloatEntry(x = 0f, y = earFrequency.right.freq500Hz),
-            FloatEntry(x = 1f, y = earFrequency.right.freq1000Hz),
-            FloatEntry(x = 2f, y = earFrequency.right.freq2000Hz),
-            FloatEntry(x = 3f, y = earFrequency.right.freq4000Hz)
+            FloatEntry(x = 0f, y = -earFrequency.right.freq500Hz),
+            FloatEntry(x = 1f, y = -earFrequency.right.freq1000Hz),
+            FloatEntry(x = 2f, y = -earFrequency.right.freq2000Hz),
+            FloatEntry(x = 3f, y = -earFrequency.right.freq4000Hz)
         )
     }
 }

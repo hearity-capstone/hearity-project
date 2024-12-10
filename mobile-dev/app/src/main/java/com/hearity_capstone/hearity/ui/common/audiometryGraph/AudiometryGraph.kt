@@ -172,15 +172,17 @@ fun AudiometryGraph(
                         ),
                         tickLength = 0.dp,
                         valueFormatter = { value, _ ->
-                            value.toInt().toString()
+                            (value * (-1.0f)).toInt().toString()
                         },
                         axis = axisLineComponent(
+
                             strokeWidth = 2.dp,
                             strokeColor = MaterialTheme.colorScheme.outlineVariant
                         ),
                         tick = lineComponent(color = androidx.compose.ui.graphics.Color.Transparent),
                         itemPlacer = AxisItemPlacer.Vertical.default(
-                            maxItemCount = 6
+                            maxItemCount = 6,
+                            shiftTopLines = false
                         ),
                     ),
                     bottomAxis = rememberBottomAxis(
