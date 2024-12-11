@@ -87,6 +87,9 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
 
+    // Datastore
+    implementation(libs.androidx.datastore.preferences)
+
     // vico chart
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m2)

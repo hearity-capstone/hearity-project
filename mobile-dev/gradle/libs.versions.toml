@@ -16,6 +16,8 @@ navigationCompose = "2.8.0"
 calendar-compose = "2.6.0"
 generativeai = "0.9.0"
 
+datastorePreferences = "1.0.0"
+
 koin = "3.5.3"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
@@ -46,6 +48,8 @@ androidx-compose-material = { group = "androidx.wear.compose", name = "compose-m
 vico-views = { module = "com.patrykandpatrick.vico:views", version.ref = "compose" }
 kizitonwose-calendar-compose = { module = "com.kizitonwose.calendar:compose", version.ref = "calendar-compose" }
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
+
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
