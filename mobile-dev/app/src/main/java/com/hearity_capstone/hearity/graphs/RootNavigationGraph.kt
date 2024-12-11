@@ -9,24 +9,28 @@ import com.hearity_capstone.hearity.ui.animation.scaleFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideFromRightEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideToRightExitTransition
 import com.hearity_capstone.hearity.ui.screens.addTestResult.AddTestResultScreen
+import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.screens.main.MainScreen
 import com.hearity_capstone.hearity.ui.screens.profile.ProfileScreen
 import com.hearity_capstone.hearity.ui.screens.testDetail.TestDetailScreen
 import com.hearity_capstone.hearity.ui.screens.testHistory.TestHistoryScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RootNavigationGraph(navController: NavHostController) {
+    val authViewModel: AuthViewModel = koinViewModel()
+
     NavHost(
         navController = navController,
         route = Graph.ROOT,
         startDestination = Graph.AUTHENTICATION
     ) {
-        authNavGraph(navController = navController)
+        authNavGraph(navController = navController, authViewModel = authViewModel)
         composable(
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.MAIN
         ) {
-            MainScreen(rootNavController = navController)
+            MainScreen(rootNavController = navController, authViewModel = authViewModel)
         }
 
         // Add Test Result
@@ -60,7 +64,7 @@ fun RootNavigationGraph(navController: NavHostController) {
             enterTransition = { slideFromRightEnterTransition() },
             exitTransition = { slideToRightExitTransition() },
         ) {
-            ProfileScreen(navController = navController)
+            ProfileScreen(navController = navController, authViewModel = authViewModel)
         }
     }
 }

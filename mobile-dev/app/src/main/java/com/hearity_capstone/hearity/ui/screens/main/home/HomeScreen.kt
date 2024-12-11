@@ -25,13 +25,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.R
@@ -39,6 +39,7 @@ import com.hearity_capstone.hearity.graphs.navigateToAddTestResultScreen
 import com.hearity_capstone.hearity.graphs.navigateToProfileGraph
 import com.hearity_capstone.hearity.graphs.navigateToTestHistoryScreen
 import com.hearity_capstone.hearity.ui.common.SectionTitle
+import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.screens.main.home.components.AudiometryCard
 import com.hearity_capstone.hearity.ui.screens.main.home.components.TestHistory
 import com.hearity_capstone.hearity.ui.screens.main.home.components.TreatmentPlanSection
@@ -53,14 +54,22 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 @Composable
 fun HomeScreen(
     rootNavController: NavHostController,
+    authViewModel: AuthViewModel
 ) {
+
+    val userState = authViewModel.loginState.collectAsState()
+    var user = userState.value?.data
+
     Box(Modifier.fillMaxSize()) {
         Column(
             Modifier
                 .padding(horizontal = PaddingMedium)
                 .fillMaxSize()
         ) {
-            TopBar(onProfileClick = { rootNavController.navigateToProfileGraph() })
+            TopBar(
+                onProfileClick = { rootNavController.navigateToProfileGraph() },
+                userFirstName = user?.firstName ?: ""
+            )
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -89,9 +98,9 @@ fun HomeScreen(
     }
 }
 
-@Preview
 @Composable
-fun TopBar(onProfileClick: () -> Unit = {}) {
+fun TopBar(onProfileClick: () -> Unit = {}, userFirstName: String) {
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -108,7 +117,7 @@ fun TopBar(onProfileClick: () -> Unit = {}) {
                 )
                 Spacer(Modifier.width(SpacingSmall))
                 Text(
-                    "John",
+                    userFirstName,
                     style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
                         .copy(color = MaterialTheme.colorScheme.onSurface),
                 )

@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.ui.common.AppTopBar
+import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.theme.AvatarSizeLarge
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
@@ -47,7 +49,10 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 
 
 @Composable
-fun ProfileScreen(navController: NavHostController) {
+fun ProfileScreen(navController: NavHostController, authViewModel: AuthViewModel) {
+    val userState = authViewModel.loginState.collectAsState()
+    var user = userState.value?.data
+
     var openAvatarSelectorDialog by remember { mutableStateOf(false) }
     var openEditProfileDialog by remember { mutableStateOf(false) }
     var openSettingsDialog by remember { mutableStateOf(false) }
@@ -117,11 +122,11 @@ fun ProfileScreen(navController: NavHostController) {
                 Spacer(Modifier.width(SpacingSection))
                 Column {
                     Text(
-                        "John Doe",
+                        user?.firstName + " " + user?.lastName,
                         style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
                     )
                     Spacer(Modifier.height(SpacingSmall))
-                    Text("johndoe@mail.com", style = MaterialTheme.typography.bodySmall)
+                    Text(user?.email.toString(), style = MaterialTheme.typography.bodySmall)
                 }
                 Spacer(Modifier.weight(1f))
                 IconButton(

@@ -1,9 +1,10 @@
 package com.hearity_capstone.hearity.data.model
 
-data class LoginResponse(
-    val data: UserModel,
-    val message: String,
-    val statusCode: Int,
-    val token: String
-)
+import com.google.gson.annotations.SerializedName
 
+data class LoginResponse(
+    @SerializedName("data") val data: UserModel,
+    @SerializedName("message") val message: String,
+    @SerializedName("statusCode") val statusCode: Int,
+    @SerializedName("token") val token: String
+)

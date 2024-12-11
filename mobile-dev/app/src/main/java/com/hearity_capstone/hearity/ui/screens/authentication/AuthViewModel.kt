@@ -7,6 +7,8 @@ import com.hearity_capstone.hearity.data.repository.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.io.IOException
 
 class AuthViewModel(
     private val repository: AuthRepository
@@ -32,8 +34,12 @@ class AuthViewModel(
                 } else {
                     _errorState.value = response.message
                 }
+            } catch (e: HttpException) {
+                _errorState.value = "Something went wrong, check your email or password"
+            } catch (e: IOException) {
+                _errorState.value = "Network error, please check your connection"
             } catch (e: Exception) {
-                _errorState.value = e.message
+                _errorState.value = "Unexpected error: ${e.localizedMessage}"
             } finally {
                 _isLoading.value = false
             }

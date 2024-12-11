@@ -25,15 +25,16 @@ import androidx.navigation.compose.rememberNavController
 import androidx.wear.compose.material.Text
 import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.graphs.MainNavGraph
+import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
 
 @Composable
 fun MainScreen(
     rootNavController: NavHostController,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    authViewModel: AuthViewModel,
 ) {
     Scaffold(
-//        contentWindowInsets = WindowInsets(0.dp),
         bottomBar = { BottomBar(navController = navController) }
     ) { padding ->
         Box(
@@ -41,7 +42,11 @@ fun MainScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            MainNavGraph(rootNavController = rootNavController, navController = navController)
+            MainNavGraph(
+                rootNavController = rootNavController,
+                navController = navController,
+                authViewModel = authViewModel
+            )
         }
     }
 }
