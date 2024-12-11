@@ -1,8 +1,9 @@
 package com.hearity_capstone.hearity
 
 import android.app.Application
-import com.hearity_capstone.hearity.data.di.appModule
+import com.hearity_capstone.hearity.data.di.authModule
 import com.hearity_capstone.hearity.data.di.networkModule
+import com.hearity_capstone.hearity.data.di.testResultModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -12,8 +13,9 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(
-                appModule,
-                networkModule
+                networkModule,
+                authModule,
+                testResultModule
             )
         }
     }

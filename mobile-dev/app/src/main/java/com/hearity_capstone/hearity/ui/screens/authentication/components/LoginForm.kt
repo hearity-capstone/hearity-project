@@ -19,10 +19,10 @@ import com.hearity_capstone.hearity.ui.common.AppButton
 import com.hearity_capstone.hearity.ui.common.AppEmailTextField
 import com.hearity_capstone.hearity.ui.common.AppPasswordTextField
 import com.hearity_capstone.hearity.ui.common.LoadingDialog
-import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
 import com.hearity_capstone.hearity.util.ValidatorUtils
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
 
 
 @Composable

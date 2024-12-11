@@ -9,9 +9,9 @@ import com.hearity_capstone.hearity.ui.animation.scaleFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.scaleFadeExitTransition
 import com.hearity_capstone.hearity.ui.animation.slideFromRightEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideToRightExitTransition
-import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.screens.authentication.LoginScreen
 import com.hearity_capstone.hearity.ui.screens.authentication.SignUpScreen
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
 
 fun NavGraphBuilder.authNavGraph(navController: NavHostController, authViewModel: AuthViewModel) {
     navigation(

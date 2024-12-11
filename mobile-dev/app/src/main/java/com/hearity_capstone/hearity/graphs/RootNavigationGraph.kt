@@ -9,16 +9,18 @@ import com.hearity_capstone.hearity.ui.animation.scaleFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideFromRightEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideToRightExitTransition
 import com.hearity_capstone.hearity.ui.screens.addTestResult.AddTestResultScreen
-import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.screens.main.MainScreen
 import com.hearity_capstone.hearity.ui.screens.profile.ProfileScreen
 import com.hearity_capstone.hearity.ui.screens.testDetail.TestDetailScreen
 import com.hearity_capstone.hearity.ui.screens.testHistory.TestHistoryScreen
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RootNavigationGraph(navController: NavHostController) {
     val authViewModel: AuthViewModel = koinViewModel()
+    val testResultViewModel: TestResultViewModel = koinViewModel()
 
     NavHost(
         navController = navController,
@@ -30,7 +32,11 @@ fun RootNavigationGraph(navController: NavHostController) {
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.MAIN
         ) {
-            MainScreen(rootNavController = navController, authViewModel = authViewModel)
+            MainScreen(
+                rootNavController = navController,
+                authViewModel = authViewModel,
+                testResultViewModel = testResultViewModel
+            )
         }
 
         // Add Test Result
@@ -41,7 +47,7 @@ fun RootNavigationGraph(navController: NavHostController) {
             AddTestResultScreen(navController = navController)
         }
 
-        // Test History
+        // Test Result History
         composable(
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.TEST_HISTORY
@@ -49,7 +55,7 @@ fun RootNavigationGraph(navController: NavHostController) {
             TestHistoryScreen(navController = navController)
         }
 
-        // Test Details
+        // Test Result Details
         composable(
             enterTransition = { scaleFadeEnterTransition() },
             route = "${Graph.TEST_DETAILS}/{id}"

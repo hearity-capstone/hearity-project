@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 
 @Composable
-fun LoadingDialog() {
+fun LoadingDialog(title: String = "Loading..") {
     AlertDialog(
         onDismissRequest = { },
         title = {
@@ -22,7 +22,7 @@ fun LoadingDialog() {
         },
         text = {
             Text(
-                text = "Loading..",
+                text = title,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center

@@ -25,7 +25,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,8 +40,8 @@ import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.graphs.navigateToAddTestResultScreen
 import com.hearity_capstone.hearity.graphs.navigateToProfileGraph
 import com.hearity_capstone.hearity.graphs.navigateToTestHistoryScreen
+import com.hearity_capstone.hearity.ui.common.LoadingDialog
 import com.hearity_capstone.hearity.ui.common.SectionTitle
-import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.screens.main.home.components.AudiometryCard
 import com.hearity_capstone.hearity.ui.screens.main.home.components.TestHistory
 import com.hearity_capstone.hearity.ui.screens.main.home.components.TreatmentPlanSection
@@ -50,15 +52,29 @@ import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
 import com.hearity_capstone.hearity.ui.theme.SpacingSmall
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 
 @Composable
 fun HomeScreen(
     rootNavController: NavHostController,
-    authViewModel: AuthViewModel
+    authViewModel: AuthViewModel,
+    testResultViewModel: TestResultViewModel
 ) {
+    // Fetch test results when the screen is first displayed
+    LaunchedEffect(Unit) {
+        testResultViewModel.getAllTestResult()
+    }
+
+    val isTestResultLoading by testResultViewModel.isLoading.collectAsState()
+    val testResultErrorState by testResultViewModel.errorState.collectAsState()
 
     val userState = authViewModel.loginState.collectAsState()
     var user = userState.value?.data
+
+    if (isTestResultLoading) {
+        LoadingDialog("Loading Test Results..")
+    }
 
     Box(Modifier.fillMaxSize()) {
         Column(

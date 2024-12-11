@@ -34,6 +34,7 @@ import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
 
 @Composable
 fun LoginScreen(

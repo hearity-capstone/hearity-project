@@ -38,7 +38,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.ui.common.AppTopBar
-import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.theme.AvatarSizeLarge
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
@@ -46,6 +45,7 @@ import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSmall
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
 
 
 @Composable

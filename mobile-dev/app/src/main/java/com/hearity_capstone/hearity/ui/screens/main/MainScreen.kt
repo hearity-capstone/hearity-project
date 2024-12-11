@@ -25,14 +25,16 @@ import androidx.navigation.compose.rememberNavController
 import androidx.wear.compose.material.Text
 import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.graphs.MainNavGraph
-import com.hearity_capstone.hearity.ui.screens.authentication.AuthViewModel
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 
 @Composable
 fun MainScreen(
     rootNavController: NavHostController,
     navController: NavHostController = rememberNavController(),
     authViewModel: AuthViewModel,
+    testResultViewModel: TestResultViewModel
 ) {
     Scaffold(
         bottomBar = { BottomBar(navController = navController) }
@@ -45,7 +47,8 @@ fun MainScreen(
             MainNavGraph(
                 rootNavController = rootNavController,
                 navController = navController,
-                authViewModel = authViewModel
+                authViewModel = authViewModel,
+                testResultViewModel = testResultViewModel
             )
         }
     }

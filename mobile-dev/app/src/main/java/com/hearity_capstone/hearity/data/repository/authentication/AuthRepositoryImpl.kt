@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.data.repository
+package com.hearity_capstone.hearity.data.repository.authentication
 
 import com.hearity_capstone.hearity.data.api.ApiService
 import com.hearity_capstone.hearity.data.model.LoginRequest
