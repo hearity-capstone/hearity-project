@@ -18,19 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hearity_capstone.hearity.data.model.TestResultModel
+import com.hearity_capstone.hearity.data.model.testResult.TestResultModel
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
-import com.hearity_capstone.hearity.util.TestResultUtils
 
 @Composable
 fun HearingLevelSummaryTable(modifier: Modifier = Modifier, testResult: TestResultModel) {
-
-    val testResultAverageLeftEarFrequency =
-        TestResultUtils.calculateAverageLeftEarFrequency(testResult.earFrequency)
-    val testResultAverageRightEarFrequency =
-        TestResultUtils.calculateAverageRightEarFrequency(testResult.earFrequency)
 
     OutlinedCard(
         modifier = Modifier.fillMaxWidth(),
@@ -88,19 +82,19 @@ fun HearingLevelSummaryTable(modifier: Modifier = Modifier, testResult: TestResu
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Left Ear",
+                    "AS (Left)",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.weight(1f),
                 )
                 Text(
-                    "$testResultAverageLeftEarFrequency dB",
+                    "${testResult.AS} dB",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center
                 )
                 HearingSeverityChip(
                     Modifier.weight(1f),
-                    testResultAverageLeftEarFrequency
+                    testResult.AS
                 )
             }
             Spacer(Modifier.height(SpacingItem))
@@ -110,19 +104,19 @@ fun HearingLevelSummaryTable(modifier: Modifier = Modifier, testResult: TestResu
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Right Ear",
+                    "AD (Right)",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.weight(1f),
                 )
                 Text(
-                    "$testResultAverageRightEarFrequency dB",
+                    "${testResult.AD} dB",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Center
                 )
                 HearingSeverityChip(
                     Modifier.weight(1f),
-                    testResultAverageRightEarFrequency
+                    testResult.AD
                 )
             }
         }

@@ -8,13 +8,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hearity_capstone.hearity.data.dummy.testResultDummyData
 import com.hearity_capstone.hearity.ui.common.audiometryGraph.AudiometryGraph
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 
 @Composable
-fun AudiometryCard() {
-    val testResultDummy = testResultDummyData[0]
-
+fun AudiometryCard(testResultViewModel: TestResultViewModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,6 +25,6 @@ fun AudiometryCard() {
             disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
         )
     ) {
-        AudiometryGraph(testResultDummy)
+        AudiometryGraph(testResultViewModel)
     }
 }

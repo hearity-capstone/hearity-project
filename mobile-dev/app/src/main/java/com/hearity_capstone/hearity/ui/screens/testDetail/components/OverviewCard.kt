@@ -19,14 +19,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.hearity_capstone.hearity.data.model.TestResultModel
+import com.hearity_capstone.hearity.data.model.testResult.TestResultModel
 import com.hearity_capstone.hearity.ui.common.AppCard
 import com.hearity_capstone.hearity.ui.common.AppCardSize
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
 import com.hearity_capstone.hearity.ui.theme.PaddingExtraSmall
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
-import com.hearity_capstone.hearity.util.DateUtils
 
 @Composable
 fun OverviewCard(testResult: TestResultModel) {
@@ -57,11 +56,11 @@ fun OverviewCard(testResult: TestResultModel) {
 
                     Column {
                         Text(
-                            testResult.doctorName,
+                            testResult.doctor,
                             style = MaterialTheme.typography.titleMedium,
                         )
                         Text(
-                            testResult.hospitalName,
+                            testResult.hospital,
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSecondaryContainer
                         )
@@ -84,7 +83,7 @@ fun OverviewCard(testResult: TestResultModel) {
                 )
                 Spacer(Modifier.width(SpacingItem))
                 Text(
-                    DateUtils.formatLocalDate(testResult.date),
+                    testResult.date.toString(),
                     style = MaterialTheme.typography.labelSmall,
                 )
             }

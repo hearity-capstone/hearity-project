@@ -60,12 +60,10 @@ fun HomeScreen(
     authViewModel: AuthViewModel,
     testResultViewModel: TestResultViewModel
 ) {
-
-
     val isTestResultLoading by testResultViewModel.isLoading.collectAsState()
 
-    val userState = authViewModel.loginState.collectAsState()
-    var user = userState.value
+    val userState by authViewModel.loginState.collectAsState()
+    var user = userState
 
     if (isTestResultLoading) {
         LoadingDialog("Loading Test Results..")
@@ -87,7 +85,7 @@ fun HomeScreen(
                     .verticalScroll(rememberScrollState())
             ) {
                 Spacer(Modifier.height(SpacingItem))
-                AudiometryCard()
+                AudiometryCard(testResultViewModel)
                 Spacer(Modifier.height(SpacingSection))
                 TreatmentPlanSection()
                 Spacer(Modifier.height(SpacingSectionLarge))
@@ -97,7 +95,10 @@ fun HomeScreen(
                     actionTitle = "See All",
                     action = { rootNavController.navigateToTestHistoryScreen() })
                 Spacer(Modifier.height(SpacingSection))
-                TestHistory(rootNavController = rootNavController)
+                TestHistory(
+                    rootNavController = rootNavController,
+                    testResultViewModel = testResultViewModel
+                )
                 Spacer(Modifier.height(SpacingItem))
             }
         }

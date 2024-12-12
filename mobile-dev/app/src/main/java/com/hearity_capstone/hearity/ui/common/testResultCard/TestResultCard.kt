@@ -31,7 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.hearity_capstone.hearity.data.model.TestResultModel
+import com.hearity_capstone.hearity.data.model.testResult.TestResultModel
 import com.hearity_capstone.hearity.ui.common.AppButton
 import com.hearity_capstone.hearity.ui.common.AppButtonSize
 import com.hearity_capstone.hearity.ui.common.AppCard
@@ -39,7 +39,6 @@ import com.hearity_capstone.hearity.ui.common.AppCardSize
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
-import com.hearity_capstone.hearity.util.DateUtils
 
 
 @Composable
@@ -66,7 +65,7 @@ fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = 
             Row {
                 Column {
                     Text(
-                        text = DateUtils.formatLocalDate(testResult.date),
+                        testResult.date.value.toString(),
                         style = MaterialTheme.typography.labelSmall,
                     )
                     Spacer(Modifier.height(SpacingSection))
@@ -80,7 +79,7 @@ fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = 
                         )
                         Spacer(Modifier.width(SpacingItem))
                         Text(
-                            text = testResult.doctorName,
+                            text = testResult.doctor,
                             Modifier.width(200.dp),
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Bold,
@@ -110,7 +109,7 @@ fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = 
                     )
                     Spacer(Modifier.height(SpacingSection))
                     Text(
-                        testResult.summary,
+                        "Audiological Diagnosis",
                         textAlign = TextAlign.Justify,
                         style = MaterialTheme.typography.bodySmall,
                         maxLines = 3,

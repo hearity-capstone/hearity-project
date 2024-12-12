@@ -26,8 +26,9 @@ fun HearingSeverityChip(modifier: Modifier, hearingLevel: Float) {
             modifier = Modifier
                 .background(
                     color = when (hearingLevel) {
-                        in 0f..41f -> SeverityLow
-                        in 41f..60f -> SeverityModerate
+                        in 0f..25f -> SeverityLow
+                        in 25f..40f -> SeverityLow
+                        in 40f..60f -> SeverityModerate
                         in 60f..90f -> SeverityHigh
                         else -> SeveritySevere
                     },
@@ -42,8 +43,9 @@ fun HearingSeverityChip(modifier: Modifier, hearingLevel: Float) {
         ) {
             Text(
                 text = when (hearingLevel) {
-                    in 0f..41f -> "Low"
-                    in 41f..60f -> "Moderate"
+                    in 0f..25f -> "Normal"
+                    in 25f..40f -> "Low"
+                    in 40f..60f -> "Moderate"
                     in 60f..90f -> "High"
                     else -> "Severe"
                 },

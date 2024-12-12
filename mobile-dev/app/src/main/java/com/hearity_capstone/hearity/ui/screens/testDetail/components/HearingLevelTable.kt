@@ -17,7 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hearity_capstone.hearity.data.model.TestResultModel
+import com.hearity_capstone.hearity.data.model.testResult.TestResultModel
 import com.hearity_capstone.hearity.ui.common.AppCard
 import com.hearity_capstone.hearity.ui.common.AppCardSize
 import com.hearity_capstone.hearity.ui.theme.PaddingExtraSmall
@@ -28,29 +28,27 @@ fun HearingLevelTable(testResult: TestResultModel, modifier: Modifier = Modifier
 
     val tableHeader = listOf("Frequency", "Left Ear Level", "Right Ear Level")
 
-    val leftTestResult = testResult.earFrequency.left
-    val rightTestResult = testResult.earFrequency.right
 
     val data = listOf(
         listOf(
             "500 Hz",
-            "${leftTestResult.freq500Hz} dB",
-            "${rightTestResult.freq500Hz} dB"
+            "${testResult.leftFreq500Hz} dB",
+            "${testResult.rightFreq500Hz} dB"
         ),
         listOf(
             "1000 Hz",
-            "${leftTestResult.freq1000Hz} dB",
-            "${rightTestResult.freq1000Hz} dB"
+            "${testResult.leftFreq1000Hz} dB",
+            "${testResult.rightFreq1000Hz} dB"
         ),
         listOf(
             "2000 Hz",
-            "${leftTestResult.freq2000Hz} dB",
-            "${rightTestResult.freq2000Hz} dB"
+            "${testResult.leftFreq2000Hz} dB",
+            "${testResult.rightFreq2000Hz} dB"
         ),
         listOf(
             "4000 Hz",
-            "${leftTestResult.freq4000Hz} dB",
-            "${rightTestResult.freq4000Hz} dB"
+            "${testResult.leftFreq4000Hz} dB",
+            "${testResult.rightFreq4000Hz} dB"
         ),
     )
 

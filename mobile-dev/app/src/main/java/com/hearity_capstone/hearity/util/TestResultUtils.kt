@@ -1,37 +1,44 @@
 package com.hearity_capstone.hearity.util
 
-import com.hearity_capstone.hearity.data.model.EarFrequency
+import com.hearity_capstone.hearity.data.model.testResult.TestResultModel
 import com.patrykandpatrick.vico.core.entry.FloatEntry
 
 object TestResultUtils {
-    fun calculateAverageLeftEarFrequency(earFrequency: EarFrequency): Float {
-        val totalFrequency =
-            earFrequency.left.freq500Hz + earFrequency.left.freq1000Hz + earFrequency.left.freq2000Hz + earFrequency.left.freq4000Hz
-        return totalFrequency / 4
+
+    fun createLeftEarFloatEntries(testResult: TestResultModel? = null): List<FloatEntry> {
+        return if (testResult == null) {
+            listOf(
+                FloatEntry(x = 0f, y = -0f),
+                FloatEntry(x = 1f, y = -0f),
+                FloatEntry(x = 2f, y = -0f),
+                FloatEntry(x = 3f, y = -0f),
+            )
+        } else {
+            return listOf(
+                FloatEntry(x = 0f, y = -(testResult.leftFreq500Hz.toFloat())),
+                FloatEntry(x = 1f, y = -(testResult.leftFreq1000Hz.toFloat())),
+                FloatEntry(x = 2f, y = -(testResult.leftFreq2000Hz.toFloat())),
+                FloatEntry(x = 3f, y = -(testResult.leftFreq4000Hz.toFloat())),
+            )
+        }
     }
 
-    fun calculateAverageRightEarFrequency(earFrequency: EarFrequency): Float {
-        val totalFrequency =
-            earFrequency.right.freq500Hz + earFrequency.right.freq1000Hz + earFrequency.right.freq2000Hz + earFrequency.right.freq4000Hz
-        return totalFrequency / 4
+    fun createRightEarFloatEntries(testResult: TestResultModel? = null): List<FloatEntry> {
+        return if (testResult == null) {
+            listOf(
+                FloatEntry(x = 0f, y = -0f),
+                FloatEntry(x = 1f, y = -0f),
+                FloatEntry(x = 2f, y = -0f),
+                FloatEntry(x = 3f, y = -0f),
+            )
+        } else {
+            return listOf(
+                FloatEntry(x = 0f, y = -(testResult.rightFreq500Hz.toFloat())),
+                FloatEntry(x = 1f, y = -(testResult.rightFreq1000Hz.toFloat())),
+                FloatEntry(x = 2f, y = -(testResult.rightFreq2000Hz.toFloat())),
+                FloatEntry(x = 3f, y = -(testResult.rightFreq4000Hz.toFloat())),
+            )
+        }
 
-    }
-
-    fun createLeftEarFloatEntries(earFrequency: EarFrequency): List<FloatEntry> {
-        return listOf(
-            FloatEntry(x = 0f, y = -earFrequency.left.freq500Hz),
-            FloatEntry(x = 1f, y = -earFrequency.left.freq1000Hz),
-            FloatEntry(x = 2f, y = -earFrequency.left.freq2000Hz),
-            FloatEntry(x = 3f, y = -earFrequency.left.freq4000Hz),
-        )
-    }
-
-    fun createRightEarFloatEntries(earFrequency: EarFrequency): List<FloatEntry> {
-        return listOf(
-            FloatEntry(x = 0f, y = -earFrequency.right.freq500Hz),
-            FloatEntry(x = 1f, y = -earFrequency.right.freq1000Hz),
-            FloatEntry(x = 2f, y = -earFrequency.right.freq2000Hz),
-            FloatEntry(x = 3f, y = -earFrequency.right.freq4000Hz)
-        )
     }
 }

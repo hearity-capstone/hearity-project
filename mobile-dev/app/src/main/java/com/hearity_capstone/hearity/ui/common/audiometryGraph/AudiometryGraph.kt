@@ -12,6 +12,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,8 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.wear.compose.material.Text
 import com.hearity_capstone.hearity.R
-import com.hearity_capstone.hearity.data.model.EarSide
-import com.hearity_capstone.hearity.data.model.TestResultModel
+import com.hearity_capstone.hearity.data.model.testResult.EarSide
 import com.hearity_capstone.hearity.ui.theme.IconSizeExtraSmall
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
@@ -35,8 +37,8 @@ import com.hearity_capstone.hearity.ui.theme.SlateBlue
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 import com.hearity_capstone.hearity.ui.theme.TomatoRed
-import com.hearity_capstone.hearity.util.DateUtils
 import com.hearity_capstone.hearity.util.TestResultUtils
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 import com.patrykandpatrick.vico.compose.axis.axisLineComponent
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -55,29 +57,42 @@ import com.patrykandpatrick.vico.core.chart.line.LineChart
 import com.patrykandpatrick.vico.core.component.shape.Shapes
 import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
 import com.patrykandpatrick.vico.core.dimensions.MutableDimensions
-import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
+import com.patrykandpatrick.vico.core.entry.FloatEntry
+import com.patrykandpatrick.vico.core.entry.composed.ComposedChartEntryModelProducer
 
 @Composable
 fun AudiometryGraph(
-    testResult: TestResultModel
+    testResultViewModel: TestResultViewModel
 ) {
-    val modelProducer = remember { ChartEntryModelProducer() }
+    val testResult by testResultViewModel.latestTestResult.collectAsState()
+
+    val modelProducer = ComposedChartEntryModelProducer.build()
     val selectedEarSide = remember { mutableStateOf(EarSide.LEFT) }
 
     val scrollState = rememberChartScrollState()
 
-    val leftEarDataEntry =
-        remember { mutableStateListOf(TestResultUtils.createLeftEarFloatEntries(testResult.earFrequency)) }
-    val rightEarDataEntry =
-        remember { mutableStateListOf(TestResultUtils.createRightEarFloatEntries(testResult.earFrequency)) }
+    val leftEarDataEntry = remember { mutableStateListOf<FloatEntry>() }
+    val rightEarDataEntry = remember { mutableStateListOf<FloatEntry>() }
 
-    modelProducer.setEntries(
+    LaunchedEffect(testResult) {
+        leftEarDataEntry.clear()
+        leftEarDataEntry.addAll(TestResultUtils.createLeftEarFloatEntries(testResult))
+
+        rightEarDataEntry.clear()
+        rightEarDataEntry.addAll(TestResultUtils.createRightEarFloatEntries(testResult))
+    }
+
+
+    modelProducer.runTransaction {
         when (selectedEarSide.value) {
-            EarSide.LEFT -> leftEarDataEntry
-            EarSide.RIGHT -> rightEarDataEntry
-            EarSide.BOTH -> leftEarDataEntry + rightEarDataEntry
+            EarSide.LEFT -> add(leftEarDataEntry)
+            EarSide.RIGHT -> add(rightEarDataEntry)
+            EarSide.BOTH -> {
+                add(leftEarDataEntry)
+                add(rightEarDataEntry)
+            }
         }
-    )
+    }
 
     val datasetLineSpec = remember(selectedEarSide.value) {
         when (selectedEarSide.value) {
@@ -137,7 +152,7 @@ fun AudiometryGraph(
                 )
                 Spacer(Modifier.width(SpacingSmall))
                 Text(
-                    DateUtils.formatToDDMMYYYY(testResult.date),
+                    testResult?.date?.value.toString(),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

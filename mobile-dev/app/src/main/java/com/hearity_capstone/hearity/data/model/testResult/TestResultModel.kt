@@ -1,18 +1,8 @@
-package com.hearity_capstone.hearity.data.model
+package com.hearity_capstone.hearity.data.model.testResult
 
 import com.google.gson.annotations.SerializedName
 
-data class AllTestResultResponse(
-    @SerializedName("data") val data: List<DataItem>,
-    @SerializedName("message") val message: String,
-    @SerializedName("statusCode") val statusCode: Int
-)
-
-data class Date(
-    @SerializedName("date") val value: String
-)
-
-data class DataItem(
+data class TestResultModel(
     @SerializedName("id") val id: String,
     @SerializedName("user_id") val userId: String,
     @SerializedName("date") val date: Date,
@@ -30,3 +20,10 @@ data class DataItem(
     @SerializedName("hospital") val hospital: String,
 )
 
+data class Date(
+    @SerializedName("value") val value: String
+)
+
+enum class EarSide {
+    LEFT, RIGHT, BOTH
+}
