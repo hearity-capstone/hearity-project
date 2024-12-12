@@ -101,6 +101,14 @@ fun NavController.navigateToAddTestResultScreen() {
     this.navigate(Graph.ADD_TEST_RESULT)
 }
 
+fun NavController.navigateToAuthGraphAndClearBackStack() {
+    this.navigate(Graph.AUTHENTICATION) {
+        popUpTo(Graph.AUTHENTICATION) {
+            inclusive = true
+        }
+    }
+}
+
 fun NavController.navigateToProfileGraph() {
     this.navigate(Graph.PROFILE)
 }

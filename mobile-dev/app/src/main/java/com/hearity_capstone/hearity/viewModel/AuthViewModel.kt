@@ -75,6 +75,22 @@ class AuthViewModel(
         }
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                tokenProvider.clearToken()
+                _isLoggedIn.value = false
+                _loginState.value = null
+                _errorState.value = null
+            } catch (e: Exception) {
+                _errorState.value = "Unexpected error"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
     fun clearErrorState() {
         _errorState.value = null
     }

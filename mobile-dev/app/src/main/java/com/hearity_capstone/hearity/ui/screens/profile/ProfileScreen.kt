@@ -1,5 +1,6 @@
 package com.hearity_capstone.hearity.ui.screens.profile
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.R
+import com.hearity_capstone.hearity.graphs.navigateToAuthGraphAndClearBackStack
 import com.hearity_capstone.hearity.ui.common.AppTopBar
 import com.hearity_capstone.hearity.ui.theme.AvatarSizeLarge
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
@@ -51,6 +54,8 @@ import com.hearity_capstone.hearity.viewModel.AuthViewModel
 @Composable
 fun ProfileScreen(navController: NavHostController, authViewModel: AuthViewModel) {
     val userState by authViewModel.loginState.collectAsState()
+    val isLoggedIn by authViewModel.isLoggedIn.collectAsState()
+
     var user = userState
 
     var openAvatarSelectorDialog by remember { mutableStateOf(false) }
@@ -79,6 +84,17 @@ fun ProfileScreen(navController: NavHostController, authViewModel: AuthViewModel
         AboutDialog(
             onCancel = { openAboutDialog = !openAboutDialog },
         )
+    }
+
+    LaunchedEffect(isLoggedIn) {
+        if (!isLoggedIn) {
+            navController.navigateToAuthGraphAndClearBackStack()
+            Toast.makeText(navController.context, "Logged Out ", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun onLogout() {
+        authViewModel.logout()
     }
 
     Scaffold(
@@ -154,6 +170,10 @@ fun ProfileScreen(navController: NavHostController, authViewModel: AuthViewModel
             ProfileMenuItem(icon = R.drawable.ic_info_outline, text = "About", onClick = {
                 openAboutDialog = !openAboutDialog
             })
+            ProfileMenuItem(
+                icon = R.drawable.ic_logout_outline,
+                text = "Logout",
+                onClick = { onLogout() })
         }
     }
 }
