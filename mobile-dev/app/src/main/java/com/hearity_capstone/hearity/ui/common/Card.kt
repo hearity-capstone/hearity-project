@@ -47,7 +47,6 @@ fun AppCard(
                         AppCardSize.LARGE -> PaddingMedium
                     }
                 )
-
         ) {
             content()
         }

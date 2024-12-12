@@ -12,10 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.wear.compose.material.Text
 import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.data.model.testResult.EarSide
+import com.hearity_capstone.hearity.data.model.testResult.TestResultModel
 import com.hearity_capstone.hearity.ui.theme.IconSizeExtraSmall
 import com.hearity_capstone.hearity.ui.theme.IconSizeSmall
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
@@ -37,8 +34,6 @@ import com.hearity_capstone.hearity.ui.theme.SlateBlue
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingSmall
 import com.hearity_capstone.hearity.ui.theme.TomatoRed
-import com.hearity_capstone.hearity.util.TestResultUtils
-import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 import com.patrykandpatrick.vico.compose.axis.axisLineComponent
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -62,26 +57,15 @@ import com.patrykandpatrick.vico.core.entry.composed.ComposedChartEntryModelProd
 
 @Composable
 fun AudiometryGraph(
-    testResultViewModel: TestResultViewModel
+    testResult: TestResultModel?,
+    showDate: Boolean = true,
+    leftEarDataEntry: List<FloatEntry>,
+    rightEarDataEntry: List<FloatEntry>,
 ) {
-    val testResult by testResultViewModel.latestTestResult.collectAsState()
-
     val modelProducer = ComposedChartEntryModelProducer.build()
     val selectedEarSide = remember { mutableStateOf(EarSide.LEFT) }
 
     val scrollState = rememberChartScrollState()
-
-    val leftEarDataEntry = remember { mutableStateListOf<FloatEntry>() }
-    val rightEarDataEntry = remember { mutableStateListOf<FloatEntry>() }
-
-    LaunchedEffect(testResult) {
-        leftEarDataEntry.clear()
-        leftEarDataEntry.addAll(TestResultUtils.createLeftEarFloatEntries(testResult))
-
-        rightEarDataEntry.clear()
-        rightEarDataEntry.addAll(TestResultUtils.createRightEarFloatEntries(testResult))
-    }
-
 
     modelProducer.runTransaction {
         when (selectedEarSide.value) {
@@ -140,22 +124,24 @@ fun AudiometryGraph(
                 .padding(horizontal = PaddingMedium),
             contentAlignment = Alignment.Center
         ) {
-            Row(
-                modifier = Modifier.align(Alignment.CenterStart),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.ic_event_filled),
-                    modifier = Modifier.size(IconSizeSmall),
-                    contentDescription = "Date icon",
-                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
-                )
-                Spacer(Modifier.width(SpacingSmall))
-                Text(
-                    testResult?.date?.value.toString(),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+            if (showDate) {
+                Row(
+                    modifier = Modifier.align(Alignment.CenterStart),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ic_event_filled),
+                        modifier = Modifier.size(IconSizeSmall),
+                        contentDescription = "Date icon",
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
+                    )
+                    Spacer(Modifier.width(SpacingSmall))
+                    Text(
+                        testResult?.date?.value.toString(),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
             EarDropdown(
                 modifier = Modifier.align(Alignment.Center),
@@ -171,6 +157,7 @@ fun AudiometryGraph(
                         end = PaddingMedium,
                         bottom = PaddingMedium
                     ),
+                    diffAnimationSpec = null,
                     chart = LineChart(
                         lines = datasetLineSpec,
                     ),

@@ -83,7 +83,7 @@ fun OverviewCard(testResult: TestResultModel) {
                 )
                 Spacer(Modifier.width(SpacingItem))
                 Text(
-                    testResult.date.toString(),
+                    testResult.date.value.toString(),
                     style = MaterialTheme.typography.labelSmall,
                 )
             }

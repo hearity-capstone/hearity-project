@@ -60,8 +60,12 @@ fun RootNavigationGraph(navController: NavHostController) {
             enterTransition = { scaleFadeEnterTransition() },
             route = "${Graph.TEST_DETAILS}/{id}"
         ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getString("id")?.toIntOrNull()
-            TestDetailScreen(navController = navController, id)
+            val id = backStackEntry.arguments?.getString("id")
+            TestDetailScreen(
+                navController = navController,
+                id = id.toString(),
+                testResultViewModel = testResultViewModel
+            )
         }
 
         // Profile
@@ -105,6 +109,6 @@ fun NavController.navigateToTestHistoryScreen() {
     this.navigate(Graph.TEST_HISTORY)
 }
 
-fun NavController.navigateToTestDetailScreen(id: Int) {
+fun NavController.navigateToTestDetailScreen(id: String) {
     this.navigate(Graph.TEST_DETAILS + "/$id")
 }

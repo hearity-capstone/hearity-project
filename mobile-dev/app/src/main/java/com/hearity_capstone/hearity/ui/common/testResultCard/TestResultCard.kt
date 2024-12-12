@@ -45,8 +45,6 @@ import com.hearity_capstone.hearity.ui.theme.SpacingSection
 fun TestResultCard(testResult: TestResultModel, onSeeDetailsClick: () -> Unit = {}) {
     var isExpanded by remember { mutableStateOf(false) }
 
-
-
     AppCard(
         size = AppCardSize.MEDIUM,
         onClick = { isExpanded = !isExpanded },

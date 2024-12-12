@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.hearity_capstone.hearity.graphs.navigateToTestDetailScreen
 import com.hearity_capstone.hearity.ui.common.testResultCard.TestResultCard
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.viewModel.TestResultViewModel
@@ -31,8 +32,7 @@ fun TestHistory(
         testResult?.forEach { result ->
             TestResultCard(
                 result,
-                onSeeDetailsClick = { }
-//                onSeeDetailsClick = { rootNavController.navigateToTestDetailScreen(result.id) }
+                onSeeDetailsClick = { rootNavController.navigateToTestDetailScreen(result.id) }
             )
             Spacer(modifier = Modifier.height(SpacingItem))
         }
