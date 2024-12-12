@@ -31,11 +31,7 @@ class AuthViewModel(
             try {
                 val token = tokenProvider.getToken()
 
-                if (token.isNullOrEmpty()) {
-                    return@launch
-                }
-
-                val response = repository.verifyToken(token)
+                val response = repository.verifyToken(token.toString())
                 if (response.statusCode == 200) {
                     _isLoggedIn.value = true
                     _loginState.value = response.data
@@ -53,7 +49,6 @@ class AuthViewModel(
             }
         }
     }
-
 
 
     fun login(email: String, password: String) {

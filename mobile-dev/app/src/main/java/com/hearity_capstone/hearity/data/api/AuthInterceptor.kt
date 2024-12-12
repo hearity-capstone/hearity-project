@@ -8,7 +8,11 @@ class AuthInterceptor(private val tokenProvider: TokenProvider) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val token = runBlocking {
-            tokenProvider.getToken()
+            try {
+                tokenProvider.getToken()
+            } catch (e: Exception) {
+                null
+            }
         }
 
         if (token.isNullOrEmpty()) {
