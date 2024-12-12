@@ -70,7 +70,7 @@ fun HomeScreen(
     val testResultErrorState by testResultViewModel.errorState.collectAsState()
 
     val userState = authViewModel.loginState.collectAsState()
-    var user = userState.value?.data
+    var user = userState.value
 
     if (isTestResultLoading) {
         LoadingDialog("Loading Test Results..")

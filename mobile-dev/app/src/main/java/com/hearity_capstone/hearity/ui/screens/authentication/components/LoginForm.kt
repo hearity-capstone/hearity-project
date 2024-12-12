@@ -43,15 +43,12 @@ fun LoginForm(
     val isLoggedIn by authViewModel.isLoggedIn.collectAsState()
     val errorState by authViewModel.errorState.collectAsState()
 
-    fun validateForm() {
-        isEmailValid = ValidatorUtils.validateEmail(email)
-        isPasswordValid = ValidatorUtils.validatePassword(password)
+    // Verify token when the screen is first displayed
+    LaunchedEffect(Unit) {
+        authViewModel.verifyToken()
     }
 
-    if (isLoading) {
-        LoadingDialog()
-    }
-
+    // Show error message if errorState is not null
     LaunchedEffect(errorState) {
         errorState?.let { e ->
             Toast.makeText(navController.context, e, Toast.LENGTH_SHORT).show()
@@ -59,10 +56,21 @@ fun LoginForm(
         }
     }
 
+    // Navigate to main screen if isLoggedIn is true
     LaunchedEffect(isLoggedIn) {
         if (isLoggedIn) {
             navController.navigateToMainGraphAndClearBackStack()
         }
+    }
+
+    // Show loading dialog if isLoading is true
+    if (isLoading) {
+        LoadingDialog()
+    }
+
+    fun validateForm() {
+        isEmailValid = ValidatorUtils.validateEmail(email)
+        isPasswordValid = ValidatorUtils.validatePassword(password)
     }
 
     fun onLogin() {

@@ -1,6 +1,5 @@
 package com.hearity_capstone.hearity.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hearity_capstone.hearity.data.model.AllTestResultResponse
@@ -28,10 +27,8 @@ class TestResultViewModel(
             _isLoading.value = true
             try {
                 val response = repository.getAllTestResult()
-                Log.d("TestResultViewModel", "getAllTestResult: $response")
                 _allTestResult.value = response
             } catch (e: Exception) {
-                Log.d("TestResultViewModel", "getAllTestResult error: $e")
                 _errorState.value = "Unexpected error"
             } finally {
                 _isLoading.value = false

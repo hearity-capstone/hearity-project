@@ -51,7 +51,7 @@ import com.hearity_capstone.hearity.viewModel.AuthViewModel
 @Composable
 fun ProfileScreen(navController: NavHostController, authViewModel: AuthViewModel) {
     val userState = authViewModel.loginState.collectAsState()
-    var user = userState.value?.data
+    var user = userState.value
 
     var openAvatarSelectorDialog by remember { mutableStateOf(false) }
     var openEditProfileDialog by remember { mutableStateOf(false) }
