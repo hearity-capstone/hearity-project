@@ -1,6 +1,7 @@
 package com.hearity_capstone.hearity.ui.screens.main
 
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
@@ -13,6 +14,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -37,9 +39,19 @@ fun MainScreen(
     authViewModel: AuthViewModel,
     testResultViewModel: TestResultViewModel
 ) {
+    val errorState by testResultViewModel.errorState.collectAsState()
+
     // Fetch test results when the screen is first displayed
     LaunchedEffect(Unit) {
-        testResultViewModel.getAllTestResult()
+        testResultViewModel.initialFetchAllTestResult()
+    }
+
+    // Show error message if errorState is not null
+    LaunchedEffect(errorState) {
+        errorState?.let { e ->
+            Toast.makeText(navController.context, e, Toast.LENGTH_SHORT).show()
+            testResultViewModel.clearErrorState()
+        }
     }
 
     Scaffold(
@@ -73,8 +85,7 @@ fun BottomBar(navController: NavHostController) {
 
     val bottomBarDestination = screens.any { it.route == currentDestination?.route }
     if (bottomBarDestination) {
-        NavigationBar(
-        ) {
+        NavigationBar {
             screens.forEach { screen ->
                 AddItems(
                     screen = screen,

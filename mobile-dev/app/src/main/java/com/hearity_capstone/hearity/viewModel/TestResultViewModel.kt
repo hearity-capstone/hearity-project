@@ -12,7 +12,7 @@ class TestResultViewModel(
     private val repository: TestResultRepository
 ) : ViewModel() {
     private val _isLoading = MutableStateFlow<Boolean>(false)
-
+    private val _firstFetchAllTestResult = MutableStateFlow<Boolean>(true)
     private val _latestTestResult = MutableStateFlow<TestResultModel?>(null)
     private val _allTestResult = MutableStateFlow<List<TestResultModel>?>(null)
     private val _errorState = MutableStateFlow<String?>(null)
@@ -21,6 +21,13 @@ class TestResultViewModel(
     val latestTestResult: StateFlow<TestResultModel?> = _latestTestResult
     val allTestResult: StateFlow<List<TestResultModel>?> = _allTestResult
     val errorState: StateFlow<String?> = _errorState
+
+    fun initialFetchAllTestResult() {
+        if (_firstFetchAllTestResult.value) {
+            getAllTestResult()
+            _firstFetchAllTestResult.value = false
+        }
+    }
 
     fun getAllTestResult() {
         viewModelScope.launch {
@@ -35,5 +42,9 @@ class TestResultViewModel(
                 _isLoading.value = false
             }
         }
+    }
+
+    fun clearErrorState() {
+        _errorState.value = null
     }
 }
