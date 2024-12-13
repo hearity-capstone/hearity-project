@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.devtools.ksp")
 }
 
 android {
@@ -17,7 +16,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"Write your API here\"")
+        buildConfigField("String", "BASE_URL", "\"https://hearity-capstone.et.r.appspot.com\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"AIzaSyD4zxEarlkbdWlkOV-3Nx4ZqLdZ7ZVgvMY\"")
 
         vectorDrawables {
             useSupportLibrary = true
@@ -77,10 +77,29 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.material.icons.extended)
 
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+
+    // Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.core)
+    implementation(libs.koin.androidx.compose)
+
+    // Datastore
+    implementation(libs.androidx.datastore.preferences)
+
     // vico chart
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m2)
     implementation(libs.vico.compose.m3)
     implementation(libs.vico.core)
     implementation(libs.vico.views)
+
+    // calendar
+    implementation(libs.kizitonwose.calendar.compose)
+
+    // Gen ai
+    implementation(libs.generativeai)
 }

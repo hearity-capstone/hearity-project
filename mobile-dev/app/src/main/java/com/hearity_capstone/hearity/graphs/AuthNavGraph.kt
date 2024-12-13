@@ -11,8 +11,9 @@ import com.hearity_capstone.hearity.ui.animation.slideFromRightEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideToRightExitTransition
 import com.hearity_capstone.hearity.ui.screens.authentication.LoginScreen
 import com.hearity_capstone.hearity.ui.screens.authentication.SignUpScreen
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
 
-fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.authNavGraph(navController: NavHostController, authViewModel: AuthViewModel) {
     navigation(
         route = Graph.AUTHENTICATION,
         startDestination = AuthScreen.Login.route
@@ -22,7 +23,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
             exitTransition = { scaleFadeExitTransition() },
             route = AuthScreen.Login.route
         ) {
-            LoginScreen(navController)
+            LoginScreen(navController, authViewModel = authViewModel)
         }
         composable(
             enterTransition = { slideFromRightEnterTransition() },

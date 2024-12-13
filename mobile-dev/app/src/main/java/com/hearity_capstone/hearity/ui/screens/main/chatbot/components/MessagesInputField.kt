@@ -1,7 +1,6 @@
 package com.hearity_capstone.hearity.ui.screens.main.chatbot.components
 
 import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -31,12 +30,14 @@ import com.hearity_capstone.hearity.ui.theme.SpacingItem
 
 @Composable
 fun MessageInputField(
+    modifier: Modifier = Modifier,
     message: String,
     onMessageChange: (String) -> Unit = {},
+    onSendClick: () -> Unit = {},
     context: Context
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
             .background(MaterialTheme.colorScheme.surfaceContainer)
@@ -47,7 +48,7 @@ fun MessageInputField(
             shape = MaterialTheme.shapes.large,
             value = message,
             onValueChange = onMessageChange,
-            placeholder = { Text("Message ...", style = MaterialTheme.typography.bodyMedium) },
+            placeholder = { Text("Ask HeaRity ...", style = MaterialTheme.typography.bodyMedium) },
             modifier = Modifier.weight(1f),
         )
         Spacer(Modifier.width(SpacingItem))
@@ -62,7 +63,7 @@ fun MessageInputField(
                 .size(IconContainerSizeMedium)
                 .clickable { },
             onClick = {
-                Toast.makeText(context, "This feature isn't ready yet!", Toast.LENGTH_SHORT).show()
+                onSendClick()
             },
         ) {
             Icon(

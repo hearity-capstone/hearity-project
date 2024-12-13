@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main
+package com.hearity_capstone.hearity.ui.screens.main.files
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

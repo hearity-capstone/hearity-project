@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main.home
+package com.hearity_capstone.hearity.ui.screens.main.home.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,16 +15,24 @@ import com.hearity_capstone.hearity.ui.theme.SpacingItem
 @Composable
 fun TreatmentPlanSection() {
     Row(
-        modifier = Modifier.fillMaxWidth().height(180.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(180.dp)
     ) {
-        NextAppointmentCard(modifier = Modifier.fillMaxHeight().weight(1.5f))
+        NextAudiometryTest(
+            modifier = Modifier
+                .fillMaxHeight()
+                .weight(1.5f)
+        )
         Spacer(Modifier.width(SpacingItem))
         Column(
-            modifier = Modifier.fillMaxHeight().weight(2f)
+            modifier = Modifier
+                .fillMaxHeight()
+                .weight(2f)
         ) {
-            DiagnosisCard(modifier = Modifier.weight(1f))
+            HearingEducationCard(modifier = Modifier.weight(1f))
             Spacer(Modifier.height(SpacingItem))
-            CallToActionCard(modifier = Modifier.weight(1f))
+            FindNearbyHospitalCard(modifier = Modifier.weight(1f))
         }
     }
 }

@@ -12,6 +12,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -26,14 +27,22 @@ import androidx.wear.compose.material.Text
 import com.hearity_capstone.hearity.R
 import com.hearity_capstone.hearity.graphs.MainNavGraph
 import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 
 @Composable
 fun MainScreen(
     rootNavController: NavHostController,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    authViewModel: AuthViewModel,
+    testResultViewModel: TestResultViewModel
 ) {
+    // Fetch test results when the screen is first displayed
+    LaunchedEffect(Unit) {
+        testResultViewModel.getAllTestResult()
+    }
+
     Scaffold(
-//        contentWindowInsets = WindowInsets(0.dp),
         bottomBar = { BottomBar(navController = navController) }
     ) { padding ->
         Box(
@@ -41,7 +50,12 @@ fun MainScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            MainNavGraph(rootNavController = rootNavController, navController = navController)
+            MainNavGraph(
+                rootNavController = rootNavController,
+                navController = navController,
+                authViewModel = authViewModel,
+                testResultViewModel = testResultViewModel
+            )
         }
     }
 }

@@ -2,8 +2,15 @@ package com.hearity_capstone.hearity.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val SlateBlue = Color(0xFF6174D7)
-val TomatoRed = Color(0xFFFE464B)
+// Hearing Severity Colors
+val SeverityLow = Color(0xFFB7E4C7)
+val SeverityModerate = Color(0xFFFFE69A)
+val SeverityHigh = Color(0xFFFFAD60)
+val SeveritySevere = Color(0xFFFF6B6B)
+
+// Line Graph Colors
+val SlateBlue = Color(0xFF6174D7) // left ear color
+val TomatoRed = Color(0xFFFE464B) // right ear color
 
 val primaryLight = Color(0xFF226A4D)
 val onPrimaryLight = Color(0xFFFFFFFF)

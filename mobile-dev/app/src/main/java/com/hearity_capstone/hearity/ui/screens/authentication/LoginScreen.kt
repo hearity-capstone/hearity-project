@@ -13,15 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -29,24 +24,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hearity_capstone.hearity.R
-import com.hearity_capstone.hearity.graphs.navigateToMainGraphAndClearBackStack
 import com.hearity_capstone.hearity.graphs.navigateToSignUp
-import com.hearity_capstone.hearity.ui.common.AppButton
-import com.hearity_capstone.hearity.ui.common.AppEmailTextField
-import com.hearity_capstone.hearity.ui.common.AppPasswordTextField
+import com.hearity_capstone.hearity.ui.screens.authentication.components.AuthType
+import com.hearity_capstone.hearity.ui.screens.authentication.components.AuthWithGoogleButton
+import com.hearity_capstone.hearity.ui.screens.authentication.components.LoginForm
+import com.hearity_capstone.hearity.ui.screens.authentication.components.OrDivider
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
 
 @Composable
 fun LoginScreen(
-    navController: NavController
+    navController: NavController,
+    authViewModel: AuthViewModel
 ) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
     Scaffold { it ->
         Column(
             modifier = Modifier
@@ -81,19 +75,11 @@ fun LoginScreen(
             Spacer(Modifier.height(SpacingSection))
 
             LoginForm(
+                navController = navController,
                 modifier = Modifier.fillMaxWidth(),
-                email = email,
-                password = password,
-                onEmailChange = { email = it },
-                onPasswordChange = { password = it },
+                authViewModel = authViewModel
             )
-            Spacer(Modifier.height(SpacingSectionLarge))
 
-            AppButton(
-                onClick = { navController.navigateToMainGraphAndClearBackStack() },
-                modifier = Modifier.fillMaxWidth(),
-                label = "Login",
-            )
 
             Spacer(Modifier.height(SpacingSectionLarge))
             OrDivider()
@@ -118,55 +104,5 @@ fun LoginScreen(
                 )
             }
         }
-    }
-}
-
-
-@Composable
-private fun LoginForm(
-    modifier: Modifier = Modifier,
-    email: String,
-    password: String,
-    onPasswordChange: (String) -> Unit = {},
-    onEmailChange: (String) -> Unit = {},
-) {
-    var isPasswordVisible by remember { mutableStateOf(false) }
-    Column(
-        modifier = modifier,
-    ) {
-        AppEmailTextField(
-            value = email,
-            onValueChange = { value -> onEmailChange(value) },
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Spacer(Modifier.height(SpacingItem))
-        AppPasswordTextField(
-            value = password,
-            onValueChange = { value -> onPasswordChange(value) },
-            modifier = Modifier.fillMaxWidth(),
-            isPasswordVisible = isPasswordVisible,
-            onPasswordVisibilityChange = { isPasswordVisible = !isPasswordVisible }
-        )
-    }
-}
-
-@Composable
-private fun OrDivider() {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        HorizontalDivider(
-            Modifier.weight(1f),
-            thickness = 1.dp,
-            color = MaterialTheme.colorScheme.outlineVariant
-        )
-        Spacer(Modifier.width(SpacingItem))
-        Text("Or", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.width(SpacingItem))
-        HorizontalDivider(
-            Modifier.weight(1f), thickness = 1.dp,
-            color = MaterialTheme.colorScheme.outlineVariant
-        )
     }
 }

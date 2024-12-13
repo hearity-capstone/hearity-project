@@ -22,18 +22,18 @@ import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 
 @Composable
 fun SectionTitle(
+    modifier: Modifier = Modifier,
     icon: ImageVector,
     title: String,
-    actionTitle: String,
-    action: () -> Unit,
-    modifier: Modifier = Modifier
+    actionTitle: String? = null,
+    action: (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 imageVector = icon, contentDescription = null, tint =
                     MaterialTheme.colorScheme.primary, modifier = Modifier.size(IconSizeMedium)
@@ -41,25 +41,36 @@ fun SectionTitle(
             Spacer(Modifier.width(SpacingMedium))
             Text(
                 title, style = MaterialTheme.typography.titleMedium.copy(
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
         Row(
-            modifier = Modifier.clickable { action() },
+            modifier = Modifier.clickable {
+                if (action != null) {
+                    action()
+                }
+            },
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                actionTitle, style = MaterialTheme.typography.labelMedium.copy(
-                    color = MaterialTheme.colorScheme.outline
+            if (actionTitle != null) {
+                Text(
+                    actionTitle, style = MaterialTheme.typography.labelMedium.copy(
+                        color = MaterialTheme.colorScheme.outline
+                    )
                 )
-            )
-            Spacer(Modifier.width(SpacingMedium))
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos, modifier = Modifier.size(
-                    IconSizeSmall
-                ), contentDescription = null, tint = MaterialTheme.colorScheme.outline
-            )
+                Spacer(Modifier.width(SpacingMedium))
+            }
+            if (action != null) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                    modifier = Modifier.size(
+                        IconSizeSmall
+                    ),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.outline
+                )
+            }
         }
 
     }
