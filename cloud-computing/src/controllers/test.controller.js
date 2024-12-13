@@ -13,6 +13,15 @@ const addTestResult = async (req, res, next) => {
 	}
 };
 
+const getTestResult = async (req, res, next) => {
+	try {
+		const id = getIdFromToken(req.headers);
 
+		const response = await testService.getTestResult(id);
+		res.status(response.statusCode).json(response);
+	} catch (error) {
+		next(error);
+	}
+};
 
-export default { addTestResult };
+export default { addTestResult, getTestResult };
