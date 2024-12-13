@@ -3,7 +3,7 @@ import { createResponse } from '../helpers/createResponse.js';
 
 const getForecastResult = async (id) => {
 	const options = {
-		query: `SELECT * FROM \`hearity.forecasting\` WHERE user_id = @value`,
+		query: `SELECT * FROM \`hearity.forecasting\` WHERE user_id = @value ORDER BY DATE(date) DESC`,
 		params: { value: id },
 	};
 	const [forecastResult] = await bigQuery.query(options);
