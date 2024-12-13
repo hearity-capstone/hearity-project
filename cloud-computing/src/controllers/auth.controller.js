@@ -19,4 +19,14 @@ const login = async (req, res, next) => {
 	}
 };
 
-export default { register, login };
+const refreshToken = async (req, res, next) => {
+	try {
+		const response = await authService.refreshToken(req.body);
+
+		res.status(response.statusCode).json(response);
+	} catch (error) {
+		next(error);
+	}
+};
+
+export default { register, login, refreshToken };

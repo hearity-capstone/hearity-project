@@ -56,4 +56,26 @@ const login = async (request) => {
 	return createResponse(200, 'User logged', { data: { ...otherDetails }, token });
 };
 
-export default { register, login };
+const refreshToken = async (request) => {
+	try {
+		jwt.verify(request.token, process.env.JWT_SECRET);
+
+		const bareToken = request.token.split('.')[1];
+		const decodedToken = Buffer.from(bareToken, 'base64').toString('utf8');
+		const dataToken = JSON.parse(decodedToken);
+
+		const options = {
+			query: `SELECT * FROM \`hearity.users\` WHERE id = @value`,
+			params: { value: dataToken.id },
+		};
+
+		const [users] = await bigQuery.query(options);
+		const { password, ...user } = users[0];
+
+		return createResponse(200, 'Token valid.', { data: user });
+	} catch (error) {
+		return createResponse(403, 'Invalid token');
+	}
+};
+
+export default { register, login, refreshToken };
