@@ -62,6 +62,11 @@ fun TestDetailScreen(
         val leftEarDataEntry = TestResultUtils.createLeftEarFloatEntries(testResult)
         val rightEarDataEntry = TestResultUtils.createRightEarFloatEntries(testResult)
 
+        val leftHearingLevelDiagnosisSummary =
+            TestResultUtils.createHearingLevelDiagnosisSummary(testResult?.AS ?: 0f)
+        val rightHearingLevelDiagnosisSummary =
+            TestResultUtils.createHearingLevelDiagnosisSummary(testResult?.AD ?: 0f)
+
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
@@ -134,11 +139,21 @@ fun TestDetailScreen(
                         Spacer(Modifier.height(SpacingItem))
 
                         // Summary
+                        Spacer(Modifier.height(SpacingItem))
                         Text(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(PaddingSmall),
-                            text = "Summary Coming Soon..",
+                            text = "Left Ear: $leftHearingLevelDiagnosisSummary",
+                            style = MaterialTheme.typography.bodyMedium,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Spacer(Modifier.height(SpacingItem))
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(PaddingSmall),
+                            text = "Right Ear: $rightHearingLevelDiagnosisSummary",
                             style = MaterialTheme.typography.bodyMedium,
                             overflow = TextOverflow.Ellipsis
                         )

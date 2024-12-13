@@ -11,12 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
-import com.hearity_capstone.hearity.ui.theme.SeverityHigh
-import com.hearity_capstone.hearity.ui.theme.SeverityLow
-import com.hearity_capstone.hearity.ui.theme.SeverityModerate
-import com.hearity_capstone.hearity.ui.theme.SeveritySevere
+import com.hearity_capstone.hearity.util.TestResultUtils
 
 
 @Composable
@@ -25,13 +23,7 @@ fun HearingSeverityChip(modifier: Modifier, hearingLevel: Float) {
         Box(
             modifier = Modifier
                 .background(
-                    color = when (hearingLevel) {
-                        in 0f..25f -> SeverityLow
-                        in 25f..40f -> SeverityLow
-                        in 40f..60f -> SeverityModerate
-                        in 60f..90f -> SeverityHigh
-                        else -> SeveritySevere
-                    },
+                    color = TestResultUtils.ClassifyHearingLevelDiagnosis.color(hearingLevel),
                     shape = CircleShape
                 )
                 .padding(
@@ -42,15 +34,10 @@ fun HearingSeverityChip(modifier: Modifier, hearingLevel: Float) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = when (hearingLevel) {
-                    in 0f..25f -> "Normal"
-                    in 25f..40f -> "Low"
-                    in 40f..60f -> "Moderate"
-                    in 60f..90f -> "High"
-                    else -> "Severe"
-                },
-                style = MaterialTheme.typography.bodySmall,
-                color = Color.Black
+                text = TestResultUtils.ClassifyHearingLevelDiagnosis.string(hearingLevel),
+                style = MaterialTheme.typography.labelSmall,
+                color = Color.DarkGray,
+                textAlign = TextAlign.Center
             )
         }
     }
