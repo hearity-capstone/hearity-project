@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  airflow-main-service:
+    build:
+      context: .
+    volumes:
+      - ./airflow:/opt/airflow
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    ports:
+      - "8080:8080"
+    command: airflow standalone
+    environment:
+      - TZ=UTC
+    container_name: hearity_airflow

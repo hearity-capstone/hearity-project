@@ -1,0 +1,8 @@
+# virtual enviroment
+.env/
+
+# log folder
+logs/
+
+# containing sensitive data
+dags/
