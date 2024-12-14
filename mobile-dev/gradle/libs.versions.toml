@@ -1,4 +1,5 @@
 [versions]
+accompanistPermissions = "0.25.0"
 agp = "8.6.0"
 compose = "1.15.0"
 coreSplashscreen = "1.0.1"
@@ -19,14 +20,17 @@ generativeai = "0.9.0"
 datastorePreferences = "1.0.0"
 
 koin = "3.5.3"
+playServicesLocation = "21.0.1"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
 
 [libraries]
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 vico-compose = { module = "com.patrykandpatrick.vico:compose", version.ref = "compose" }
 vico-compose-m2 = { module = "com.patrykandpatrick.vico:compose-m2", version.ref = "compose" }
 vico-core = { module = "com.patrykandpatrick.vico:core", version.ref = "compose" }

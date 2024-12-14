@@ -90,6 +90,10 @@ dependencies {
     // Datastore
     implementation(libs.androidx.datastore.preferences)
 
+    // Location Services
+    implementation(libs.play.services.location)
+    implementation(libs.accompanist.permissions)
+
     // vico chart
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m2)
