@@ -46,12 +46,13 @@ fun HearingLevelInfoCard(modifier: Modifier = Modifier) {
             Spacer(Modifier.height(SpacingItem))
             Text(
                 "<26 dB - Normal\n" +
-                        "26 - 40 dB - Low\n" +
-                        "41 - 60 dB - Moderate\n" +
-                        "61 - 90 dB - High \n" +
-                        ">90 dB - Severe",
+                        "26 - 40 dB - Mild\n" +
+                        "41 - 55 dB - Moderate\n" +
+                        "56 - 70 dB - Moderately Severe\n" +
+                        "71 - 90 dB - Severe\n" +
+                        ">90 dB - Profound",
                 modifier = Modifier.padding(horizontal = PaddingMedium),
-                style = MaterialTheme.typography.labelMedium
+                style = MaterialTheme.typography.labelSmall
             )
         }
 
