@@ -5,6 +5,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.hearity_capstone.hearity.ui.animation.defaultFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.defaultFadeExitTransition
 import com.hearity_capstone.hearity.ui.screens.main.BottomBarScreen
@@ -16,6 +17,7 @@ import com.hearity_capstone.hearity.viewModel.AuthViewModel
 import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun MainNavGraph(
     rootNavController: NavHostController,
@@ -41,7 +43,7 @@ fun MainNavGraph(
             )
         }
         composable(
-            enterTransition = { defaultFadeEnterTransition()  },
+            enterTransition = { defaultFadeEnterTransition() },
             exitTransition = { defaultFadeExitTransition() },
             route = BottomBarScreen.Profile.route
         ) {
