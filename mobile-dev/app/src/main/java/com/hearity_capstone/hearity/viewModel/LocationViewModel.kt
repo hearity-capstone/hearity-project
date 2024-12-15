@@ -51,6 +51,7 @@ class LocationViewModel(
     fun getLocation(context: Context) {
         viewModelScope.launch {
             try {
+                Toast.makeText(context, "Getting Location..", Toast.LENGTH_SHORT).show()
                 val location: Location? = locationManager.getLocationOnce()
                 if (location != null) {
                     _locationUiState.value = LocationUiState.Success(location)
