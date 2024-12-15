@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.location.Location
 import android.net.Uri
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -51,16 +50,16 @@ class LocationViewModel(
 
     fun getLocation(context: Context) {
         viewModelScope.launch {
-            Log.d("LocationViewModel", "getLocation called")
             try {
                 val location: Location? = locationManager.getLocationOnce()
                 if (location != null) {
                     _locationUiState.value = LocationUiState.Success(location)
                     openGoogleMaps(context)
+                } else {
+                    Toast.makeText(context, "Location not found", Toast.LENGTH_SHORT).show()
                 }
-                Log.d("LocationViewModel", "Location: $location")
             } catch (e: Exception) {
-                Log.e("LocationViewModel", "Error getting location", e)
+                Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }

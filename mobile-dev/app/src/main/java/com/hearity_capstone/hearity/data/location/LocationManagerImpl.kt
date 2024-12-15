@@ -5,6 +5,7 @@ import android.content.Context
 import android.location.Location
 import android.os.Looper
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -27,7 +28,7 @@ class LocationManagerImpl(
     @Throws
     override suspend fun getLocationOnce(): Location? {
 
-        return suspendCancellableCoroutine { cont ->
+        return suspendCancellableCoroutine<Location> { cont ->
             val locationRequest = LocationRequest.Builder(Priority.PRIORITY_LOW_POWER, 5000L)
                 .setMinUpdateDistanceMeters(500f)
                 .build()
@@ -36,21 +37,50 @@ class LocationManagerImpl(
                 override fun onLocationResult(result: LocationResult) {
                     result.lastLocation?.let { location ->
                         cont.resume(location, onCancellation = {
-                            cont.resumeWithException(it)
+                            cont.resumeWithException(LocationException.LocationCancelled())
                         })
+                        client.removeLocationUpdates(this)
+                    } ?: run {
+                        cont.resumeWithException(LocationException.NullLocation())
+                        client.removeLocationUpdates(this)
+                    }
+                }
+
+                override fun onLocationAvailability(availability: LocationAvailability) {
+                    if (!availability.isLocationAvailable) {
+                        cont.resumeWithException(LocationException.LocationNotAvailable())
                         client.removeLocationUpdates(this)
                     }
                 }
             }
 
-            client.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
-                .addOnFailureListener {
-                    cont.resumeWithException(it)
-                }
+            try {
+                client.requestLocationUpdates(
+                    locationRequest,
+                    locationCallback,
+                    Looper.getMainLooper()
+                )
+                    .addOnFailureListener { exception ->
+                        cont.resumeWithException(LocationException.LocationRequestFailed(exception))
+                    }
+            } catch (e: Exception) {
+                cont.resumeWithException(LocationException.LocationRequestFailed(e))
+            }
 
             cont.invokeOnCancellation {
                 client.removeLocationUpdates(locationCallback)
+                cont.resumeWithException(LocationException.LocationCancelled())
             }
         }
+
     }
+}
+
+sealed class LocationException(message: String) : Exception(message) {
+    class LocationNotAvailable : LocationException("Location is not available")
+    class LocationRequestFailed(cause: Throwable) :
+        LocationException("Failed to request location updates: ${cause.message}")
+
+    class NullLocation : LocationException("Received null location")
+    class LocationCancelled : LocationException("Location request was cancelled by the user")
 }
