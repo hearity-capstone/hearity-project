@@ -21,7 +21,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.R
+import com.hearity_capstone.hearity.graphs.navigateToArticleScreen
 import com.hearity_capstone.hearity.ui.common.AppCard
 import com.hearity_capstone.hearity.ui.common.AppCardSize
 import com.hearity_capstone.hearity.ui.theme.IconContainerSizeMedium
@@ -29,11 +31,13 @@ import com.hearity_capstone.hearity.ui.theme.IconSizeMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingMedium
 
 @Composable
-fun HearingEducationCard(modifier: Modifier = Modifier) {
+fun HearingArticleCard(modifier: Modifier = Modifier, navController: NavHostController) {
     AppCard(
         modifier = modifier,
         size = AppCardSize.LARGE,
-        onClick = { },
+        onClick = {
+            navController.navigateToArticleScreen()
+        },
         colors = CardColors(
             containerColor = MaterialTheme.colorScheme.tertiaryContainer,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
