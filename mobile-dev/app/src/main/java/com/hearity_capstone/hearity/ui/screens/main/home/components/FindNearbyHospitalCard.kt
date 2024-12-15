@@ -38,7 +38,7 @@ fun FindNearbyHospitalCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val locationViewModel: LocationViewModel = koinViewModel()
 
-    val permissionState = rememberPermissionState(Manifest.permission.ACCESS_COARSE_LOCATION)
+    val permissionState = rememberPermissionState(Manifest.permission.ACCESS_FINE_LOCATION)
 
     LaunchedEffect(Unit) {
         if (!permissionState.status.isGranted) {
