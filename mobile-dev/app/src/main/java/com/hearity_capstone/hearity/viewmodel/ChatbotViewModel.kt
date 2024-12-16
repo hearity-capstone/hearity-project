@@ -1,4 +1,4 @@
-package com.hearity_capstone.hearity.ui.screens.main.chatbot
+package com.hearity_capstone.hearity.viewmodel
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.mutableStateListOf
