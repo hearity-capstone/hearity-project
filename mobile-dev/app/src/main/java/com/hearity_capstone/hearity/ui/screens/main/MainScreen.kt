@@ -77,7 +77,7 @@ fun BottomBar(navController: NavHostController) {
     val screens: List<BottomBarScreen> = listOf(
         BottomBarScreen.Home,
         BottomBarScreen.Profile,
-        BottomBarScreen.Settings,
+//        BottomBarScreen.Settings,
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -153,10 +153,10 @@ sealed class BottomBarScreen(
         iconSelected = R.drawable.ic_chat_bubble_filled
     )
 
-    data object Settings : BottomBarScreen(
-        route = "FILES",
-        title = "Files",
-        icon = R.drawable.ic_folder_outline,
-        iconSelected = R.drawable.ic_folder_filled
-    )
+//    data object Settings : BottomBarScreen(
+//        route = "FILES",
+//        title = "Files",
+//        icon = R.drawable.ic_folder_outline,
+//        iconSelected = R.drawable.ic_folder_filled
+//    )
 }

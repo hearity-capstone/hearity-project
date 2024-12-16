@@ -11,7 +11,6 @@ import com.hearity_capstone.hearity.ui.animation.defaultFadeExitTransition
 import com.hearity_capstone.hearity.ui.screens.main.BottomBarScreen
 import com.hearity_capstone.hearity.ui.screens.main.chatbot.ChatbotScreen
 import com.hearity_capstone.hearity.ui.screens.main.chatbot.ChatbotViewModel
-import com.hearity_capstone.hearity.ui.screens.main.files.FilesScreen
 import com.hearity_capstone.hearity.ui.screens.main.home.HomeScreen
 import com.hearity_capstone.hearity.viewModel.AuthViewModel
 import com.hearity_capstone.hearity.viewModel.TestResultViewModel
@@ -50,13 +49,13 @@ fun MainNavGraph(
             val viewModel: ChatbotViewModel = viewModel()
             ChatbotScreen(viewModel = viewModel)
         }
-        composable(
-            enterTransition = { defaultFadeEnterTransition() },
-            exitTransition = { defaultFadeExitTransition() },
-            route = BottomBarScreen.Settings.route
-        ) {
-            FilesScreen()
-        }
+//        composable(
+//            enterTransition = { defaultFadeEnterTransition() },
+//            exitTransition = { defaultFadeExitTransition() },
+//            route = BottomBarScreen.Settings.route
+//        ) {
+//            FilesScreen()
+//        }
     }
 }
 
