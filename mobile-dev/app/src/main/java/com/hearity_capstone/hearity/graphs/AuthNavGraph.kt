@@ -30,7 +30,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController, authViewModel
             exitTransition = { slideToRightExitTransition() },
             route = AuthScreen.SignUp.route
         ) {
-            SignUpScreen(navController)
+            SignUpScreen(navController, authViewModel)
         }
     }
 }

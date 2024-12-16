@@ -1,6 +1,7 @@
-package com.hearity_capstone.hearity.data.model
+package com.hearity_capstone.hearity.data.model.authentication
 
 import com.google.gson.annotations.SerializedName
+import com.hearity_capstone.hearity.data.model.UserModel
 
 data class LoginResponse(
     @SerializedName("data") val data: UserModel,

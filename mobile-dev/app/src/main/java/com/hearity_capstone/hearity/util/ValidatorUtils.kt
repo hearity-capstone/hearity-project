@@ -15,4 +15,19 @@ object ValidatorUtils {
         val nameRegex = Regex("^[a-zA-Z]{3,}\$")
         return nameRegex.matches(name)
     }
+
+    fun validatePhoneNumber(phoneNumber: String): Boolean {
+        val phoneNumberRegex = Regex("^\\+?[1-9]\\d{1,14}\$")
+        return phoneNumberRegex.matches(phoneNumber)
+    }
+
+    fun validateAddress(address: String): Boolean {
+        val addressRegex = Regex("^.{3,}\$")
+        return addressRegex.matches(address)
+    }
+
+    fun validateCity(city: String): Boolean {
+        val cityRegex = Regex("^.{3,}\$")
+        return cityRegex.matches(city)
+    }
 }
