@@ -8,6 +8,11 @@ import java.time.temporal.ChronoUnit
 
 object DateUtils {
 
+    fun formatDateToString(date: LocalDate): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        return date.format(formatter)
+    }
+
     fun parseToLocalDate(dateString: String, format: String = "yyyy/MM/dd"): LocalDate? {
         return try {
             val formatter = DateTimeFormatter.ofPattern(format)

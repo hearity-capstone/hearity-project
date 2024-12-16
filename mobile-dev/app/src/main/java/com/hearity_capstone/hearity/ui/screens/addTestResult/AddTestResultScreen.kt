@@ -1,5 +1,6 @@
 package com.hearity_capstone.hearity.ui.screens.addTestResult
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,6 @@ import androidx.compose.material.icons.automirrored.outlined.Subject
 import androidx.compose.material.icons.outlined.Apartment
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Event
-import androidx.compose.material.icons.outlined.Image
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.CalendarLocale
 import androidx.compose.material3.DatePicker
@@ -36,28 +36,42 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.navigation.NavHostController
-import com.hearity_capstone.hearity.ui.common.AppButton
+import com.hearity_capstone.hearity.data.model.testResult.AddTestResultRequest
 import com.hearity_capstone.hearity.ui.common.AppTextField
 import com.hearity_capstone.hearity.ui.common.AppTopBar
+import com.hearity_capstone.hearity.ui.common.LoadingDialog
 import com.hearity_capstone.hearity.ui.common.SectionTitle
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
 import com.hearity_capstone.hearity.util.DateUtils
+import com.hearity_capstone.hearity.viewModel.AddTestResultState
+import com.hearity_capstone.hearity.viewModel.TestResultViewModel
 import java.time.LocalDate
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTestResultScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun AddTestResultScreen(
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+    testResultViewModel: TestResultViewModel,
+) {
+    val addTestResultState by testResultViewModel.addTestResultState.collectAsState()
+    var isLoading by remember { mutableStateOf(false) }
+
     val doctorName = remember { mutableStateOf("") }
     val hospitalName = remember { mutableStateOf("") }
     val selectedDate = remember { mutableStateOf<LocalDate>(LocalDate.now()) }
@@ -77,16 +91,83 @@ fun AddTestResultScreen(navController: NavHostController, modifier: Modifier = M
 
     val openDialog = remember { mutableStateOf(false) }
 
-    val date = LocalDate.now()
+    val initialDate = LocalDate.now()
 
     val datePickerState = remember {
         DatePickerState(
-            yearRange = (date.year - 5)..(date.year + 5),
+            yearRange = (initialDate.year - 5)..(initialDate.year + 5),
             initialDisplayMode = DisplayMode.Picker,
             locale = CalendarLocale.ENGLISH,
         )
     }
 
+    fun validateForm(): Boolean {
+        return doctorName.value.isNotEmpty() && hospitalName.value.isNotEmpty()
+    }
+
+    fun onSubmitted() {
+        // Validate form before request
+        if (!validateForm()) {
+            Toast.makeText(navController.context, "Please fill all the form", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
+        // Add test result request
+        testResultViewModel.addTestResult(
+            request =
+                AddTestResultRequest(
+                    doctor = doctorName.value,
+                    hospital = hospitalName.value,
+                    date = DateUtils.formatDateToString(selectedDate.value),
+                    leftFreq500Hz = left500Hz.value.toInt(),
+                    leftFreq1000Hz = left1000Hz.value.toInt(),
+                    leftFreq2000Hz = left2000Hz.value.toInt(),
+                    leftFreq4000Hz = left4000Hz.value.toInt(),
+                    rightFreq500Hz = right500Hz.value.toInt(),
+                    rightFreq1000Hz = right1000Hz.value.toInt(),
+                    rightFreq2000Hz = right2000Hz.value.toInt(),
+                    rightFreq4000Hz = right4000Hz.value.toInt(),
+                    AS = AS.value.toFloat(),
+                    AD = AD.value.toFloat(),
+                )
+        )
+    }
+
+
+    // Handle add test result
+    LaunchedEffect(addTestResultState) {
+        when (addTestResultState) {
+            is AddTestResultState.Loading -> {
+                isLoading = true
+            }
+
+            is AddTestResultState.Success -> {
+                isLoading = false
+                Toast.makeText(navController.context, "Success add test result", Toast.LENGTH_LONG)
+                    .show()
+                testResultViewModel.getAllTestResult()
+            }
+
+            is AddTestResultState.Error -> {
+                isLoading = false
+                Toast.makeText(
+                    navController.context,
+                    (addTestResultState as AddTestResultState.Error).message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                testResultViewModel.clearErrorState()
+            }
+
+            else -> Unit
+        }
+    }
+
+    // Show loading dialog
+    if (isLoading) {
+        LoadingDialog()
+    }
+
+    // Show date picker dialog
     if (openDialog.value) {
         DatePickerDialog(
             onDismissRequest = { openDialog.value = false },
@@ -98,7 +179,6 @@ fun AddTestResultScreen(navController: NavHostController, modifier: Modifier = M
                             it?.div(86400000) ?: LocalDate.now().toEpochDay()
                         )
                     }
-
                 }) {
                     Text("OK")
                 }
@@ -113,7 +193,9 @@ fun AddTestResultScreen(navController: NavHostController, modifier: Modifier = M
         modifier = modifier,
         topBar = {
             AppTopBar(navController = navController, title = "Add Test Result", action = {
-                IconButton(onClick = {}) {
+                IconButton(onClick = {
+                    onSubmitted()
+                }) {
                     Icon(
                         imageVector = Icons.Outlined.Check,
                         contentDescription = null,
@@ -131,9 +213,11 @@ fun AddTestResultScreen(navController: NavHostController, modifier: Modifier = M
                 .padding(horizontal = PaddingMedium),
             contentAlignment = Alignment.Center
         ) {
-            Column(Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())) {
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
 
                 // Doctor name input
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -189,17 +273,18 @@ fun AddTestResultScreen(navController: NavHostController, modifier: Modifier = M
                         )
                     )
                 }
-                Spacer(Modifier.height(SpacingSection))
+//                Spacer(Modifier.height(SpacingSection))
+//
+//                // Image input
+//                Row(verticalAlignment = Alignment.CenterVertically) {
+//                    Icon(
+//                        imageVector = Icons.Outlined.Image,
+//                        contentDescription = null,
+//                    )
+//                    Spacer(Modifier.width(SpacingSection))
+//                    AppButton(onClick = {}, label = "Select Test Result Image")
+//                }
 
-                // Image input
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = Icons.Outlined.Image,
-                        contentDescription = null,
-                    )
-                    Spacer(Modifier.width(SpacingSection))
-                    AppButton(onClick = {}, label = "Select Test Result Image")
-                }
                 Spacer(Modifier.height(SpacingSectionLarge))
 
                 // Hearing data section
@@ -265,7 +350,7 @@ fun HearingDataRow(
     onValue1Change: (String) -> Unit,
     value2: String,
     label2: String,
-    onValue2Change: (String) -> Unit
+    onValue2Change: (String) -> Unit,
 ) {
     Row(
         Modifier
@@ -304,7 +389,7 @@ fun HearingDataInput(
     onHz500Change: (String) -> Unit,
     onHz1000Change: (String) -> Unit,
     onHz2000Change: (String) -> Unit,
-    onHz4000Change: (String) -> Unit
+    onHz4000Change: (String) -> Unit,
 ) {
     HearingDataRow(hz500, "500 Hz", onHz500Change, hz1000, "1000 Hz", onHz1000Change)
     Spacer(Modifier.height(SpacingItem))
