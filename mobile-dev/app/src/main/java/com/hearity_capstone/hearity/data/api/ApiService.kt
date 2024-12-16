@@ -4,6 +4,8 @@ import com.hearity_capstone.hearity.data.model.LoginRequest
 import com.hearity_capstone.hearity.data.model.LoginResponse
 import com.hearity_capstone.hearity.data.model.VerifyTokenRequest
 import com.hearity_capstone.hearity.data.model.VerifyTokenResponse
+import com.hearity_capstone.hearity.data.model.testResult.AddTestResultRequest
+import com.hearity_capstone.hearity.data.model.testResult.AddTestResultResponse
 import com.hearity_capstone.hearity.data.model.testResult.AllTestResultResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -18,4 +20,8 @@ interface ApiService {
 
     @GET("api/tests/test-result")
     suspend fun getAllTestResult(): AllTestResultResponse
+
+    @POST("api/tests/test-result")
+    suspend fun addTestResult(@Body request: AddTestResultRequest): AddTestResultResponse
+
 }

@@ -44,7 +44,10 @@ fun RootNavigationGraph(navController: NavHostController) {
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.ADD_TEST_RESULT
         ) {
-            AddTestResultScreen(navController = navController)
+            AddTestResultScreen(
+                navController = navController,
+                testResultViewModel = testResultViewModel
+            )
         }
 
         // Test Result History
