@@ -5,6 +5,8 @@ import com.hearity_capstone.hearity.data.model.LoginRequest
 import com.hearity_capstone.hearity.data.model.LoginResponse
 import com.hearity_capstone.hearity.data.model.VerifyTokenRequest
 import com.hearity_capstone.hearity.data.model.VerifyTokenResponse
+import com.hearity_capstone.hearity.data.model.authentication.SignUpRequest
+import com.hearity_capstone.hearity.data.model.authentication.SignUpResponse
 
 class AuthRepositoryImpl(
     private val apiService: ApiService
@@ -20,5 +22,9 @@ class AuthRepositoryImpl(
         token: String
     ): VerifyTokenResponse {
         return apiService.verifyToken(request = VerifyTokenRequest(token))
+    }
+
+    override suspend fun signUp(request: SignUpRequest): SignUpResponse {
+        return apiService.signUp(request = request)
     }
 }

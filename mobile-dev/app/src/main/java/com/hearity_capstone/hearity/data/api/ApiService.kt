@@ -4,6 +4,8 @@ import com.hearity_capstone.hearity.data.model.LoginRequest
 import com.hearity_capstone.hearity.data.model.LoginResponse
 import com.hearity_capstone.hearity.data.model.VerifyTokenRequest
 import com.hearity_capstone.hearity.data.model.VerifyTokenResponse
+import com.hearity_capstone.hearity.data.model.authentication.SignUpRequest
+import com.hearity_capstone.hearity.data.model.authentication.SignUpResponse
 import com.hearity_capstone.hearity.data.model.testResult.AllTestResultResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -16,6 +18,11 @@ interface ApiService {
     @POST("/api/auth/verify-token")
     suspend fun verifyToken(@Body request: VerifyTokenRequest): VerifyTokenResponse
 
+    @POST("api/auth/register")
+    suspend fun signUp(@Body request: SignUpRequest): SignUpResponse
+
     @GET("api/tests/test-result")
     suspend fun getAllTestResult(): AllTestResultResponse
+
+
 }

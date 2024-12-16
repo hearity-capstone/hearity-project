@@ -1,5 +1,6 @@
 package com.hearity_capstone.hearity.ui.screens.authentication
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,8 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,11 +41,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hearity_capstone.hearity.R
-import com.hearity_capstone.hearity.graphs.navigateToLogin
+import com.hearity_capstone.hearity.data.model.authentication.SignUpRequest
 import com.hearity_capstone.hearity.ui.common.AppButton
 import com.hearity_capstone.hearity.ui.common.AppEmailTextField
 import com.hearity_capstone.hearity.ui.common.AppPasswordTextField
 import com.hearity_capstone.hearity.ui.common.AppTextField
+import com.hearity_capstone.hearity.ui.common.LoadingDialog
 import com.hearity_capstone.hearity.ui.screens.authentication.components.AuthType
 import com.hearity_capstone.hearity.ui.screens.authentication.components.AuthWithGoogleButton
 import com.hearity_capstone.hearity.ui.screens.authentication.components.OrDivider
@@ -51,12 +55,51 @@ import com.hearity_capstone.hearity.ui.theme.SpacingItem
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
 import com.hearity_capstone.hearity.ui.theme.SpacingSectionLarge
 import com.hearity_capstone.hearity.util.ValidatorUtils
+import com.hearity_capstone.hearity.viewModel.AuthViewModel
+import com.hearity_capstone.hearity.viewModel.SignupState
 
 
 @Composable
 fun SignUpScreen(
     navController: NavController,
+    authViewModel: AuthViewModel,
 ) {
+    val signUpState by authViewModel.signupState.collectAsState()
+    var isLoading by remember { mutableStateOf(false) }
+
+    LaunchedEffect(signUpState) {
+        when (signUpState) {
+            SignupState.Loading -> {
+                isLoading = true
+            }
+
+            SignupState.Success -> {
+                isLoading = false
+                navController.popBackStack()
+                Toast.makeText(
+                    navController.context,
+                    "Account created successfully!. Log in to access your account",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            is SignupState.Error -> {
+                isLoading = false
+                Toast.makeText(
+                    navController.context,
+                    (signUpState as SignupState.Error).message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            else -> Unit
+        }
+    }
+
+    if (isLoading) {
+        LoadingDialog("Signing Up...")
+    }
+
 
 
     Scaffold { it ->
@@ -95,6 +138,7 @@ fun SignUpScreen(
             SignUpForm(
                 navController = navController,
                 modifier = Modifier.fillMaxWidth(),
+                authViewModel = authViewModel
             )
 
 
@@ -110,8 +154,10 @@ fun SignUpScreen(
 private fun SignUpForm(
     navController: NavController,
     modifier: Modifier = Modifier,
+    authViewModel: AuthViewModel,
 ) {
     val genderOptions = listOf("Male", "Female")
+    var isAllFormValid by remember { mutableStateOf(false) }
 
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
@@ -144,6 +190,8 @@ private fun SignUpForm(
         isCityValid = ValidatorUtils.validateCity(city)
         isPasswordValid = ValidatorUtils.validatePassword(password)
         isRepeatPasswordValid = repeatPassword == password
+        isAllFormValid =
+            isFirstNameValid && isLastNameValid && isEmailValid && isPhoneNumberValid && isAddressValid && isCityValid && isPasswordValid && isRepeatPasswordValid
     }
 
     Column(
@@ -261,8 +309,19 @@ private fun SignUpForm(
         AppButton(
             onClick = {
                 validateForm()
-                if (isFirstNameValid && isEmailValid && isPasswordValid && isRepeatPasswordValid) {
-                    navController.navigateToLogin()
+                if (isAllFormValid) {
+                    authViewModel.signUp(
+                        request = SignUpRequest(
+                            firstName = firstName,
+                            lastName = lastName,
+                            email = email,
+                            password = password,
+                            phoneNumber = phoneNumber,
+                            address = address,
+                            city = city,
+                            gender = gender
+                        )
+                    )
                 }
             },
             enabled = isFirstNameValid && isEmailValid && isPasswordValid && isRepeatPasswordValid,
