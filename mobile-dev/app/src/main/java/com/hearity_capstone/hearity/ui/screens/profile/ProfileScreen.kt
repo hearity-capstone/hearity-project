@@ -71,9 +71,12 @@ fun ProfileScreen(navController: NavHostController, authViewModel: AuthViewModel
     }
 
     if (openEditProfileDialog) {
-        EditProfileDialog(
-            onCancel = { openEditProfileDialog = !openEditProfileDialog },
-            onSave = { openEditProfileDialog = !openEditProfileDialog })
+        Toast.makeText(navController.context, "This feature is coming soon..", Toast.LENGTH_SHORT)
+            .show()
+        openEditProfileDialog = false
+//        EditProfileDialog(
+//            onCancel = { openEditProfileDialog = !openEditProfileDialog },
+//            onSave = { openEditProfileDialog = !openEditProfileDialog })
     }
     if (openSettingsDialog) {
         SettingsDialog(
