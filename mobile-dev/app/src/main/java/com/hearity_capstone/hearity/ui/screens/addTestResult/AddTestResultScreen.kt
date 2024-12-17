@@ -20,6 +20,7 @@ import androidx.compose.material.icons.automirrored.outlined.Subject
 import androidx.compose.material.icons.outlined.Apartment
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Event
+import androidx.compose.material.icons.outlined.Image
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.CalendarLocale
 import androidx.compose.material3.DatePicker
@@ -48,6 +49,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.data.model.testResult.AddTestResultRequest
+import com.hearity_capstone.hearity.ui.common.AppButton
 import com.hearity_capstone.hearity.ui.common.AppTextField
 import com.hearity_capstone.hearity.ui.common.AppTopBar
 import com.hearity_capstone.hearity.ui.common.LoadingDialog
@@ -273,17 +275,23 @@ fun AddTestResultScreen(
                         )
                     )
                 }
-//                Spacer(Modifier.height(SpacingSection))
-//
-//                // Image input
-//                Row(verticalAlignment = Alignment.CenterVertically) {
-//                    Icon(
-//                        imageVector = Icons.Outlined.Image,
-//                        contentDescription = null,
-//                    )
-//                    Spacer(Modifier.width(SpacingSection))
-//                    AppButton(onClick = {}, label = "Select Test Result Image")
-//                }
+                Spacer(Modifier.height(SpacingSection))
+
+                // Image input
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Outlined.Image,
+                        contentDescription = null,
+                    )
+                    Spacer(Modifier.width(SpacingSection))
+                    AppButton(onClick = {
+                        Toast.makeText(
+                            navController.context,
+                            "This feature coming soon..",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }, label = "Select Test Result Image")
+                }
 
                 Spacer(Modifier.height(SpacingSectionLarge))
 

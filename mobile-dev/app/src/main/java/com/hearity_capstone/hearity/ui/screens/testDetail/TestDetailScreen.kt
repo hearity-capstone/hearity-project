@@ -107,7 +107,7 @@ fun TestDetailScreen(
                             .fillMaxHeight()
                     )
                     Spacer(Modifier.width(SpacingItem))
-                    OpenTestFileCard(Modifier.weight(1f))
+                    OpenTestFileCard(Modifier.weight(1f), navController = navController)
                 }
 
 
