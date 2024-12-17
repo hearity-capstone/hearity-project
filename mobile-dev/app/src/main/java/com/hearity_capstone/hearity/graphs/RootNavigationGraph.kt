@@ -9,6 +9,7 @@ import com.hearity_capstone.hearity.ui.animation.scaleFadeEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideFromRightEnterTransition
 import com.hearity_capstone.hearity.ui.animation.slideToRightExitTransition
 import com.hearity_capstone.hearity.ui.screens.addTestResult.AddTestResultScreen
+import com.hearity_capstone.hearity.ui.screens.article.ArticleScreen
 import com.hearity_capstone.hearity.ui.screens.main.MainScreen
 import com.hearity_capstone.hearity.ui.screens.profile.ProfileScreen
 import com.hearity_capstone.hearity.ui.screens.testDetail.TestDetailScreen
@@ -44,7 +45,10 @@ fun RootNavigationGraph(navController: NavHostController) {
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.ADD_TEST_RESULT
         ) {
-            AddTestResultScreen(navController = navController)
+            AddTestResultScreen(
+                navController = navController,
+                testResultViewModel = testResultViewModel
+            )
         }
 
         // Test Result History
@@ -52,7 +56,10 @@ fun RootNavigationGraph(navController: NavHostController) {
             enterTransition = { scaleFadeEnterTransition() },
             route = Graph.TEST_HISTORY
         ) {
-            TestHistoryScreen(navController = navController)
+            TestHistoryScreen(
+                navController = navController,
+                testResultViewModel = testResultViewModel
+            )
         }
 
         // Test Result Details
@@ -76,6 +83,14 @@ fun RootNavigationGraph(navController: NavHostController) {
         ) {
             ProfileScreen(navController = navController, authViewModel = authViewModel)
         }
+
+        // Article
+        composable(
+            route = Graph.ARTICLE,
+            enterTransition = { scaleFadeEnterTransition() },
+        ) {
+            ArticleScreen(navController)
+        }
     }
 }
 
@@ -87,6 +102,7 @@ object Graph {
     const val ADD_TEST_RESULT = "add_test_result_graph"
     const val TEST_HISTORY = "test_history_screen"
     const val TEST_DETAILS = "test_details_screen"
+    const val ARTICLE = "article_screen"
 }
 
 fun NavController.navigateToMainGraphAndClearBackStack() {
@@ -119,4 +135,8 @@ fun NavController.navigateToTestHistoryScreen() {
 
 fun NavController.navigateToTestDetailScreen(id: String) {
     this.navigate(Graph.TEST_DETAILS + "/$id")
+}
+
+fun NavController.navigateToArticleScreen() {
+    this.navigate(Graph.ARTICLE)
 }

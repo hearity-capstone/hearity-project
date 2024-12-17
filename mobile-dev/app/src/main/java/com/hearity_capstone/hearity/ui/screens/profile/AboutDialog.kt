@@ -57,18 +57,19 @@ fun AboutDialog(
                 Spacer(Modifier.height(SpacingItem))
                 Text("Powered By Bangkit Academy 2024", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Spacer(Modifier.height(SpacingSection))
-                Text("Developed by:", style = MaterialTheme.typography.bodyLarge,
+                Text(
+                    "Developed by: Team C242-PS043", style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(Modifier.height(SpacingItem))
                 Text(
-                    "Gusti Ayu Putu Erika Erlina\n" +
-                            "Agnes Sura Pati Sinaga\n" +
-                            "Aryasaty Kirana Tungga Maheswari\n" +
-                            "Nabila Naurotul Ummah\n" +
-                            "Naufal Adhi Ramadhan\n" +
-                            "Eko Kurniawan\n" +
-                            "Rangga Felicia Fulfian\n",
+                    "Gusti Ayu Putu Erika Erlina - ML \n" +
+                            "Agnes Sura Pati Sinaga - ML\n" +
+                            "Aryasaty Kirana Tungga Maheswari - ML\n" +
+                            "Nabila Naurotul Ummah - CC \n" +
+                            "Naufal Adhi Ramadhan - CC\n" +
+                            "Eko Kurniawan - MD\n" +
+                            "Rangga Felicia Fulfian - MD\n",
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant

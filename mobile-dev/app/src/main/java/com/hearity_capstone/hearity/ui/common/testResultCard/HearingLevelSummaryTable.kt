@@ -56,7 +56,7 @@ fun HearingLevelSummaryTable(modifier: Modifier = Modifier, testResult: TestResu
                     modifier = Modifier.weight(1f),
                 )
                 Text(
-                    "Average Level",
+                    "Level",
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.weight(1f),
