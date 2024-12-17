@@ -49,6 +49,7 @@ import com.hearity_capstone.hearity.ui.theme.IconSizeExtraLarge
 import com.hearity_capstone.hearity.ui.theme.PaddingMedium
 import com.hearity_capstone.hearity.ui.theme.PaddingSmall
 import com.hearity_capstone.hearity.ui.theme.SpacingSection
+import com.hearity_capstone.hearity.viewmodel.ChatbotViewModel
 import kotlinx.coroutines.delay
 
 

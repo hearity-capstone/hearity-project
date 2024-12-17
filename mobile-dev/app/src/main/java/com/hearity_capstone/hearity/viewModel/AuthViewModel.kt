@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hearity_capstone.hearity.data.api.TokenProvider
 import com.hearity_capstone.hearity.data.model.UserModel
+import com.hearity_capstone.hearity.data.model.authentication.SignUpRequest
 import com.hearity_capstone.hearity.data.repository.authentication.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,13 +14,15 @@ import java.io.IOException
 
 class AuthViewModel(
     private val repository: AuthRepository,
-    private val tokenProvider: TokenProvider
+    private val tokenProvider: TokenProvider,
 ) : ViewModel() {
     private val _isLoading = MutableStateFlow<Boolean>(false)
     private val _isLoggedIn = MutableStateFlow<Boolean>(false)
     private val _loginState = MutableStateFlow<UserModel?>(null)
     private val _errorState = MutableStateFlow<String?>(null)
+    private val _signupState = MutableStateFlow<SignupState>(SignupState.Idle)
 
+    val signupState: StateFlow<SignupState> = _signupState
     val isLoading: StateFlow<Boolean> = _isLoading
     val isLoggedIn: StateFlow<Boolean> = _isLoggedIn
     val loginState: StateFlow<UserModel?> = _loginState
@@ -46,6 +49,29 @@ class AuthViewModel(
                 _errorState.value = "Unexpected error"
             } finally {
                 _isLoading.value = false
+            }
+        }
+    }
+
+    fun signUp(request: SignUpRequest) {
+        viewModelScope.launch {
+            try {
+                _signupState.value = SignupState.Loading
+                _isLoading.value = true
+                val response = repository.signUp(request)
+                if (response.statusCode == 200) {
+                    _signupState.value = SignupState.Success
+                } else {
+                    _signupState.value = SignupState.Error(response.message)
+                }
+
+            } catch (e: IOException) {
+                _signupState.value =
+                    SignupState.Error("Network error, please check your connection")
+            } catch (e: IllegalStateException) {
+                return@launch
+            } catch (e: Exception) {
+                _signupState.value = SignupState.Error("Unexpected error or user already exists")
             }
         }
     }
@@ -94,4 +120,11 @@ class AuthViewModel(
     fun clearErrorState() {
         _errorState.value = null
     }
+}
+
+sealed class SignupState {
+    object Idle : SignupState()
+    object Loading : SignupState()
+    object Success : SignupState()
+    data class Error(val message: String) : SignupState()
 }

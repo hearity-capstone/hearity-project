@@ -99,15 +99,15 @@ fun TestDetailScreen(
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .height(150.dp)
+                        .height(180.dp)
                 ) {
                     HearingLevelInfoCard(
                         Modifier
-                            .weight(1.5f)
+                            .weight(2f)
                             .fillMaxHeight()
                     )
                     Spacer(Modifier.width(SpacingItem))
-                    OpenTestFileCard(Modifier.weight(1f))
+                    OpenTestFileCard(Modifier.weight(1f), navController = navController)
                 }
 
 

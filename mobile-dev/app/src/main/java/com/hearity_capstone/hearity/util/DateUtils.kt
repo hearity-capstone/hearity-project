@@ -3,9 +3,15 @@ package com.hearity_capstone.hearity.util
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
+import java.time.temporal.ChronoUnit
 
 
 object DateUtils {
+
+    fun formatDateToString(date: LocalDate): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        return date.format(formatter)
+    }
 
     fun parseToLocalDate(dateString: String, format: String = "yyyy/MM/dd"): LocalDate? {
         return try {
@@ -24,5 +30,9 @@ object DateUtils {
     fun formatToDDMMYYYY(date: LocalDate): String {
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
         return date.format(formatter)
+    }
+
+    fun calculateDaysBetween(today: LocalDate, futureDate: LocalDate): Long {
+        return ChronoUnit.DAYS.between(today, futureDate)
     }
 }

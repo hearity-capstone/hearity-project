@@ -10,10 +10,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.hearity_capstone.hearity.ui.theme.SpacingItem
 
 @Composable
-fun TreatmentPlanSection() {
+fun TreatmentPlanSection(navController: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,7 +31,7 @@ fun TreatmentPlanSection() {
                 .fillMaxHeight()
                 .weight(2f)
         ) {
-            HearingEducationCard(modifier = Modifier.weight(1f))
+            HearingArticleCard(modifier = Modifier.weight(1f), navController = navController)
             Spacer(Modifier.height(SpacingItem))
             FindNearbyHospitalCard(modifier = Modifier.weight(1f))
         }

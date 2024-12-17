@@ -87,7 +87,7 @@ fun HomeScreen(
                 Spacer(Modifier.height(SpacingItem))
                 AudiometryCard(testResultViewModel)
                 Spacer(Modifier.height(SpacingSection))
-                TreatmentPlanSection()
+                TreatmentPlanSection(navController = rootNavController)
                 Spacer(Modifier.height(SpacingSectionLarge))
                 SectionTitle(
                     title = "Test History",
